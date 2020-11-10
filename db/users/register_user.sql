@@ -6,7 +6,7 @@ INSERT INTO users (
 )VALUES (
     ${username},
     ${email},
-    ${password},
-    ${is_admin}
+    ${hash},
+    FALSE
 )
 returning user_id, username, email, is_admin;
