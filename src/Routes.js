@@ -9,7 +9,7 @@ import Header from "./Components/Header";
 
 export default (
   <Switch>
-    <Route exact path="/" component={Auth} />
+    {/* <Route exact path="/" component={Auth} /> */}
     <Route path="/dash" component={Dash} />
     <Route path="/video" component={Video} />
     <Route path="/header" component={Header} />
