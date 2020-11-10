@@ -1,17 +1,17 @@
 import './App.scss';
-import Video from './Components/Video'
-import Creator from './Components/Creator';
+import Header from './Components/Header'
+import SideBar from './Components/SideBar'
 import Routes from './Routes';
+import { withRouter } from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-
-      <Video/>
-      <Creator />
-     {Routes}
+      {props.location.pathname !== '/' && <Header />}
+      {props.location.pathname !== '/' && <SideBar/>}
+      {Routes}
     </div>
   );
 }
 
-export default App; 
+export default withRouter(App);
