@@ -14,7 +14,7 @@ class Video extends Component {
                     </div>
                     <div className='comments'>
                         <div className='my-comment'>
-                            <input placeholder='Add comment here...'/>\
+                            <input placeholder='Add comment here...'/>
                             <button id='send'>Comment</button>
                         </div>
                         <div className='other-comments'>
