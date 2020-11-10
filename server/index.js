@@ -5,11 +5,12 @@ const express = require('express'),
       session = require('express-session'),
       s3Ctrl = require('./controllers/s3Ctrl'),
       videoCtrl = require('./controllers/videoCtrl'),
+      authCtrl = require('./controllers/authCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
 
-      authCtrl = require('./controllers/authCtrl')
+      
 
 app.use(express.json());
 

@@ -1,9 +1,9 @@
 module.exports = {
     addVideo: (req, res) => {
-        const {user_id, title, description, video_url} = req.body,
+        const {userId, title, description, video_url} = req.body,
               db = req.app.get('db');
-
-        db.video.upload_video(user_id, title, description, video_url).then(_ => {
+        console.log(userId)
+        db.video.upload_video({userId, title, description, video_url}).then(_ => {
             res.sendStatus(200)
         }).catch(err => console.log(err));
     },
