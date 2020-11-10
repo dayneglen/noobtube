@@ -1,10 +1,9 @@
 require('dotenv').config();
-
 const path = require('path')
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
-
+      s3Ctrl = require('./controllers/s3Ctrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -38,6 +37,7 @@ app.get('/api/logout', authCtrl.logout);
 //user endpoints
 
 // s3 endpoints
+app.get('/sign-s3', s3Ctrl.videoUpload); 
 
 // video endpoints
 
