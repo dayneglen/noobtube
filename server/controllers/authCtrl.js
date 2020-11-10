@@ -18,7 +18,7 @@ module.exports = {
     res.status(201).send(req.session.user);
   },
   login: async(req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body,
           db = req.app.get('db')
 
     const foundUser = await db.users.check_user({email})
