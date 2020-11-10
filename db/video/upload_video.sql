@@ -10,6 +10,6 @@ INSERT INTO video (
     ${title},
     ${description},
     ${video_url},
-    views = 0,
-    video_reported = 0
+    0,
+    0
 );
