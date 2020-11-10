@@ -9,13 +9,13 @@ import store from './Redux/store'
 const Router = process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
 ReactDOM.render(
-  <Provider store={store}>
-      <React.StrictMode>
-        <Router>
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
         <App />
-        </Router>
-      </React.StrictMode>
-  </Provider>,
+      </Router>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
