@@ -8,6 +8,8 @@ const express = require('express'),
       port = SERVER_PORT,
       app = express();
 
+      authCtrl = require('./controllers/authCtrl')
+
 app.use(express.json());
 
 app.use(session({
@@ -26,6 +28,9 @@ massive({
 });
 
 //auth endpoints
+app.post('/api/register', authCtrl.register);
+app.post('/api/login', authCtrl.login);
+app.get('/api/logout', authCtrl.logout);
 
 //comment endpoints
 
