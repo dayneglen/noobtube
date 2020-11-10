@@ -1,13 +1,14 @@
 require('dotenv').config();
-
 const path = require('path')
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
-
+      s3Ctrl = require('./controllers/s3Ctrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
+
+      authCtrl = require('./controllers/authCtrl')
 
 app.use(express.json());
 
@@ -27,12 +28,16 @@ massive({
 });
 
 //auth endpoints
+app.post('/api/register', authCtrl.register);
+app.post('/api/login', authCtrl.login);
+app.get('/api/logout', authCtrl.logout);
 
 //comment endpoints
 
 //user endpoints
 
 // s3 endpoints
+app.get('/sign-s3', s3Ctrl.videoUpload); 
 
 // video endpoints
 
