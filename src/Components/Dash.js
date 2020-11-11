@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import VideoListItem from './VideoListItem';
+import { clearVideo } from '../Redux/Reducers/reducer';
 import '../Styles/dash.scss'
 
 const Dash = props => {
     const user = useSelector(state => state.user),
+        activeVideo = useSelector(state => state.video),
+        dispatch = useDispatch(),
           [videoList, setVideoList] = useState([]);
 
     useEffect(() => {
         if(!user.email){
           props.history.push('/')
+        } else if (activeVideo.video_url) {
+            props.history.push('/video')
         }
-      }, [user, props.history])
+      }, [user, activeVideo, props.history])
 
     useEffect(() => {
       getVideos();
+      dispatch(clearVideo())
     }, [])
 
     const getVideos = () => {
