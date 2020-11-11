@@ -1,37 +1,28 @@
 import React, { Component } from "react";
 import "../Styles/admin.scss";
-import Header from "./Header";
 import axios from "axios";
+import { connect } from "react-redux";
 
 class Admin extends Component {
   constructor() {
     super();
     this.state = {
-      counter: 0,
+      count: 0,
     };
   }
 
   increment = () => {
-    this.setState({ count: this.state.count - 1 });
+    this.setState({ count: this.state.count + 1 });
   };
   increment = () => {
     this.setState({ count: this.state.count - 1 });
-  };
-
-  getVideos = () => {
-    axios
-      .get("/api/videos")
-      .then((res) => {
-        setVideoList(res.data);
-      })
-      .catch((err) => console.log(err));
   };
 
   handleAction = (id) => {
     axios
       .delete(`/api/video/${id}`)
       .then(() => {
-        this.getVideos();
+        this.props.getVideos();
       })
       .catch((err) => console.log(err));
   };
@@ -39,8 +30,8 @@ class Admin extends Component {
   render() {
     return (
       <div className="admin-page">
-        <Header />
         <section className="admin-table">
+          <h1>ADMIN PORTAL</h1>
           <table>
             <thead>
               <tr>
@@ -59,15 +50,15 @@ class Admin extends Component {
             </thead>
 
             <tbody>
-              <td> {this.props.user.username}</td>
-              <td> {this.props.user.video_id} </td>
-              <td> {this.props.video.title}</td>
-              <td> {this.props.video.description}</td>
-              <td> {this.props.video.video_url}</td>
+              <td> Username1</td>
+              <td>Video ID 1 </td>
+              <td> Title 1</td>
+              <td> description 1</td>
+              <td> video_url 1</td>
               <td> {this.state.count}</td>
               <td> {this.state.count}</td>
               <td> {this.state.count}</td>
-              <td> {this.props.user.comment}</td>
+              <td> comment</td>
               <td> {this.state.count}</td>
               <td>
                 <button onClick={this.handleAction}>Delete</button>
@@ -80,4 +71,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default connect((state) => state, {})(Admin);
