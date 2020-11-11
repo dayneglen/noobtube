@@ -45,12 +45,4 @@ const Header = (props) => {
   );
 };
 
-<<<<<<< HEAD
-            </div>
-        )
-    }
-
-
-=======
->>>>>>> main
 export default withRouter(Header);
