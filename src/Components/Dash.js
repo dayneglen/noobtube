@@ -40,8 +40,6 @@ const Dash = props => {
         return (
             <div className='Dash-page'>
                 <div className='dash-videos'>
-                    <Header/>
-                    {/* <Header/> */}
                   {videos}
                 </div>
             </div>
