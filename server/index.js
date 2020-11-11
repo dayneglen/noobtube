@@ -6,6 +6,7 @@ const express = require('express'),
       s3Ctrl = require('./controllers/s3Ctrl'),
       videoCtrl = require('./controllers/videoCtrl'),
       authCtrl = require('./controllers/authCtrl'),
+      commentCtrl = require('./controllers/commentCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -35,8 +36,13 @@ app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
 
 //comment endpoints
+app.get('/api/comments/:id', commentCtrl.getComments);
+app.post('/api/comment', commentCtrl.addComment);
+app.put('/api/comment/:id', commentCtrl.editComment);
+app.delete('/api/comment/:id', commentCtrl.deleteComment);
 
 //user endpoints
+
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
