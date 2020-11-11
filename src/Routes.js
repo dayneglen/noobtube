@@ -4,11 +4,7 @@ import Account from "./Components/Account";
 import Auth from "./Components/Auth";
 import Dash from "./Components/Dash";
 import Video from "./Components/Video";
-<<<<<<< HEAD
 import Creator from './Components/Creator';
-=======
-import Creator from './Components/Creator'
->>>>>>> main
 
 
 export default (

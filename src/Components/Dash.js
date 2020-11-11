@@ -40,12 +40,9 @@ const Dash = props => {
         return (
             <div className='Dash-page'>
                 <div className='dash-videos'>
-<<<<<<< HEAD
                     <Header/>
 
-=======
                   {videos}
->>>>>>> 7bffcdc9a0cd87bed031aaf004715fb70a375294
                 </div>
             </div>
         )
