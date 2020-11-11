@@ -57,6 +57,9 @@ app.get('/api/videos', videoCtrl.getAllVideos);
 app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
 
+//like/dislike endpoints
+
+
 
 
 // app.use(express.static(__dirname + '/../build'))
