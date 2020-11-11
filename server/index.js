@@ -8,6 +8,7 @@ const express = require('express'),
       authCtrl = require('./controllers/authCtrl'),
       commentCtrl = require('./controllers/commentCtrl'),
       subscriberCtrl = require('./controllers/subscriberCtrl'),
+      userCtrl = require('./controllers/userCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -46,7 +47,8 @@ app.delete('/api/comment/:id', commentCtrl.deleteComment);
 app.post('/api/subscription', subscriberCtrl.toggleSubscription);
 
 //user endpoints
-
+app.put('/api/user/email/:id', userCtrl.editUserEmail);
+app.put('/api/user/username/:id', userCtrl.editUsername);
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
@@ -56,6 +58,9 @@ app.get('/api/video/:id', videoCtrl.getVideo);
 app.get('/api/videos', videoCtrl.getAllVideos);
 app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
+
+//like/dislike endpoints
+
 
 
 

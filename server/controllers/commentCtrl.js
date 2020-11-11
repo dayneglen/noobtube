@@ -37,6 +37,6 @@ module.exports = {
                     db.comment.get_comments(videoId).then(videos => {
             res.status(200).send(videos);
         }).catch(err => console.log(err));
+        }
     }
-}
 }
