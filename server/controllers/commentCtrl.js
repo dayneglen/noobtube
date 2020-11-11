@@ -28,8 +28,13 @@ module.exports = {
     getComments: (req, res) => {
         const videoId = +req.params.id,
               db = req.app.get('db');
-
-        db.comment.get_comments(videoId).then(videos => {
+              if (req.session.user.is_admin) {
+                db.comment
+                  .list()
+                  .then((response) => res.status(200).send(response))
+                  .catch((err) => res.status(500).send(err));
+              } else {
+                    db.comment.get_comments(videoId).then(videos => {
             res.status(200).send(videos);
         }).catch(err => console.log(err));
     }
