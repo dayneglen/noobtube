@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { clearVideo } from '../Redux/Reducers/reducer';
-import Video from './Video';
-import '../Styles/header.scss'
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearVideo } from "../Redux/Reducers/reducer";
+import Video from "./Video";
+import "../Styles/header.scss";
 
-const Header = props => {
-    const [search, handleSearch] = useState(''),
-        dispatch = useDispatch()
+const Header = (props) => {
+  const [search, handleSearch] = useState(""),
+    dispatch = useDispatch();
 
-    const toDash = () => {
-        dispatch(clearVideo())
-        props.history.push('/dash')
-    }
+  const toDash = () => {
+    dispatch(clearVideo());
+    props.history.push("/dash");
+  };
 
-    
             // let filteredVideo =this.props.Video.filter(
             //     (Video) =>{
             //         return Video.title.toLowerCase().indexOf(
@@ -35,11 +34,8 @@ const Header = props => {
                         return <Video video={video}
                                 key={video.id} />
                     })} */}
-                </ul>
-
-            </div>
-        )
-    }
-
-
+      </ul>
+    </div>
+  );
+};
 export default withRouter(Header);

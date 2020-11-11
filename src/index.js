@@ -8,6 +8,10 @@ import App from './App';
 import { BrowserRouter, HashRouter } from "react-router-dom";
 const Router = process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
+<<<<<<< HEAD
+// import reportWebVitals from './reportWebVitals';
+=======
+>>>>>>> 7bffcdc9a0cd87bed031aaf004715fb70a375294
 
 ReactDOM.render(
   
@@ -25,4 +29,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
