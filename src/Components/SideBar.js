@@ -12,11 +12,20 @@ class SideBar extends Component {
         .catch(err => console.log(err))
     }
 
+    toAccount = () => {
+        // console.log(this.props)
+        this.props.history.push('/account')
+    }
+
+    toCreate = () => {
+        this.props.history.push('/creator')
+    }
+
     render(){
         return (
             <div className='sideBar-page'>
-                <button id='create-button'> Create </button>
-                <button id='account-button'> Account </button>
+                <button id='create-button' onClick={() => this.toCreate()}> Create </button>
+                <button id='account-button' onClick={() => this.toAccount()}> Account </button>
                 <button id='logout-button' onClick={() => this.handleLogout()}> Logout </button>
             </div>
         )

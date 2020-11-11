@@ -8,10 +8,7 @@ import App from './App';
 import { BrowserRouter, HashRouter } from "react-router-dom";
 const Router = process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
-<<<<<<< HEAD
 // import reportWebVitals from './reportWebVitals';
-=======
->>>>>>> 7bffcdc9a0cd87bed031aaf004715fb70a375294
 
 ReactDOM.render(
   
