@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import VideoListItem from './VideoListItem';
 import { clearVideo } from '../Redux/Reducers/reducer';
 import '../Styles/dash.scss'
+import Header from './Header'
 
 const Dash = props => {
     const user = useSelector(state => state.user),
@@ -39,7 +40,12 @@ const Dash = props => {
         return (
             <div className='Dash-page'>
                 <div className='dash-videos'>
+<<<<<<< HEAD
+                    <Header/>
+
+=======
                   {videos}
+>>>>>>> 7bffcdc9a0cd87bed031aaf004715fb70a375294
                 </div>
             </div>
         )
