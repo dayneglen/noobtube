@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player';
+import axios from 'axios';
 import '../Styles/video.scss'
 
 const Video = props => {
     const user = useSelector(state => state.user)
+    const activeVideo = useSelector(state => state.video)
+
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         if(!user.email){
@@ -11,10 +16,32 @@ const Video = props => {
         }
       }, [user, props.history])
 
+    useEffect(() => {
+        axios
+          .get(`/api/comments/${activeVideo.video_id}`)
+          .then((res) => {
+            setComments(res.data);
+          })
+          .catch((err) => console.log(err));
+    }, [activeVideo.video_id])
+
+    const commentsMapped = comments.map((commentInfo, i) => {
+        return (
+            <section key={i}>
+                <p>{commentInfo.username}</p>
+                <p>{commentInfo.comment}</p>
+            </section>
+        )
+    })
+
+    
+
     return (
         <div className='video-page'>
             <section className='left-side'>
-                <div className='video'></div>
+                <div className='video'>
+                    <ReactPlayer url={activeVideo.video_url} controls={true}/>
+                </div>
                 <div className='video-bar'>
                     <button id='like'>Like</button>
                     <button id='dislike'>Dislike</button>
@@ -27,7 +54,7 @@ const Video = props => {
                         <button id='send'>Comment</button>
                     </div>
                     <div className='other-comments'>
-                        {/* {this.props.comments} */}Previous comments go here 
+                        {commentsMapped}
                     </div>
                 </div>
             </section>
