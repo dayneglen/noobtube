@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearVideo } from '../Redux/Reducers/reducer';
 import Video from './Video';
 import '../Styles/header.scss'
 
-class Header extends Component {
-    constructor(){
-        super();
-        this.state ={
-            search:''
-        }
-    }
-    updateSearch = (e) => {
-        this.setState({
-            search: e.target.value.substr(0, 10)});
+const Header = props => {
+    const [search, handleSearch] = useState(''),
+        dispatch = useDispatch()
+
+    const toDash = () => {
+        dispatch(clearVideo())
+        props.history.push('/dash')
     }
 
-    toDash = () => {
-        this.props.history.push('/dash')
-    }
-
-    render() {
+    
             // let filteredVideo =this.props.Video.filter(
             //     (Video) =>{
             //         return Video.title.toLowerCase().indexOf(
@@ -28,11 +23,11 @@ class Header extends Component {
             // );
         return (
             <div className='Header-page'>
-               <button id='logo' onClick={() => this.toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
+               <button id='logo' onClick={() => toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
                 <input
                 type="text"
-                value="this.state.search"
-                onChange={this.updateSearch}
+                value={search}
+                onChange={e => handleSearch(e.target.value)}
                 />
                 <ul>
                     {/* {filteredVideo.map((video)=>{
@@ -44,6 +39,6 @@ class Header extends Component {
             </div>
         )
     }
-}
+
 
 export default withRouter(Header);
