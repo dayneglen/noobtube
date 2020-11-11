@@ -28,7 +28,7 @@ class Header extends Component {
             // );
         return (
             <div className='Header-page'>
-               <button onClick={() => this.toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
+               <button id='logo' onClick={() => this.toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
                 <input
                 type="text"
                 value="this.state.search"

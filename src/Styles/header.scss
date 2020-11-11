@@ -1,1 +1,19 @@
-// scss 
+.Header-page{
+    display: flex;
+    position: fixed;
+    height: 10.5vh;
+    width: 100vw;
+    background-color: rgb(2, 63, 2);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    img{
+        height: 9vh;
+        width: 9vw;
+    }
+    #logo{
+        // margin-left: .5vw;
+        // border-radius: 10%;
+    }
+    
+}
