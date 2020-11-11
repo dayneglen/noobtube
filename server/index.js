@@ -7,6 +7,7 @@ const express = require('express'),
       videoCtrl = require('./controllers/videoCtrl'),
       authCtrl = require('./controllers/authCtrl'),
       commentCtrl = require('./controllers/commentCtrl'),
+      subscriberCtrl = require('./controllers/subscriberCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -40,6 +41,9 @@ app.get('/api/comments/:id', commentCtrl.getComments);
 app.post('/api/comment', commentCtrl.addComment);
 app.put('/api/comment/:id', commentCtrl.editComment);
 app.delete('/api/comment/:id', commentCtrl.deleteComment);
+
+//subscriber endpoints
+app.post('/api/subscription', subscriberCtrl.toggleSubscription);
 
 //user endpoints
 
