@@ -1,0 +1,21 @@
+import React from 'react';
+import ReactPlayer from 'react-player';
+import { useSelector, useDispatch } from 'react-redux';
+import { getVideo } from '../Redux/Reducers/reducer';
+
+const VideoListItem = props => {
+    const video = useSelector(state => state.video),
+        dispatch = useDispatch()
+
+    const selectVideo = () => {
+        dispatch(getVideo(props.video))
+    }
+    return (
+        <section>
+            <ReactPlayer url={props.video.video_url}/>
+            <button onClick={() => selectVideo()}> Watch </button>
+        </section>
+    )
+}
+
+export default VideoListItem;

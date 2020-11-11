@@ -20,6 +20,12 @@ const Auth = (props) => {
     .catch(err => console.log(err))
   }
 
+  useEffect(() => {
+    if(user.email){
+      props.history.push('/dash')
+    }
+  }, [user, props.history])
+
   const handleLogin = () => {
     axios.post('/api/login', {email, password})
     .then(res => dispatch(getUser(res.data)))

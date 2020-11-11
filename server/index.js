@@ -1,14 +1,17 @@
 require('dotenv').config();
-const path = require('path')
+const path = require('path');
 const express = require('express'),
       massive = require('massive'),
       session = require('express-session'),
       s3Ctrl = require('./controllers/s3Ctrl'),
+      videoCtrl = require('./controllers/videoCtrl'),
+      authCtrl = require('./controllers/authCtrl'),
+      commentCtrl = require('./controllers/commentCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
 
-      authCtrl = require('./controllers/authCtrl')
+      
 
 app.use(express.json());
 
@@ -33,13 +36,22 @@ app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
 
 //comment endpoints
+app.get('/api/comments/:id', commentCtrl.getComments);
+app.post('/api/comment', commentCtrl.addComment);
+app.put('/api/comment/:id', commentCtrl.editComment);
+app.delete('/api/comment/:id', commentCtrl.deleteComment);
 
 //user endpoints
+
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
 
 // video endpoints
+app.get('/api/video/:id', videoCtrl.getVideo);
+app.get('/api/videos', videoCtrl.getAllVideos);
+app.post('/api/video', videoCtrl.addVideo);
+app.put('/api/video/:id', videoCtrl.editVideo);
 
 
 
