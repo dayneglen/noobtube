@@ -11,9 +11,9 @@ const VideoListItem = props => {
         dispatch(getVideo(props.video))
     }
     return (
-        <section>
+        <section className='video-listen'>
             <ReactPlayer url={props.video.video_url}/>
-            <button onClick={() => selectVideo()}> Watch </button>
+            <button className='video-button' onClick={() => selectVideo()}> Watch </button>
         </section>
     )
 }
