@@ -13,7 +13,16 @@ const Account = props => {
 
     return (
         <div className='account-page'>
-
+          <div className='account-box'>
+            <div className='username'>
+               username
+              <input placeholder='Change Username here'/>
+            <div className='email'>
+              email
+              <input placeholder='Change Email here'/>
+            </div>    
+            </div>
+          </div>
         </div>
     )
 }
