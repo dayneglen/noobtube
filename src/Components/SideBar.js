@@ -15,7 +15,9 @@ class SideBar extends Component {
     render(){
         return (
             <div className='sideBar-page'>
-                <button onClick={() => this.handleLogout()} > Logout </button>
+                <button id='create-button'> Create </button>
+                <button id='account-button'> Account </button>
+                <button id='logout-button' onClick={() => this.handleLogout()}> Logout </button>
             </div>
         )
     }
