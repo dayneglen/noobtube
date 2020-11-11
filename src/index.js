@@ -1,23 +1,24 @@
+import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import store from './Redux/store';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 import './index.css';
 import App from './App';
 import { BrowserRouter, HashRouter } from "react-router-dom";
 const Router = process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   
-    <Provider store={store}>
-      <React.StrictMode>
+    
+    <React.StrictMode>
+      <Provider store={store}>
       <Router>
         <App />
       </Router>
-      </React.StrictMode>
-    </Provider>,
+      </Provider>
+    </React.StrictMode>,
   document.getElementById("root")
 );
 
