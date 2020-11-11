@@ -35,5 +35,6 @@ module.exports = {
               db.video.get_all_videos().then(videos => {
             res.status(200).send(videos);
         }).catch(err => console.log(err));
+        }   
     }
 }
