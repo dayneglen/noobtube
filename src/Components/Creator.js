@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import {v4 as randomString } from 'uuid';
@@ -57,6 +58,14 @@ const Creator = props => {
         }
       });
   };
+
+  const user = useSelector(state => state.user)
+
+  useEffect(() => {
+      if(!user.email){
+        props.history.push('/')
+      }
+    }, [user, props.history])
 
   
     return (

@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../Styles/account.scss'
 
-class Account extends Component {
-    render() {
-        return (
-            <div className='account-page'>
+const Account = props => {
+    const user = useSelector(state => state.user)
 
-            </div>
-        )
-    }
+    useEffect(() => {
+        if(!user.email){
+          props.history.push('/')
+        }
+      }, [user, props.history])
+
+    return (
+        <div className='account-page'>
+
+        </div>
+    )
 }
 
 export default (Account);

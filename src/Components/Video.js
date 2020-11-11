@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../Styles/video.scss'
 
-class Video extends Component {
-    render() {
+const Video = props => {
+    const user = useSelector(state => state.user)
+
+    useEffect(() => {
+        if(!user.email){
+          props.history.push('/')
+        }
+      }, [user, props.history])
+
         return (
             <div className='video-page'>
                 <section className='left-side'>
@@ -31,6 +39,5 @@ class Video extends Component {
             </div>
         )
     }
-}
 
 export default (Video);
