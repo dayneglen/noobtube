@@ -4,6 +4,7 @@ import Account from "./Components/Account";
 import Auth from "./Components/Auth";
 import Dash from "./Components/Dash";
 import Video from "./Components/Video";
+import Creator from './Components/Creator'
 
 
 export default (
@@ -12,5 +13,6 @@ export default (
     <Route path="/dash" component={Dash} />
     <Route path="/video" component={Video} />
     <Route path="/account" component={Account} />
+    <Route path="/creator" component={Creator} />
   </Switch>
 );

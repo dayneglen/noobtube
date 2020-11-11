@@ -28,6 +28,7 @@ const Header = props => {
                 type="text"
                 value={search}
                 onChange={e => handleSearch(e.target.value)}
+                placeholder='Search'
                 />
                 <ul>
                     {/* {filteredVideo.map((video)=>{
