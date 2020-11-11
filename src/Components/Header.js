@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../Styles/header.scss'
+// import { Link } from "react-router-dom";
+
 
 class Header extends Component {
     constructor(){
@@ -14,25 +16,25 @@ class Header extends Component {
     }
 
     render() {
-            let filteredVideo =this.props.Video.filter(
-                (video) =>{
-                    return Video.title.toLowerCase().indexOf(
-                        this.state.search.toLowerCase()) !== -1 ;
-                }
-            );
+            // let filteredVideo =this.props.Video.filter(
+            //     (video) =>{
+            //         return Video.title.toLowerCase().indexOf(
+            //             this.state.search.toLowerCase()) !== -1 ;
+            //     }
+            // );
         return (
             <div className='Header-page'>
-               <Link to="/dash"> <img src={} alt="Noobtube" /> </Link>
+               {/* <Link to="/dash"> <img src={logo} alt="Noobtube" /> </Link> */}
                 <input
                 type="text"
-                value="this.state.search"
+                value={this.state.search}
                 onChange={this.updateSearch}
                 />
                 <ul>
-                    {filteredVideo.map((video)=>{
+                    {/* {filteredVideo.map((video)=>{
                         return <Video video={video}
                                 key={video.id} />
-                    })}
+                    })} */}
                 </ul>
 
             </div>
