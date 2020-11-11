@@ -1,13 +1,45 @@
 import React, { Component } from "react";
 import "../Styles/admin.scss";
 import Header from "./Header";
+import axios from "axios";
 
 class Admin extends Component {
+  constructor() {
+    super();
+    this.state = {
+      counter: 0,
+    };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+  increment = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  getVideos = () => {
+    axios
+      .get("/api/videos")
+      .then((res) => {
+        setVideoList(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  handleAction = (id) => {
+    axios
+      .delete(`/api/video/${id}`)
+      .then(() => {
+        this.getVideos();
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     return (
       <div className="admin-page">
         <Header />
-
         <section className="admin-table">
           <table>
             <thead>
@@ -32,12 +64,14 @@ class Admin extends Component {
               <td> {this.props.video.title}</td>
               <td> {this.props.video.description}</td>
               <td> {this.props.video.video_url}</td>
-              <td> {this.handleViews}</td>
-              <td> {this.handleLikes}</td>
-              <td> {this.handleDislikes}</td>
+              <td> {this.state.count}</td>
+              <td> {this.state.count}</td>
+              <td> {this.state.count}</td>
               <td> {this.props.user.comment}</td>
-              <td> {this.handleReport}</td>
-              <td> {this.handleAction}</td>
+              <td> {this.state.count}</td>
+              <td>
+                <button onClick={this.handleAction}>Delete</button>
+              </td>
             </tbody>
           </table>
         </section>
