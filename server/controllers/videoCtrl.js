@@ -26,14 +26,16 @@ module.exports = {
     },
     getAllVideos: (req, res) => {
         const db = req.app.get('db');
+        // console.log(req.session.user)
         if (req.session.user.is_admin) {
-            db.video
-              .list()
-              .then((response) => res.status(200).send(response))
-              .catch((err) => res.status(500).send(err));
-          } else {
-              db.video.get_all_videos().then(videos => {
-            res.status(200).send(videos);
+            db.video.get_all_videos()
+            .then(videos =>
+                res.status(200).send(videos))
+            .catch((err) => res.status(500).send(err));
+          } else 
+          {
+            db.video.get_all_videos().then(videos => {
+                res.status(200).send(videos);
         }).catch(err => console.log(err));
         }   
     }
