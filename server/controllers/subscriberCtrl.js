@@ -25,6 +25,14 @@ module.exports = {
     }
   },
   getSubscribers: (req, res) => {
-    
+    const creatorId = +req.params.id,
+      db = req.app.get("db");
+
+    db.subscription
+      .get_subscribers([creatorId])
+      .then((subscribers) => {
+        res.status(200).send(subscribers);
+      })
+      .catch((err) => console.log(err));
   }
 };
