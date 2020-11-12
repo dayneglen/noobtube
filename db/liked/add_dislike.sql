@@ -1,4 +1,4 @@
-INSERT INTO liked_video (
+INSERT INTO disliked_video (
     user_id,
     video_id
 ) VALUES (
