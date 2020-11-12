@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { getUser } from '../Redux/Reducers/reducer';
 import '../Styles/account.scss'
 
 const Account = props => {
@@ -7,7 +9,8 @@ const Account = props => {
         [username, handleUsername] = useState(user.username),
         [email, handleEmail] = useState(user.email),
         [editUsername, toggleEditUsername] = useState(false),
-        [editEmail, toggleEditEmail] = useState(false);
+        [editEmail, toggleEditEmail] = useState(false),
+        dispatch = useDispatch();
 
     useEffect(() => {
         if(!user.email){
@@ -20,11 +23,23 @@ const Account = props => {
     }, [user])
 
     const changeUsername = () => {
-
+      axios.put(`/api/user/username/${user.user_id}`, { username })
+      .then(res => {
+        const newUserObj = {...user, username: res.data}
+        dispatch(getUser(newUserObj))
+      })
+      .catch(err => console.log(err))
+      toggleEditUsername(!editUsername)
     }
 
     const changeEmail = () => {
-
+      axios.put(`/api/user/email/${user.user_id}`, { email })
+      .then(res => {
+        const newUserObj = {...user, email: res.data}
+        dispatch(getUser(newUserObj))
+      })
+      .catch()
+      toggleEditEmail(!editEmail)
     }
 
     return (

@@ -22,13 +22,9 @@ const Auth = (props) => {
   }
 
   useEffect(() => {
-<<<<<<< HEAD
     if(user.is_admin){
       props.history.push('/admin')
      }else if(user.email){
-=======
-    if (user.email) {
->>>>>>> main
       props.history.push('/dash')
     }
   }, [user, props.history])
