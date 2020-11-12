@@ -1,35 +1,38 @@
 .auth-page{
-    // height: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100vw;
     background-color: white;
     .login-box{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         width: 60vw;
         height: 75.5vh;
-        margin-left: 500px;
-        padding-top: 200px;
-        // background-color: white;
+        padding-top: 100px;
         .log{
-            // display: flexbox;
-            justify-content: space-between;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: space-around;
             background-color: rgb(87, 151, 87);
             width: 40vw;
             height: 50vh;
             box-shadow: black 0px 0px 250px 25px;
             border-radius: 1%;
-            #email{
-                margin-left: 250px;
-                padding-top: 40px;
-            }
-            #username{
-                margin-left: 250px;
-            }
-            #password{
-                margin-left: 250px;
-            }
-            .register{
-                margin-left: 250px;
-            }
+            // #email{
+                
+            // }
+            // #username{
+
+            // }
+            // #password{
+
+            // }
+            // .register{
+
+            // }
             button{
                 margin-top: 25px;
             }

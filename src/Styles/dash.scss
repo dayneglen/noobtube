@@ -12,12 +12,13 @@
         height: 100vh;
         padding-top: 150px;
         .video-listen{
+            background-color: black;
             flex-direction: row;
             margin-left: 100px;
             margin-top: 5vh;
             width: 30vw;
             height: 30vh;
-            box-shadow: white 0px 0px 3px 1px ;
+            // box-shadow: white 0px 0px 3px 1px ;
             button{
                 width: 30vw;
                 border: none;
