@@ -38,5 +38,30 @@ module.exports = {
 
           return res.send(returnData);
         });
+    },
+    deleteVideo: (req, res) => {
+      const {video_url} = req.body;
+
+      const fileName = video_url.replace(
+        "https://le-bucket.s3-us-west-1.amazonaws.com/", ''
+      );
+     
+      aws.config = {
+        region: "us-west-1",
+        accessKeyId: AWS_ACCESS_KEY_ID,
+        secretAccessKey: AWS_SECRET_ACCESS_KEY,
+      };
+
+      const s3 = new aws.S3();
+      const params = {
+        Bucket: "le-bucket",
+        Key: fileName
+      }
+      s3.deleteObject(params, (err, data) => {
+        if (err) console.log(err, err.stack)
+        else console.log(data)
+      });
+
+      res.sendStatus(200);
     }
 }

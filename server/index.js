@@ -56,6 +56,7 @@ app.get('/api/user/videos/:id', userCtrl.getUserVideos);
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
+app.post('/api/s3/deleteVideo', s3Ctrl.deleteVideo);
 
 // video endpoints
 app.get('/api/video/:id', videoCtrl.getVideo);
