@@ -1,1 +1,44 @@
-// scss 
+.creator-page{
+    background-color: rgb(7, 7, 7);
+    // width: 120vw;
+    .dropzone{
+        width: 100vw;
+        height: 100vh;
+        margin-left: 30vw;
+        padding-top: 20vh;
+        .creator-box{
+            #tags{
+                margin-top: 10vh;
+                margin-left: 10vw;
+                input{
+                    width: 5vw;
+                }
+            }
+            margin-top: 10ch;
+            background-color: white;
+            padding-top: 0vh;
+            width: 40vw;
+            height: 50vh;
+            box-shadow: rgb(75, 153, 75) 0px 0px 250px 0px;
+            input{
+                width: 34vw;
+                margin-top: 2vh;
+            }
+            button{
+                width: 5vw;
+            }
+            #description{
+                height: 5vh;
+            }
+            .box{
+                margin-left: 15vw;
+                top: 5vh;
+                #info{
+                    margin-top: 4vh;
+                    width: 25vw;
+                    margin-left: -6vw;
+                }
+            }
+        }
+    }
+}
