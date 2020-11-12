@@ -26,23 +26,34 @@
             #like{
                 background-color: rgb(75, 153, 75);
                 width: 4vw;
-                height: 4vh;
+                height: 3.5vh;
                 font-weight: bold;
-                border: .1vw solid white;
+                // border: .1vw solid white;
+                border: none;
+                border-radius: 5%;
+                box-shadow: white 0px 0px 5px 0px;
+                margin-left: 3px;
             }
             #dislike{
                 background-color: rgb(75, 153, 75);
                 width: 4vw;
                 margin-right:417px;
-                height: 4vh;
+                height: 3.5vh;
                 font-weight: bold;
-                border: .1vw solid white;
+                // border: .1vw solid white;
+                border: none;
+                border-radius: 5%;
+                box-shadow: white 0px 0px 5px 0px;
             }
             #Subscribe{
                 background-color: rgb(75, 153, 75);
-                height: 4vh;
+                height: 3.5vh;
                 font-weight: bold;
-                border: .1vw solid white;
+                // border: .1vw solid white;
+                border: none;
+                border-radius: 5%;
+                box-shadow: white 0px 0px 5px 0px;
+                margin-right: 3px;
             }
         }
         .bio{
@@ -58,7 +69,7 @@
             .my-comment{
                 margin-left: -100px;
                 width: 642px;
-                // height: 4vh;
+                background-color: white;
                 input{
                     width: 558px;
                     height: 4vh;
@@ -73,7 +84,6 @@
                 flex-wrap: wrap;
                 color: white;
                 width: 634px;
-                // height: 48vh;
                 margin-left: -100px;
                 justify-content: space-around;
                 align-items: center;
@@ -87,7 +97,6 @@
                     flex-wrap: wrap;
                     width: 625px;
                     margin-left: 5px;
-                    // height: 45vh;
                     background-color: rgb(7, 7, 7);
                 }
             }
@@ -96,14 +105,12 @@
     .right-side{
         background-color: rgb(0, 0, 0);
         width: 640px;
-        // height: 100vh;
         margin-left: 120px;
         .other-videos{
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             width: 300px;
-            // height: 100vh;
             margin-left: 100px;
         }
     }
