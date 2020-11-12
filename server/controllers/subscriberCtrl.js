@@ -24,4 +24,7 @@ module.exports = {
         throw err
     }
   },
+  getSubscribers: (req, res) => {
+    
+  }
 };
