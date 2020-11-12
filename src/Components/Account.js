@@ -1,27 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { getUser, clearUser } from '../Redux/Reducers/reducer';
+import { getUser, clearUser, getVideo } from '../Redux/Reducers/reducer';
+import ReactPlayer from 'react-player';
 import '../Styles/account.scss'
 
 const Account = props => {
     const user = useSelector(state => state.user),
+        activeVideo = useSelector(state => state.video),
         [username, handleUsername] = useState(user.username),
         [email, handleEmail] = useState(user.email),
         [editUsername, toggleEditUsername] = useState(false),
         [editEmail, toggleEditEmail] = useState(false),
         [deletingAccount, toggleDeletingAccount] = useState(false),
+        [videos, handleVideos] = useState([]),
+        mappedVideos = videos.map((video, i) => (
+          <ReactPlayer key={i} url={video.video_url} onClick={() => selectVideo(video)} />
+        )),
         dispatch = useDispatch();
 
     useEffect(() => {
         if(!user.email){
           props.history.push('/')
+        } else if (activeVideo.video_url) {
+          props.history.push('/video')
+        } else {
+          axios.get(`/api/user/videos/${user.user_id}`)
+          .then(res => handleVideos(res.data))
+          .catch(err => console.log(err))
         }
-      }, [user, props.history])
+      }, [user, activeVideo, props.history])
 
     useEffect(() => {
-      console.log(user)
-    }, [user])
+      // console.log(user)
+      // console.log(videos)
+      console.log(activeVideo)
+    }, [user, videos, activeVideo])
 
     const changeUsername = () => {
       axios.put(`/api/user/username/${user.user_id}`, { username })
@@ -53,6 +67,10 @@ const Account = props => {
         alert('Unable to delete account.  Please try again later.')
         toggleDeletingAccount(!deletingAccount)
       })
+    }
+
+    const selectVideo = (id) => {
+      dispatch(getVideo(id))
     }
 
     return (
@@ -102,7 +120,8 @@ const Account = props => {
             <section>
               <button onClick={() => toggleDeletingAccount(!deletingAccount)}> delete Account </button>
             </section>
-          )}   
+          )}  
+          { mappedVideos } 
         </div>
       </div>
     )
