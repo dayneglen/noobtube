@@ -13,8 +13,8 @@ const VideoListItem = props => {
     return (
         <section className='video-listen'>
                 <ReactPlayer url={props.video.video_url} 
-                width='30vp'
-                height='30vp'/>
+                width='30vw'
+                height='30vh'/>
             <button className='video-button' onClick={() => selectVideo()}> Watch </button>
         </section>
     )
