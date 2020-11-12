@@ -52,6 +52,7 @@ app.get('/api/subscription/:id', subscriberCtrl.getSubscribers);
 app.put('/api/user/email/:id', userCtrl.editUserEmail);
 app.put('/api/user/username/:id', userCtrl.editUsername);
 app.delete('/api/user/:id', userCtrl.deleteUser);
+app.get('/api/user/videos/:id', userCtrl.getUserVideos);
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
