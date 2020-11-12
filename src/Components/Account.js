@@ -44,7 +44,15 @@ const Account = props => {
     }
 
     const deleteAccount = () => {
-      dispatch(clearUser())
+      axios.delete(`/api/user/${user.user_id}`)
+      .then(() => {
+        dispatch(clearUser())
+      })
+      .catch(err => {
+        console.log(err)
+        alert('Unable to delete account.  Please try again later.')
+        toggleDeletingAccount(!deletingAccount)
+      })
     }
 
     return (
