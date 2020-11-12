@@ -55,6 +55,9 @@ const Video = props => {
           <div className="video">
             <ReactPlayer url={activeVideo.video_url} controls={true} />
           </div>
+          <div className='title-bar'>
+                       
+          </div>
           <LikeBar />
           <div className="bio">video info</div>
           <div className="comments">

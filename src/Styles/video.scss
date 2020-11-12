@@ -15,6 +15,16 @@
             width: 640px;
             margin-left: -100px;
         }
+        .title-bar{
+            width: 635px;
+            height: 4.075vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: -100px;
+            background-color: rgb(7, 7, 7);
+            border: .1vw solid white;
+        }
         .video-bar{
             width: 635px;
             height: 4.075vh;
@@ -24,9 +34,8 @@
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
             border: .1vw solid white;
-            margin-top: 10px;
             #like{
-                background-color: rgb(75, 153, 75);
+                background-color: rgb(255, 255, 255);
                 width: 4vw;
                 height: 3.5vh;
                 font-weight: bold;
@@ -34,8 +43,11 @@
                 border-radius: 5%;
                 margin-left: 3px;
             }
-            #dislike{
+            #like:hover{
                 background-color: rgb(75, 153, 75);
+            }
+            #dislike{
+                background-color: rgb(255, 255, 255);
                 width: 4vw;
                 margin-right:417px;
                 height: 3.5vh;
@@ -44,13 +56,19 @@
                 border-radius: 5%;
                 margin-left: 2.5px;
             }
-            #Subscribe{
+            #dislike:hover{
                 background-color: rgb(75, 153, 75);
+            }
+            #Subscribe{
+                background-color: rgb(255, 255, 255);
                 height: 3.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
                 margin-right: 3px;
+            }
+            #Subscribe:hover{
+                background-color: rgb(75, 153, 75);
             }
         }
         .bio{
@@ -74,6 +92,9 @@
                 button{
                     height: 4.5vh;
                     width: 76px;
+                }
+                button:hover{
+                    background-color: rgb(75, 153, 75);
                 }
             }
             .other-comments{
