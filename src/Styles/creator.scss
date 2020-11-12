@@ -23,12 +23,21 @@
             input{
                 width: 34vw;
                 margin-top: 2vh;
+                margin-left: .75vw;
+                border: none;
+                box-shadow: black 0px 0px 7.5px 1px;
             }
             button{
                 width: 80px;
+                border: none;
+                box-shadow: black 0px 0px 7.5px 1px;
+                height: 17px;
             }
             #description{
-                height: 5vh;
+                height: 50px;
+            }
+            #description2{
+                height: 52px;
             }
             .box{
                 display: flex;
