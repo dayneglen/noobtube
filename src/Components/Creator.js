@@ -62,9 +62,9 @@ const Creator = props => {
   const user = useSelector(state => state.user)
 
   useEffect(() => {
-    // if(!user.email){
-    //   props.history.push('/')
-    // }
+    if(!user.email){
+      props.history.push('/')
+    }
   }, [user, props.history])
 
 

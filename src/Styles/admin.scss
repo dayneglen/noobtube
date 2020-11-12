@@ -1,1 +1,22 @@
-// scss 
+.admin-page{
+    padding: 200px;
+
+    thead{
+        background-color: antiquewhite;
+        th{
+            border-bottom: 5px solid rgb(57, 121, 73);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+    }
+
+    tbody{
+        background-color: antiquewhite;
+        td{
+            border-bottom: 5px solid rgb(57, 121, 73);
+            padding: 10px;
+            margin: 10px;
+        }
+    }
+}
