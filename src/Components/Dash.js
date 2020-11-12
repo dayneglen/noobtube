@@ -25,7 +25,6 @@ const Dash = (props) => {
     dispatch(clearVideo());
   }, []);
 
-<<<<<<< HEAD
   const getVideos = () => {
     axios
       .get("/api/videos")
@@ -40,22 +39,12 @@ const Dash = (props) => {
   });
 
   return (
-    <div className="Dash-page">
-      <div className="dash-videos">{videos}</div>
+    <div className='Dash-page'>
+        <div className='dash-videos'>
+          {videos}
+        </div>
     </div>
-  );
+)
 };
 
-export default Dash;
-=======
-        return (
-            <div className='Dash-page'>
-                <div className='dash-videos'>
-                  {videos}
-                </div>
-            </div>
-        )
-    }
-
 export default (Dash);
->>>>>>> main
