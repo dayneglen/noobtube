@@ -2,66 +2,94 @@
     display: flex;
     position: relative;
     padding-top: 175px;
-    margin-left: 400px;
+    margin-left: 5vw;
+    background-color: rgb(7, 7, 7);
     .left-side{
+        margin-left: 20vw;
         align-items: center;
         // justify-content: space-around;
         .video{
             background-color: black;
-            height: 300px;
-            width: 600px;
+            height: 360px;
+            width: 640px;
             margin-left: -100px;
         }
         .video-bar{
-            width: 600px;
-            height: 4vh;
+            width: 640px;
+            height: 4.075vh;
             display: flex;
+            align-items: center;
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(75, 153, 75);
+            margin-top: 10px;
             #like{
+                background-color: rgb(75, 153, 75);
                 width: 4vw;
+                height: 4vh;
+                font-weight: bold;
             }
             #dislike{
+                background-color: rgb(75, 153, 75);
                 width: 4vw;
                 margin-right:417px;
+                height: 4vh;
+                font-weight: bold;
+            }
+            #Subscribe{
+                background-color: rgb(75, 153, 75);
+                height: 4vh;
+                font-weight: bold;
             }
         }
         .bio{
-            background-color: rgb(129, 129, 129);
+            background-color: rgb(7, 7, 7);
+            color: white;
             margin-left: -100px;
-            width: 600px;
+            width: 630px;
             height: 5vh;
             border: 2px black ;
+            border: .25vw solid grey;
         }
         .comments{
             // margin-top: 5vh;
             .my-comment{
                 margin-left: -100px;
-                width: 600px;
+                width: 640px;
                 // height: 4vh;
                 input{
-                    width: 518px;
+                    width: 558px;
+                    height: 4vh;
                 }
                 button{
+                    height: 4.5vh;
                     width: 74px;
                 }
             }
             .other-comments{
-                background-color: rgb(129, 129, 129);
-                width: 600px;
+                // background-color: grey;
+                color: white;
+                width: 630px;
                 height: 48vh;
                 margin-left: -100px;
                 justify-content: space-around;
                 align-items: center;
+                border: .25vw solid grey;
+                #other{
+                    width: 625px;
+                    margin-left: 5px;
+                    height: 45vh;
+                    background-color: rgb(7, 7, 7);
+                    border: 5px black;
+                }
             }
         }
     }
     .right-side{
         background-color: rgb(0, 0, 0);
-        width: 500px;
+        width: 640px;
         height: 100vh;
-        margin-left: 100px;
+        margin-left: 120px;
         .other-videos{
             // background-color: grey;
             display: flex;
@@ -72,5 +100,4 @@
             margin-left: 100px;
         }
     }
-
 }

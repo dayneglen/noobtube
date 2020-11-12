@@ -23,4 +23,21 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  deleteUser: (req, res) => {
+    const { id } = req.params,
+      db = req.app.get('db')
+
+    db.users.delete_user({id})
+    .then(() => res.sendStatus(200))
+    .catch(err => {res.status(500).send(err)
+    console.log(err)})
+  },
+  getUserVideos: (req, res) => {
+    const { id } = req.params,
+      db = req.app.get('db')
+
+    db.users.get_user_videos({id})
+    .then(videos => res.status(200).send(videos))
+    .catch(err => console.log(err))
+  }
 };

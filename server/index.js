@@ -9,6 +9,7 @@ const express = require('express'),
       commentCtrl = require('./controllers/commentCtrl'),
       subscriberCtrl = require('./controllers/subscriberCtrl'),
       userCtrl = require('./controllers/userCtrl'),
+      likeCtrl = require('./controllers/likeCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -45,10 +46,13 @@ app.delete('/api/comment/:id', commentCtrl.deleteComment);
 
 //subscriber endpoints
 app.post('/api/subscription', subscriberCtrl.toggleSubscription);
+app.get('/api/subscription/:id', subscriberCtrl.getSubscribers);
 
 //user endpoints
 app.put('/api/user/email/:id', userCtrl.editUserEmail);
 app.put('/api/user/username/:id', userCtrl.editUsername);
+app.delete('/api/user/:id', userCtrl.deleteUser);
+app.get('/api/user/videos/:id', userCtrl.getUserVideos);
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
@@ -60,9 +64,10 @@ app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
 
 //like/dislike endpoints
-
-
-
+app.post('/api/likes', likeCtrl.toggleLikedVideo);
+app.post('/api/dislikes', likeCtrl.toggleDislikedVideo);
+app.get('/api/like/:id', likeCtrl.getLikes);
+app.get('/api/dislike/:id', likeCtrl.getDislikes);
 
 // app.use(express.static(__dirname + '/../build'))
 

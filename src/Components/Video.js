@@ -8,7 +8,8 @@ const Video = props => {
     const user = useSelector(state => state.user)
     const activeVideo = useSelector(state => state.video)
 
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([]),
+          [comment, setComment] = useState([]);
 
     useEffect(() => {
         if(!user.email){
@@ -17,13 +18,8 @@ const Video = props => {
       }, [user, props.history])
 
     useEffect(() => {
-        axios
-          .get(`/api/comments/${activeVideo.video_id}`)
-          .then((res) => {
-            setComments(res.data);
-          })
-          .catch((err) => console.log(err));
-    }, [activeVideo.video_id])
+        getComments();
+    }, []);
 
     const commentsMapped = comments.map((commentInfo, i) => {
         return (
@@ -34,38 +30,51 @@ const Video = props => {
         )
     })
 
+    const getComments = () => {
+        axios
+          .get(`/api/comments/${activeVideo.video_id}`)
+          .then((res) => {
+            setComments(res.data);
+          })
+          .catch((err) => console.log(err));
+    }
+
+    const handleAddComment = () => {
+        axios.post('/api/comment', {video_id: activeVideo.video_id, user_id: user.user_id, comment: comment }).then(() => {
+            getComments();
+            setComment('');
+        }).catch(err => console.log(err))
+    }
+
     
 
     return (
-        <div className='video-page'>
-            <section className='left-side'>
-                <div className='video'>
-                    <ReactPlayer url={activeVideo.video_url} controls={true}/>
-                </div>
-                <div className='video-bar'>
-                    <button id='like'>Like</button>
-                    <button id='dislike'>Dislike</button>
-                    <button id='Subscribe'>Subscribe</button>
-                </div>
-                <div className='bio'>video info</div>
-                <div className='comments'>
-                    <div className='my-comment'>
-                        <input placeholder='Add comment here...' />
-                        <button id='send'>Comment</button>
-                    </div>
-                    <div className='other-comments'>
-                        {commentsMapped}
-                    </div>
-                </div>
-            </section>
-            <section className='right-side'>
-                <div className='other-videos'>
-                    {/* {this.props.videos} */}
-                </div>
-            </section>
-
-        </div>
-    )
+      <div className="video-page">
+        <section className="left-side">
+          <div className="video">
+            <ReactPlayer url={activeVideo.video_url} controls={true} />
+          </div>
+          <div className="video-bar">
+            <button id="like">Like</button>
+            <button id="dislike">Dislike</button>
+            <button id="Subscribe">Subscribe</button>
+          </div>
+          <div className="bio">video info</div>
+          <div className="comments">
+            <div className="my-comment">
+              <input placeholder="Add comment here..." value={comment} onChange={e => setComment(e.target.value)} />
+              <button id="send" onClick={handleAddComment}>Comment</button>
+            </div>
+            <div className="other-comments">
+              <div id='other'>{commentsMapped}</div>
+            </div>
+          </div>
+        </section>
+        <section className="right-side">
+          <div className="other-videos">{/* {this.props.videos} */}</div>
+        </section>
+      </div>
+    );
 }
 
 export default (Video);
