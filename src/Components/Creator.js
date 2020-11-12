@@ -75,7 +75,7 @@ const Creator = props => {
           <input placeholder='Video Title' />
           <button className='Set'>Set</button>
           <input id='description' placeholder='Video Description' />
-          <button id='description' className='Set'>Set</button>
+          <button id='description2' className='Set'>Set</button>
           <Dropzone
             onDropAccepted={getSignedRequest}
             accept="video/*"
@@ -104,7 +104,7 @@ const Creator = props => {
                 ) : (
                     <p>Drop files here, or click to select files</p>
                   )}
-                <p id='info'>Click in the box above to select a video to upload</p>
+                <p id='info'>Click in the box above to upload a video</p>
               </div>
             )}
           </Dropzone>
