@@ -14,26 +14,31 @@ const Header = (props) => {
     props.history.push("/dash");
   };
 
-            // let filteredVideo =this.props.Video.filter(
-            //     (Video) =>{
-            //         return Video.title.toLowerCase().indexOf(
-            //             this.state.search.toLowerCase()) !== -1 ;
-            //     }
-            // );
-        return (
-            <div className='Header-page'>
-               <button id='logo' onClick={() => toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
-                <input
-                type="text"
-                value={search}
-                onChange={e => handleSearch(e.target.value)}
-                placeholder='Search'
-                />
-                <ul>
-                    {/* {filteredVideo.map((video)=>{
-                        return <Video video={video}
-                                key={video.id} />
-                    })} */}
+  // let filteredVideo =this.props.Video.filter(
+  //     (Video) =>{
+  //         return Video.title.toLowerCase().indexOf(
+  //             this.state.search.toLowerCase()) !== -1 ;
+  //     }
+  // );
+  return (
+    <div className='Header-page'>
+      <button id='logo' onClick={() => toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
+      <div className='search-bar'>
+      <input
+        id='search'
+        type="text"
+        value={search}
+        onChange={e => handleSearch(e.target.value)}
+        placeholder='Search'
+      />
+      <button id='search-button'>Search</button>
+      <p id='p'>Tags</p>
+      </div>
+      <ul id='search-ul'>
+        {/* {filteredVideo.map((video) => {
+          return <Video video={video}
+            key={video.id} />
+        })} */}
       </ul>
     </div>
   );
