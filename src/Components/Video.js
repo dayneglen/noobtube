@@ -65,7 +65,9 @@ const Video = props => {
               <input placeholder="Add comment here..." value={comment} onChange={e => setComment(e.target.value)} />
               <button id="send" onClick={handleAddComment}>Comment</button>
             </div>
-            <div className="other-comments">{commentsMapped}</div>
+            <div className="other-comments">
+              <div id='other'>{commentsMapped}</div>
+            </div>
           </div>
         </section>
         <section className="right-side">
