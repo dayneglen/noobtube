@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { clearUser } from '../Redux/Reducers/reducer';
+import { clearUser, clearVideo } from '../Redux/Reducers/reducer';
 import '../Styles/sideBar.scss'
 
 class SideBar extends Component {
@@ -14,7 +14,8 @@ class SideBar extends Component {
 
     toAccount = () => {
         // console.log(this.props)
-        this.props.history.push('/account')
+        this.props.clearVideo();
+        this.props.history.push('/account');
     }
 
     toCreate = () => {
@@ -33,4 +34,4 @@ class SideBar extends Component {
 }
 const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps, { clearUser })(withRouter(SideBar));
+export default connect(mapStateToProps, { clearUser, clearVideo })(withRouter(SideBar));
