@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { getUser, clearUser, getVideo } from '../Redux/Reducers/reducer';
-import ReactPlayer from 'react-player';
+import { getUser, clearUser } from '../Redux/Reducers/reducer';
+import AccountVideo from './AccountVideo';
 import '../Styles/account.scss'
 
 const Account = props => {
@@ -15,7 +15,9 @@ const Account = props => {
         [deletingAccount, toggleDeletingAccount] = useState(false),
         [videos, handleVideos] = useState([]),
         mappedVideos = videos.map((video, i) => (
-          <ReactPlayer key={i} url={video.video_url} onClick={() => selectVideo(video)} />
+          <div className='account-video-display' key={i}>
+            <AccountVideo video={video} />
+          </div>
         )),
         dispatch = useDispatch();
 
@@ -67,10 +69,6 @@ const Account = props => {
         alert('Unable to delete account.  Please try again later.')
         toggleDeletingAccount(!deletingAccount)
       })
-    }
-
-    const selectVideo = (id) => {
-      dispatch(getVideo(id))
     }
 
     return (
