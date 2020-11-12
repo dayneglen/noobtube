@@ -49,6 +49,7 @@ app.post('/api/subscription', subscriberCtrl.toggleSubscription);
 //user endpoints
 app.put('/api/user/email/:id', userCtrl.editUserEmail);
 app.put('/api/user/username/:id', userCtrl.editUsername);
+app.delete('/api/user/:id', userCtrl.deleteUser);
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
@@ -60,8 +61,6 @@ app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
 
 //like/dislike endpoints
-
-
 
 
 // app.use(express.static(__dirname + '/../build'))
