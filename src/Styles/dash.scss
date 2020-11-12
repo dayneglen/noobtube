@@ -1,20 +1,27 @@
 .Dash-page{
+    display: flex ;
+    align-items: center;
+    justify-content: space-around;
     background-color: rgb(7, 7, 7);
-    // height: 120vh;
     .dash-videos{
-        // height: 100vh;
-        // margin-left: 3vw;
+        display: flex ;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
         width: 90vw;
+        height: 100vh;
         padding-top: 150px;
         .video-listen{
+            background-color: black;
             flex-direction: row;
             margin-left: 100px;
-            height: 45vh;
+            margin-top: 5vh;
             width: 30vw;
-            box-shadow: white 0px 0px 3px 1px ;
+            height: 30vh;
+            // box-shadow: white 0px 0px 3px 1px ;
             button{
-                margin-left: 140px;
-                width: 360px;
+                width: 30vw;
+                border: none;
             }
         }
     }
