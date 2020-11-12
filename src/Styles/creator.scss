@@ -25,18 +25,20 @@
                 margin-top: 2vh;
             }
             button{
-                width: 5vw;
+                width: 80px;
             }
             #description{
                 height: 5vh;
             }
             .box{
-                margin-left: 15vw;
+                display: flex;
+                align-items: center;
+                margin-left: 5vw;
                 top: 5vh;
                 #info{
                     margin-top: 4vh;
-                    width: 25vw;
-                    margin-left: -6vw;
+                    width: 30vw;
+                    // margin-left: 5vw;
                 }
             }
         }

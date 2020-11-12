@@ -104,7 +104,7 @@ const Creator = props => {
                 ) : (
                     <p>Drop files here, or click to select files</p>
                   )}
-                <p id='info'>Click in the box above to select a video to upload</p>
+                <p id='info'>Click in the box above to upload a video</p>
               </div>
             )}
           </Dropzone>
