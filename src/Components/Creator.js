@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
-import {v4 as randomString } from 'uuid';
+import { v4 as randomString } from 'uuid';
 import { GridLoader } from 'react-spinners';
 import '../Styles/creator.scss'
 
 const Creator = props => {
-  
+
   const [isUploading, setIsLoading] = useState(false),
-        [url, setUrl] = useState('');
+    [url, setUrl] = useState('');
 
   const getSignedRequest = ([file]) => {
     setIsLoading(true);
@@ -38,7 +38,7 @@ const Creator = props => {
         "Content-Type": file.type,
       },
     };
-    
+
     console.log(file)
     axios
       .put(signedRequest, file, options)
@@ -62,47 +62,59 @@ const Creator = props => {
   const user = useSelector(state => state.user)
 
   useEffect(() => {
-      if(!user.email){
-        props.history.push('/')
-      }
-    }, [user, props.history])
+    if(!user.email){
+      props.history.push('/')
+    }
+  }, [user, props.history])
 
-  
-    return (
-      <div className="creator-page">
-        <Dropzone
-          onDropAccepted={getSignedRequest}
-          accept="video/*"
-          multiple={false}
-        >
-          {({ getRootProps, getInputProps }) => (
-            <div
-              style={{
-                position: "relative",
-                width: 160,
-                height: 80,
-                borderWidth: 5,
-                marginTop: 25,
-                borderColor: "gray",
-                borderStyle: "dashed",
-                borderRadius: 5,
-                display: "inline-block",
-                fontSize: 17,
-              }}
-              {...getRootProps()}
-            >
-              <input {...getInputProps()} />
-              {isUploading ? (
-                <GridLoader />
-              ) : (
-                <p>Drop files here, or click to select files</p>
-              )}
-            </div>
-          )}
-        </Dropzone>
+
+  return (
+    <div className="creator-page">
+      <div className='dropzone'>
+        <div className='creator-box'>
+          <input placeholder='Video Title' />
+          <button className='Set'>Set</button>
+          <input id='description' placeholder='Video Description' />
+          <button id='description' className='Set'>Set</button>
+          <Dropzone
+            onDropAccepted={getSignedRequest}
+            accept="video/*"
+            multiple={false}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <div className='box'
+                style={{
+                  position: "relative",
+                  alignItems: "center",
+                  width: 175,
+                  height: 100,
+                  borderWidth: 4,
+                  marginTop: 0,
+                  borderColor: "black",
+                  borderStyle: "dashed",
+                  borderRadius: 5,
+                  display: "inline-block",
+                  fontSize: 20,
+                }}
+                {...getRootProps()}
+              >
+                <input id='drop-input' {...getInputProps()} />
+                {isUploading ? (
+                  <GridLoader />
+                ) : (
+                    <p>Drop files here, or click to select files</p>
+                  )}
+                <p id='info'>Click in the box above to select a video to upload</p>
+              </div>
+            )}
+          </Dropzone>
+          <div id='tags'>
+            <input placeholder='tags'/>
+          </div>
+        </div>
       </div>
-    );
-  
+    </div>
+  );
 }
 
 export default (Creator);
