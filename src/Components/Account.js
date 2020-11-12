@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { getUser } from '../Redux/Reducers/reducer';
+import { getUser, clearUser } from '../Redux/Reducers/reducer';
 import '../Styles/account.scss'
 
 const Account = props => {
@@ -10,6 +10,7 @@ const Account = props => {
         [email, handleEmail] = useState(user.email),
         [editUsername, toggleEditUsername] = useState(false),
         [editEmail, toggleEditEmail] = useState(false),
+        [deletingAccount, toggleDeletingAccount] = useState(false),
         dispatch = useDispatch();
 
     useEffect(() => {
@@ -42,9 +43,21 @@ const Account = props => {
       toggleEditEmail(!editEmail)
     }
 
+    const deleteAccount = () => {
+      axios.delete(`/api/user/${user.user_id}`)
+      .then(() => {
+        dispatch(clearUser())
+      })
+      .catch(err => {
+        console.log(err)
+        alert('Unable to delete account.  Please try again later.')
+        toggleDeletingAccount(!deletingAccount)
+      })
+    }
+
     return (
-        <div className='account-page'>
-          <div className='account-box'>
+      <div className='account-page'>
+        <div className='account-box'>
             <div className='username'>
                <p> Username: </p> 
                {editUsername
@@ -61,6 +74,7 @@ const Account = props => {
                   <button onClick={() => toggleEditUsername(!editUsername)}> Change Username </button>
                 </section>)
               }
+            </div>
             <div className='email'>
               <p> Email: </p>
               {editEmail
@@ -77,10 +91,20 @@ const Account = props => {
                   <button onClick={() => toggleEditEmail(!editEmail)}> Change Email Address </button>
                 </section>)
             }
-            </div>    
             </div>
-          </div>
+          {deletingAccount ? (
+            <section>
+              <p> Are you sure you want to delete your account? </p>
+              <button onClick={() => toggleDeletingAccount(!deletingAccount)}> On second thought... </button>
+              <button onClick={() => deleteAccount()}> Yes </button>
+            </section>
+          ) : (
+            <section>
+              <button onClick={() => toggleDeletingAccount(!deletingAccount)}> delete Account </button>
+            </section>
+          )}   
         </div>
+      </div>
     )
 }
 
