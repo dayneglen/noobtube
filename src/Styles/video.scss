@@ -15,23 +15,22 @@
             margin-left: -100px;
         }
         .video-bar{
-            width: 640px;
+            width: 635px;
             height: 4.075vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-left: -100px;
-            background-color: rgb(75, 153, 75);
+            background-color: rgb(7, 7, 7);
+            border: .1vw solid white;
             margin-top: 10px;
             #like{
                 background-color: rgb(75, 153, 75);
                 width: 4vw;
                 height: 3.5vh;
                 font-weight: bold;
-                // border: .1vw solid white;
                 border: none;
                 border-radius: 5%;
-                box-shadow: white 0px 0px 5px 0px;
                 margin-left: 3px;
             }
             #dislike{
@@ -40,19 +39,16 @@
                 margin-right:417px;
                 height: 3.5vh;
                 font-weight: bold;
-                // border: .1vw solid white;
                 border: none;
                 border-radius: 5%;
-                box-shadow: white 0px 0px 5px 0px;
+                margin-left: 2.5px;
             }
             #Subscribe{
                 background-color: rgb(75, 153, 75);
                 height: 3.5vh;
                 font-weight: bold;
-                // border: .1vw solid white;
                 border: none;
                 border-radius: 5%;
-                box-shadow: white 0px 0px 5px 0px;
                 margin-right: 3px;
             }
         }
@@ -60,9 +56,9 @@
             background-color: rgb(7, 7, 7);
             color: white;
             margin-left: -100px;
-            width: 634px;
+            width: 635px;
             height: 5vh;
-            border: .15vw solid white;
+            border: .1vw solid white;
         }
         .comments{
             // margin-top: 5vh;
