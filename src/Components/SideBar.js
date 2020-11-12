@@ -8,7 +8,10 @@ import '../Styles/sideBar.scss'
 class SideBar extends Component {
     handleLogout = () => {
         axios.get('/api/logout')
-        .then(() => this.props.clearUser())
+        .then(() => {
+            this.props.clearVideo();
+            this.props.clearUser()
+        })
         .catch(err => console.log(err))
     }
 
