@@ -1,10 +1,11 @@
+@import './base.scss';
 .Dash-page{
     display: flex ;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(7, 7, 7);
+    background-color: rgb(6.9, 6.9, 6.9);
     button:hover{
-        background-color: rgb(75, 153, 75);
+        @extend %gradient-background;
     }
     .dash-videos{
         display: flex ;
@@ -21,7 +22,6 @@
             margin-top: 5vh;
             width: 30vw;
             height: 30vh;
-            // box-shadow: white 0px 0px 3px 1px ;
             button{
                 width: 30vw;
                 border: none;

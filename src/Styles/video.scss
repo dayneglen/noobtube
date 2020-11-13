@@ -1,3 +1,4 @@
+@import './base.scss';
 .video-page{
     display: flex;
     position: relative;
@@ -45,7 +46,7 @@
                 margin-left: 3px;
             }
             #like:hover{
-                background-color: rgb(75, 153, 75);
+                @extend %gradient-background;
             }
             #dislike{
                 background-color: rgb(255, 255, 255);
@@ -58,7 +59,7 @@
                 margin-left: 2.5px;
             }
             #dislike:hover{
-                background-color: rgb(75, 153, 75);
+                @extend %gradient-background;
             }
             #Subscribe{
                 background-color: rgb(255, 255, 255);
@@ -69,7 +70,7 @@
                 margin-right: 3px;
             }
             #Subscribe:hover{
-                background-color: rgb(75, 153, 75);
+                @extend %gradient-background;
             }
         }
         .bio{
@@ -84,7 +85,7 @@
             // margin-top: 5vh;
             .my-comment{
                 margin-left: -100px;
-                width: 642px;
+                width: 635px;
                 background-color: white;
                 input{
                     width: 558px;
@@ -95,7 +96,7 @@
                     width: 76px;
                 }
                 button:hover{
-                    background-color: rgb(75, 153, 75);
+                    @extend %gradient-background;
                 }
             }
             .other-comments{
