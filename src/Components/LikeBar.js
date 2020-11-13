@@ -1,23 +1,23 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 const LikeBar = (props) => {
-    const user = useSelector((state) => state.user);
-    const activeVideo = useSelector((state) => state.video);
+  const user = useSelector((state) => state.user);
+  const activeVideo = useSelector((state) => state.video);
 
-    const [likes, setLikes] = useState(0),
-      [liked, setLiked] = useState(false),
-      [dislikes, setDislikes] = useState(0),
-      [disliked, setDisliked] = useState(false),
-      [subscribers, setSubscribers] = useState(0),
-      [subscribed, setSubscribed] = useState(true);
+  const [likes, setLikes] = useState(0),
+    [liked, setLiked] = useState(false),
+    [dislikes, setDislikes] = useState(0),
+    [disliked, setDisliked] = useState(false),
+    [subscribers, setSubscribers] = useState(0),
+    [subscribed, setSubscribed] = useState(true);
 
-    useEffect(() => {
-        getLikes();
-        getDislikes();
-        getSubscribers();
-    }, []);
+  useEffect(() => {
+    getLikes();
+    getDislikes();
+    getSubscribers();
+  }, []);
   const getLikes = () => {
     axios
       .get(`/api/like/${activeVideo.video_id}`)
@@ -63,11 +63,65 @@ const LikeBar = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const handleLikeToggle = () => {
+    axios
+      .post("/api/likes", {
+        video_id: activeVideo.video_id,
+        user_id: user.user_id,
+      })
+      .then(() => {
+        getLikes();
+        getDislikes();
+        setLiked(!liked);
+        setDisliked(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleDislikeToggle = () => {
+    axios
+      .post("/api/dislikes", {
+        video_id: activeVideo.video_id,
+        user_id: user.user_id,
+      })
+      .then(() => {
+        getLikes();
+        getDislikes();
+        setDisliked(!disliked);
+        setLiked(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleSubscriptionToggle = () => {
+    axios.post('/api/subscription', {subscriberId: user.user_id, creatorId: activeVideo.user_id}).then(() => {
+      getSubscribers();
+      setSubscribed(!subscribed);
+    }).catch(err => console.log(err));
+  }
+
+  console.log(liked, disliked, subscribed)
+
   return (
     <div className="video-bar">
-      <button id="like">Like {likes}</button>
-      <button id="dislike">Dislike {dislikes}</button>
-      <button id="Subscribe">Subscribe {subscribers}</button>
+      <button
+        id="like"
+        onClick={handleLikeToggle}
+      >
+        Like {likes}
+      </button>
+      <button
+        id="dislike"
+        onClick={handleDislikeToggle}
+      >
+        Dislike {dislikes}
+      </button>
+      <button
+        id="Subscribe"
+        onClick={handleSubscriptionToggle}
+      >
+        Subscribe {subscribers}
+      </button>
     </div>
   );
 };
