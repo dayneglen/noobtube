@@ -51,12 +51,15 @@ app.get('/api/subscription/:id', subscriberCtrl.getSubscribers);
 //user endpoints
 app.put('/api/user/email/:id', userCtrl.editUserEmail);
 app.put('/api/user/username/:id', userCtrl.editUsername);
+app.put("/api/user/profile-pic/:id", userCtrl.addProfilePic);
 app.delete('/api/user/:id', userCtrl.deleteUser);
 app.get('/api/user/videos/:id', userCtrl.getUserVideos);
+
 
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
 app.post('/api/s3/deleteVideo/:id', s3Ctrl.deleteVideo);
+
 
 // video endpoints
 app.get('/api/video/:id', videoCtrl.getVideo);

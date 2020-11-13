@@ -67,5 +67,5 @@ module.exports = {
       db.video.delete_video({id, user_id})
       .then(videos => res.status(200).send(videos))
       .catch(err => res.status(500).send(err))
-    }
+    },
 }
