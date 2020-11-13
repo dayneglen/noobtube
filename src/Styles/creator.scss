@@ -23,20 +23,34 @@
             input{
                 width: 34vw;
                 margin-top: 2vh;
+                margin-left: .75vw;
+                border: none;
+                box-shadow: black 0px 0px 7.5px 1px;
             }
             button{
-                width: 5vw;
+                width: 80px;
+                border: none;
+                box-shadow: black 0px 0px 7.5px 1px;
+                height: 17px;
+            }
+            button:hover{
+                background-color: rgb(75, 153, 75);
             }
             #description{
-                height: 5vh;
+                height: 50px;
+            }
+            #description2{
+                height: 52px;
             }
             .box{
-                margin-left: 15vw;
+                display: flex;
+                align-items: center;
+                margin-left: 5vw;
                 top: 5vh;
                 #info{
                     margin-top: 4vh;
-                    width: 25vw;
-                    margin-left: -6vw;
+                    width: 30vw;
+                    // margin-left: 5vw;
                 }
             }
         }

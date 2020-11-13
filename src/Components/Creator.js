@@ -9,7 +9,9 @@ import '../Styles/creator.scss'
 const Creator = props => {
 
   const [isUploading, setIsLoading] = useState(false),
-    [url, setUrl] = useState('');
+    [url, setUrl] = useState(''),
+    [title, setTitle] = useState(''),
+    [description, setDescription] = useState('')
 
   const getSignedRequest = ([file]) => {
     setIsLoading(true);
@@ -32,22 +34,19 @@ const Creator = props => {
       });
   };
 
-  const uploadFile = (file, signedRequest, url) => {
+  const uploadFile = async (file, signedRequest, url) => {
     const options = {
       headers: {
         "Content-Type": file.type,
       },
     };
-
-    console.log(file)
-    axios
-      .put(signedRequest, file, options)
-      .then((response) => {
-        setIsLoading(false);
-        setUrl(url);
-        console.log(response)
-      })
-      .catch((err) => {
+    try {
+      const uploadVideo = await axios.put(signedRequest, file, options);
+      const addingVideo = await axios.post('/api/video', {userId: user.user_id, title, description, video_url: url});
+      setIsLoading(false);
+      console.log('video uploaded');
+    }
+    catch(err) {
         setIsLoading(false)
         if (err.response.status === 403) {
           alert(
@@ -56,7 +55,24 @@ const Creator = props => {
         } else {
           alert(`ERROR: ${err.status}\n ${err.stack}`);
         }
-      });
+      }
+    
+    // axios
+    //   .put(signedRequest, file, options)
+    //   .then((response) => {
+    //     setIsLoading(false);
+    //     axios.post('/api/video', {})
+    //   })
+    //   .catch((err) => {
+    //     setIsLoading(false)
+    //     if (err.response.status === 403) {
+    //       alert(
+    //         `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${err.stack}`
+    //       );
+    //     } else {
+    //       alert(`ERROR: ${err.status}\n ${err.stack}`);
+    //     }
+    //   });
   };
 
   const user = useSelector(state => state.user)
@@ -72,14 +88,15 @@ const Creator = props => {
     <div className="creator-page">
       <div className='dropzone'>
         <div className='creator-box'>
-          <input placeholder='Video Title' />
+          <input placeholder='Video Title' value={title} onChange={e => setTitle(e.target.value)} />
           <button className='Set'>Set</button>
-          <input id='description' placeholder='Video Description' />
-          <button id='description' className='Set'>Set</button>
+          <input id='description' placeholder='Video Description' value={description} onChange={e => setDescription(e.target.value)}/>
+          <button id='description2' className='Set'>Set</button>
           <Dropzone
             onDropAccepted={getSignedRequest}
             accept="video/*"
             multiple={false}
+            disabled={description && title ? false : true}
           >
             {({ getRootProps, getInputProps }) => (
               <div className='box'
@@ -104,7 +121,7 @@ const Creator = props => {
                 ) : (
                     <p>Drop files here, or click to select files</p>
                   )}
-                <p id='info'>Click in the box above to select a video to upload</p>
+                <p id='info'>Click in the box above to upload a video</p>
               </div>
             )}
           </Dropzone>

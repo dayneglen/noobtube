@@ -2,8 +2,9 @@
     display: flex;
     position: relative;
     padding-top: 175px;
-    margin-left: 5vw;
+    margin-left: 85px;
     background-color: rgb(7, 7, 7);
+    min-height: 100vh;
     .left-side{
         margin-left: 20vw;
         align-items: center;
@@ -14,73 +15,108 @@
             width: 640px;
             margin-left: -100px;
         }
-        .video-bar{
-            width: 640px;
+        .title-bar{
+            color: white;
+            width: 635px;
             height: 4.075vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-left: -100px;
-            background-color: rgb(75, 153, 75);
-            margin-top: 10px;
+            background-color: rgb(7, 7, 7);
+            border: .1vw solid white;
+        }
+        .video-bar{
+            width: 635px;
+            height: 4.075vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: -100px;
+            background-color: rgb(7, 7, 7);
+            border: .1vw solid white;
             #like{
-                background-color: rgb(75, 153, 75);
+                background-color: rgb(255, 255, 255);
                 width: 4vw;
-                height: 4vh;
+                height: 3.5vh;
                 font-weight: bold;
+                border: none;
+                border-radius: 5%;
+                margin-left: 3px;
+            }
+            #like:hover{
+                background-color: rgb(75, 153, 75);
             }
             #dislike{
-                background-color: rgb(75, 153, 75);
+                background-color: rgb(255, 255, 255);
                 width: 4vw;
                 margin-right:417px;
-                height: 4vh;
+                height: 3.5vh;
                 font-weight: bold;
+                border: none;
+                border-radius: 5%;
+                margin-left: 2.5px;
+            }
+            #dislike:hover{
+                background-color: rgb(75, 153, 75);
             }
             #Subscribe{
-                background-color: rgb(75, 153, 75);
-                height: 4vh;
+                background-color: rgb(255, 255, 255);
+                height: 3.5vh;
                 font-weight: bold;
+                border: none;
+                border-radius: 5%;
+                margin-right: 3px;
+            }
+            #Subscribe:hover{
+                background-color: rgb(75, 153, 75);
             }
         }
         .bio{
             background-color: rgb(7, 7, 7);
             color: white;
             margin-left: -100px;
-            width: 630px;
+            width: 635px;
             height: 5vh;
-            border: 2px black ;
-            border: .25vw solid grey;
+            border: .1vw solid white;
         }
         .comments{
             // margin-top: 5vh;
             .my-comment{
                 margin-left: -100px;
-                width: 640px;
-                // height: 4vh;
+                width: 642px;
+                background-color: white;
                 input{
                     width: 558px;
                     height: 4vh;
                 }
                 button{
                     height: 4.5vh;
-                    width: 74px;
+                    width: 76px;
+                }
+                button:hover{
+                    background-color: rgb(75, 153, 75);
                 }
             }
             .other-comments{
-                // background-color: grey;
+                display: flex;
+                flex-wrap: wrap;
                 color: white;
-                width: 630px;
-                height: 48vh;
+                width: 634px;
                 margin-left: -100px;
                 justify-content: space-around;
                 align-items: center;
-                border: .25vw solid grey;
+                border: .15vw solid white;
+                padding-bottom: 100px;
                 #other{
+                    display: flex;
+                    justify-content: center;
+                    align-items: left;
+                    flex-direction: column;
+                    flex-wrap: wrap;
                     width: 625px;
                     margin-left: 5px;
-                    height: 45vh;
                     background-color: rgb(7, 7, 7);
-                    border: 5px black;
                 }
             }
         }
@@ -88,15 +124,12 @@
     .right-side{
         background-color: rgb(0, 0, 0);
         width: 640px;
-        height: 100vh;
         margin-left: 120px;
         .other-videos{
-            // background-color: grey;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             width: 300px;
-            height: 100vh;
             margin-left: 100px;
         }
     }

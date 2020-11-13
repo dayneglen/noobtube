@@ -4,15 +4,23 @@ module.exports = {
       db = req.app.get("db");
 
     const checkLikedVideo = await db.liked.check_like([user_id, video_id]);
-    if (!checkLikedVideo[0]) {
-      const addLike = await db.liked.add_like([user_id, video_id]);
-
-      return res.sendStatus(200);
-    }
+    const checkDislikedVideo = await db.liked.check_dislike([user_id, video_id]);
 
     try {
-      const deletedLike = await db.liked.delete_like([user_id, video_id]);
-      return res.sendStatus(200);
+      if (!checkLikedVideo[0] && !checkDislikedVideo[0]) {
+        const addLike = await db.liked.add_like([user_id, video_id]);
+        return res.sendStatus(200);
+      } else if (!checkLikedVideo[0] && checkDislikedVideo[0]) {
+        const deletedDislike = await db.liked.delete_dislike([
+          user_id,
+          video_id,
+        ]);
+        const addLike = await db.liked.add_like([user_id, video_id]);
+        return res.sendStatus(200);
+      } else if (checkLikedVideo[0] && !checkDislikedVideo[0]) {
+        const deletedLike = await db.liked.delete_like([user_id, video_id]);
+        return res.sendStatus(200);
+      }
     } catch (err) {
       throw err;
     }
@@ -21,17 +29,24 @@ module.exports = {
     const { video_id, user_id } = req.body,
       db = req.app.get("db");
 
-    const checkDislikedVideo = await db.liked.check_dislike([user_id, video_id]);
-    if (!checkDislikedVideo[0]) {
-      const addDislike = await db.liked.add_dislike([user_id, video_id]);
-
-      return res.sendStatus(200);
-    }
-
+    const checkLikedVideo = await db.liked.check_like([user_id, video_id]);
+    const checkDislikedVideo = await db.liked.check_dislike([
+      user_id,
+      video_id,
+    ]);
 
     try {
-      const deletedDislike = await db.liked.delete_dislike([user_id, video_id]);
-      return res.sendStatus(200);
+      if (!checkLikedVideo[0] && !checkDislikedVideo[0]) {
+        const addDislike = await db.liked.add_dislike([user_id, video_id]);
+        return res.sendStatus(200);
+      } else if (!checkLikedVideo[0] && checkDislikedVideo[0]) {
+        const deleteDislike = await db.liked.delete_dislike([user_id, video_id]);
+        return res.sendStatus(200);
+      } else if (checkLikedVideo[0] && !checkDislikedVideo[0]) {
+        const deletedLike = await db.liked.delete_like([user_id, video_id]);
+        const addDislike = await db.liked.add_dislike([user_id, video_id]);
+        return res.sendStatus(200);
+      }
     } catch (err) {
       throw err;
     }
