@@ -39,6 +39,7 @@ const Auth = (props) => {
     <div className='auth-page'>
       <section className='login-box'>
         <div className='log'>
+          {/* <p>Welcome to NoobTube</p> */}
           <section id='email'>
             <p> Email: </p>
             <input value={email} onChange={e => setEmail(e.target.value)} />
