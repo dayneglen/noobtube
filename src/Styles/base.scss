@@ -1,0 +1,13 @@
+$first-color: #C5FAFF;
+$second-color: #0B4ACB;
+%gradient-background {
+  background-image: linear-gradient(to bottom right, $first-color, $second-color)
+};
+
+@mixin flex ($justify, $align, $direction, $wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
