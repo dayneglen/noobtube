@@ -1,61 +1,58 @@
+@import './base.scss';
+
+* {
+    box-sizing: border-box;
+};
+
 .auth-page{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    @include flex (center, center, column, wrap);
     width: 100vw;
-    background-color: white;
+    height: 100vh;
+    @extend %gradient-background;
     .login-box{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        @include flex (space-around, center, column, wrap);
         width: 60vw;
-        height: 75.5vh;
-        padding-top: 100px;
+        height: 72vh;
         .log{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            background-color: rgb(87, 151, 87);
-            width: 40vw;
-            height: 50vh;
-            box-shadow: black 0px 0px 250px 25px;
-            border-radius: 1%;
-            // #email{
-                
-            // }
-            // #username{
-
-            // }
-            // #password{
-
-            // }
-            // .register{
-
-            // }
-            button{
-                margin-top: 25px;
-                border: none;
-                border-radius: 5%;
-                box-shadow: black 0px 0px 10px 0px ;
+            @include flex (space-around, center, column, wrap);
+            background-color: transparent;
+            width: 67%;
+            height: 80%;
+            border: 2px solid black;
+            border-radius: 15px;
+            .input-section {
+                @include flex (center, center, column , wrap);
+                width: 100%;
+                input {
+                    height: 30px;
+                    width: 70%;
+                    background-color: transparent;
+                    color: black;
+                    border: none;
+                    border: 2px solid black;
+                    border-radius: 5px;
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                }
             }
-            button:hover{
-                background-color: rgb(2, 63, 2); 
-                color: white; 
-                box-shadow: white 0px 0px 10px 0px ;
+        }
+        .register {
+            @include flex (space-around, center, row, wrap);
+            width: 500px;
+            button {
+                width: 100px;
             }
-            
         }
     }
     button{
-        margin-top: 25px;
-        border: none;
-        border-radius: 5%;
-        box-shadow: black 0px 0px 10px 0px ;
+        border: 2px solid black;
+        background-color: transparent;
+        height: 22px;
+        border-radius: 15px;
     }
     button:hover{
         background-color: rgb(2, 63, 2); 
         color: white; 
-        box-shadow: white 0px 0px 10px 0px ;
+        border-color: white;
     }
 }

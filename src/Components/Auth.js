@@ -37,24 +37,25 @@ const Auth = (props) => {
 
   return (
     <div className='auth-page'>
+       <h2>Welcome to NoobTube</h2>
       <section className='login-box'>
         <div className='log'>
-          {/* <p>Welcome to NoobTube</p> */}
-          <section id='email'>
+          <section id='email' className='input-section'>
             <p> Email: </p>
             <input value={email} onChange={e => setEmail(e.target.value)} />
           </section>
           {registerView ? (
-            <section id='username'>
+            <section id='username' className='input-section'>
               <p> Username: </p>
               <input value={username} onChange={e => setUsername(e.target.value)} />
             </section>
           ) : null}
-          <section id='password'>
+          <section id='password' className='input-section'>
             <p> Password: </p>
             <input value={password} onChange={e => setPassword(e.target.value)} />
           </section>
-          {registerView ? (
+        </div>
+        {registerView ? (
             <section className='register'>
               <button onClick={() => handleRegister()}> Register </button>
               <p> Already have an account? </p>
@@ -67,7 +68,6 @@ const Auth = (props) => {
                 <button onClick={() => toggleRegisterView(!registerView)} > Register Here </button>
               </section>
             )}
-        </div>
       </section>
     </div>
   )
