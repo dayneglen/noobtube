@@ -7,9 +7,10 @@ import axios from 'axios';
 const AccountVideo = props => {
   const [editTitle, toggleEditTitle] = useState(false),
       [editDescription, toggleEditDescription] = useState(false),
-      { video } = props,
+      { video, user } = props,
       [description, handleDescription] = useState(video.description),
       [title, handleTitle] = useState(video.title),
+      [deleting, toggleDeleting] = useState(false),
       dispatch = useDispatch();
 
   const selectVideo = (id) => {
@@ -58,6 +59,20 @@ const AccountVideo = props => {
       ) : (
         <section>
           <p> {description} </p> <button onClick={() => toggleEditDescription(!editDescription)}> Change Description </button>
+        </section>
+      )}
+      {deleting ? (
+       <section>
+         <p> Are you sure you want to delete this video? </p>
+         <button onClick={() => toggleDeleting(false)}> Cancel </button>
+         <button onClick={() => {
+           props.deleteVideo(video)
+           toggleDeleting(false)
+           }}> Delete </button>
+       </section> 
+      ) : (
+        <section>
+          <button onClick={() => toggleDeleting(true)}> Delete Video </button>
         </section>
       )}
     </div>
