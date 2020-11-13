@@ -35,11 +35,27 @@
             // }
             button{
                 margin-top: 25px;
+                border: none;
+                border-radius: 5%;
+                box-shadow: black 0px 0px 10px 0px ;
             }
             button:hover{
                 background-color: rgb(2, 63, 2); 
                 color: white; 
+                box-shadow: white 0px 0px 10px 0px ;
             }
+            
         }
+    }
+    button{
+        margin-top: 25px;
+        border: none;
+        border-radius: 5%;
+        box-shadow: black 0px 0px 10px 0px ;
+    }
+    button:hover{
+        background-color: rgb(2, 63, 2); 
+        color: white; 
+        box-shadow: white 0px 0px 10px 0px ;
     }
 }
