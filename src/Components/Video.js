@@ -8,7 +8,6 @@ import '../Styles/video.scss'
 const Video = props => {
   const user = useSelector(state => state.user)
   const activeVideo = useSelector(state => state.video)
-
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState([]);
 
@@ -57,10 +56,10 @@ const Video = props => {
         </div>
         <div className='title-bar'>
           <p>{activeVideo.title}</p>
-          <p></p>
+          <p>{activeVideo.user_id}</p>
         </div>
         <LikeBar />
-        <div className="bio">video info</div>
+        <div className="bio">{activeVideo.description}</div>
         <div className="comments">
           <div className="my-comment">
             <input placeholder="Add comment here..." value={comment} onChange={e => setComment(e.target.value)} />
@@ -72,7 +71,7 @@ const Video = props => {
         </div>
       </section>
       <section className="right-side">
-        <div className="other-videos">{/* {this.props.videos} */}</div>
+        <div className="other-videos">{/* {props.videos} */}</div>
       </section>
     </div>
   );
