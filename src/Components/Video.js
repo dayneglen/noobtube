@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+<<<<<<< HEAD
+import '../Styles/video.scss';
+
+=======
 import LikeBar from './LikeBar';
 import '../Styles/video.scss'
+>>>>>>> main
 
 const Video = props => {
   const user = useSelector(state => state.user)
@@ -48,6 +53,19 @@ const Video = props => {
     }).catch(err => console.log(err))
   }
 
+<<<<<<< HEAD
+    return (
+
+      <div className="video-page">
+        <section className="left-side">
+          <div className="video">
+            <ReactPlayer url={activeVideo.video_url} controls={true} />
+          </div>
+          <div className="video-bar">
+            <button id="like">Like</button>
+            <button id="dislike">Dislike</button>
+            <button id="Subscribe">Subscribe</button>
+=======
   return (
     <div className="video-page">
       <section className="left-side">
@@ -64,6 +82,7 @@ const Video = props => {
           <div className="my-comment">
             <input placeholder="Add comment here..." value={comment} onChange={e => setComment(e.target.value)} />
             <button id="send" onClick={handleAddComment}>Comment</button>
+>>>>>>> main
           </div>
           <div className="other-comments">
             <div id='other'>{commentsMapped}</div>
