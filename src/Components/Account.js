@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getUser, clearUser } from '../Redux/Reducers/reducer';
 import AccountVideo from './AccountVideo';
+import PictureUpload from './PictureUpload';
 import '../Styles/account.scss'
 
 const Account = props => {
@@ -82,6 +83,9 @@ const Account = props => {
     <div className='account-page'>
       <div></div>
       <div className='account-box'>
+        <div className='img-upload'>
+            <PictureUpload />
+        </div>
         <div className='username'>
           <p> Username: </p>
           {editUsername
