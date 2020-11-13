@@ -45,7 +45,7 @@ module.exports = {
           db = req.app.get('db')
 
       const fileName = video_url.replace(
-        "https://le-bucket.s3-us-west-1.amazonaws.com/", ''
+        "https://le-bucket.s3.amazonaws.com/", ''
       );
      
       aws.config = {
@@ -68,4 +68,37 @@ module.exports = {
       .then(videos => res.status(200).send(videos))
       .catch(err => res.status(500).send(err))
     },
+    deleteProfilePic: async (req, res) => {
+      const { img_url } = req.body,
+        { id } = req.params,
+        db = req.app.get('db');
+
+      if (!img_url) {
+        return res.sendStatus(200)
+      }
+
+      const fileName = img_url.replace(
+        "https://le-bucket.s3.amazonaws.com/",
+        ""
+      );
+
+      console.log(fileName)
+
+      aws.config = {
+        region: "us-west-1",
+        accessKeyId: AWS_ACCESS_KEY_ID,
+        secretAccessKey: AWS_SECRET_ACCESS_KEY,
+      };
+
+      const s3 = new aws.S3();
+      const params = {
+        Bucket: "le-bucket",
+        Key: fileName,
+      };
+      s3.deleteObject(params, (err, data) => {
+        if (err) console.log(err, err.stack);
+        else console.log(data);
+      });
+      res.sendStatus(200)
+    }
 }
