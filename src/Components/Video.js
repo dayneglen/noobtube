@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
-import '../Styles/video.scss'
+import '../Styles/video.scss';
+
 
 const Video = props => {
     const user = useSelector(state => state.user)
@@ -49,6 +50,7 @@ const Video = props => {
     
 
     return (
+
       <div className="video-page">
         <section className="left-side">
           <div className="video">
