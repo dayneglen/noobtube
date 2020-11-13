@@ -1,3 +1,4 @@
+@import './base.scss';
 .Header-page{
     display: flex;
     justify-content: space-between;
@@ -5,7 +6,7 @@
     position: fixed;
     height: 10.5vh;
     width: 100vw;
-    background-color: rgb(2, 63, 2);
+    @extend %gradient-background;
     z-index: 2;
     img{
         height: 90px;
@@ -22,6 +23,7 @@
             width: 350px;
             height: 35px;
             border-radius: 2.5%;
+            border: .1vw solid rgb(0, 30, 200);
         }
         #search-button{
             display: flex;
@@ -29,19 +31,19 @@
             align-items: center;
             background-color: white;
             width: 100px;
-            height: 39px;
+            height: 36px;
             border: none;
-            border: .1vw solid rgb(2, 63, 2);
+            border: .1vw solid rgb(6, 1, 53);
         }
         #search-button:hover{
-            background-color: rgb(75, 153, 75);
+            @extend %gradient-background;
         }
         #p{
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: white;
-            height: 37px;
+            height: 32px;
         }
     }
     #search-ul{

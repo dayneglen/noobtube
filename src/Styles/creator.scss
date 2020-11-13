@@ -1,5 +1,6 @@
+@import './base.scss';
 .creator-page{
-    background-color: rgb(7, 7, 7);
+    background-color: rgb(1, 1, 5);
     // width: 120vw;
     .dropzone{
         width: 100vw;
@@ -19,7 +20,7 @@
             padding-top: 0vh;
             width: 40vw;
             height: 50vh;
-            box-shadow: rgb(75, 153, 75) 0px 0px 250px 0px;
+            box-shadow: rgb(120, 163, 255) 0px 0px 250px 0px;
             input{
                 width: 34vw;
                 margin-top: 2vh;
