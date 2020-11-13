@@ -14,11 +14,6 @@ const Account = props => {
         [editEmail, toggleEditEmail] = useState(false),
         [deletingAccount, toggleDeletingAccount] = useState(false),
         [videos, handleVideos] = useState([]),
-        mappedVideos = videos.map((video, i) => (
-          <div className='account-video-display' key={i}>
-            <AccountVideo video={video} />
-          </div>
-        )),
         dispatch = useDispatch();
 
     useEffect(() => {
@@ -70,6 +65,18 @@ const Account = props => {
         toggleDeletingAccount(!deletingAccount)
       })
     }
+
+    const deleteVideo = (video) => {
+      axios.post(`/api/s3/deleteVideo/${video.video_id}`, {user_id: user.user_id, video_url: video.video_url})
+      .then(res => handleVideos(res.data))
+      .catch(err => console.log(err))
+    }
+
+    const mappedVideos = videos.map((video, i) => (
+      <div className='account-video-display' key={i}>
+        <AccountVideo video={video} user={user} deleteVideo={deleteVideo} />
+      </div>
+    ))
 
     return (
       <div className='account-page'>

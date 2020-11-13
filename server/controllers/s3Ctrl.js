@@ -40,7 +40,9 @@ module.exports = {
         });
     },
     deleteVideo: (req, res) => {
-      const {video_url} = req.body;
+      const { video_url, user_id } = req.body,
+          { id } = req.params,
+          db = req.app.get('db')
 
       const fileName = video_url.replace(
         "https://le-bucket.s3-us-west-1.amazonaws.com/", ''
@@ -62,6 +64,8 @@ module.exports = {
         else console.log(data)
       });
 
-      res.sendStatus(200);
+      db.video.delete_video({id, user_id})
+      .then(videos => res.status(200).send(videos))
+      .catch(err => res.status(500).send(err))
     }
 }
