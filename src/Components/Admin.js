@@ -23,9 +23,9 @@ class Admin extends Component {
   
   componentDidMount() {
     this.getVideos();
-    if (!this.props.user.email) {
-      this.props.history.push("/");
-    }
+    // if (!this.props.user.email) {
+    //   this.props.history.push("/");
+    // }
   }
 
 
@@ -57,7 +57,7 @@ class Admin extends Component {
 
   deleteComment = (id) => {
     axios
-      .delete(`/api/video/${id}`)
+      .delete(`/api/comment/${id}`)
       .then(() => {
         this.getComments();
       })
@@ -65,17 +65,17 @@ class Admin extends Component {
   };
 
   render() {
+
     const commentsMapped = this.state.comments.map((commentInfo, i) => (
       <div  key={i}>
         <p>Username: {commentInfo.username}</p>
         <p className="admin-comments-box">
           {commentInfo.comment}
-        <FaTrashAlt onClick={() => this.deleteComment()} />
+        <FaTrashAlt onClick={() => this.deleteComment(this.state.comments.comment_id)} />
         </p>
         
       </div>
     ));
-    console.log(commentsMapped);
 
     const mappedVideos = this.state.videos.map((video, i) => (
       <div key={i} className="admin-page">
@@ -109,7 +109,6 @@ class Admin extends Component {
               <td> {this.state.likeCounter}</td>
               <td> {this.state.dislikeCounter}</td>
               <td>
-                
                 {commentsMapped}
               </td>
               <td> {this.state.videoReportedCounter}</td>
