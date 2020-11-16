@@ -34,14 +34,20 @@ const Tags = props => {
 
   // if there isn't a suitable tag for a video, we want the ability to create a new tag.
   const newTag = () => {
-    axios.post(`/api/tags/new/${activeVideo.video_id}`, {tag: tagInput})
+    let tag = tagInput
+    console.log(tag)
+    axios.post(`/api/new/tags`, {tag})
     .then(res => handleTagList(res.data))
     .catch(err => console.log(err))
   }
+
+  // useEffect(() => {
+  //   grabTags()
+  // }, [])
   
   const mappedTags = tagList.map((tag, i) => {
     <div key={i}>
-      
+      { tag.name }
     </div>
   })
 
@@ -60,7 +66,7 @@ const Tags = props => {
         <p> Can't find the tag you're looking for?  Make a new one!</p>
         <input value={tagInput} onChange={e => handleTagInput(e.target.value)} />
         <button onClick={() => handleTagInput('')}> Cancel </button>
-        <button> Submit </button>
+        <button onClick={() => newTag()}> Submit </button>
       </section>
     </div>
   )
