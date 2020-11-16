@@ -14,21 +14,18 @@ class Admin extends Component {
       comments: [],
       username: "",
       videoReportedCounter: 0,
-      viewsCounter: 0,
-      likeCounter: 0,
-      dislikeCounter: 0,
+      views: 0,
+      likes: 0,
+      dislikes: 0,
     };
   }
-
-  
   componentDidMount() {
     this.getVideos();
     if (!this.props.user.email) {
       this.props.history.push("/");
     }
   }
-
-
+  
   getVideos = () => {
     axios
       .get(`/api/videos`)
@@ -40,24 +37,25 @@ class Admin extends Component {
       .catch((err) => console.log(err));
   };
   deleteVideo = (id) => {
-    axios
-      .delete(`/api/video/${id}`)
-      .then(() => {
-        this.getVideos();
-      })
-      .catch((err) => console.log(err));
+    axios.post(`/api/s3/deleteVideo/${id}`)
+      .then(res => this.setState({videos: res.data}))
+      .catch(err => console.log(err))
   };
 
   getComments = () => {
+    
     axios
       .get(`/api/comments/${this.state.videos[0].video_id}`)
-      .then((res) => this.setState({ comments: res.data }))
+      .then((res) => {
+        this.setState({ comments: res.data })
+      console.log(res.data)
+      })
       .catch((err) => console.log(err));
   };
-
   deleteComment = (id) => {
+    console.log(id)
     axios
-      .delete(`/api/video/${id}`)
+      .delete(`/api/comment/${id}`)
       .then(() => {
         this.getComments();
       })
@@ -65,17 +63,16 @@ class Admin extends Component {
   };
 
   render() {
+    console.log(this.state.comments)
     const commentsMapped = this.state.comments.map((commentInfo, i) => (
       <div  key={i}>
         <p>Username: {commentInfo.username}</p>
         <p className="admin-comments-box">
           {commentInfo.comment}
-        <FaTrashAlt onClick={() => this.deleteComment()} />
+        <FaTrashAlt onClick={() => this.deleteComment(commentInfo.comment_id)} />
         </p>
-        
       </div>
     ));
-    console.log(commentsMapped);
 
     const mappedVideos = this.state.videos.map((video, i) => (
       <div key={i} className="admin-page">
@@ -102,14 +99,13 @@ class Admin extends Component {
               <td>{video.title}</td>
               <td>{video.description} </td>
               <td>
-                <FaTrashAlt onClick={() => this.deleteVideo(video.video_id)} />
+                <FaTrashAlt onClick={() => this.deleteVideo(video.user_id)} />
                 <ReactPlayer className="preview" url={video.video_url} />
               </td>
-              <td> {this.state.viewsCounter}</td>
-              <td> {this.state.likeCounter}</td>
-              <td> {this.state.dislikeCounter}</td>
+              <td> {this.state.views}</td>
+              <td> {this.state.likes}</td>
+              <td> {this.state.dislikes}</td>
               <td>
-                
                 {commentsMapped}
               </td>
               <td> {this.state.videoReportedCounter}</td>
@@ -119,7 +115,9 @@ class Admin extends Component {
       </div>
     ));
 
-    return <div>{mappedVideos}</div>;
+    return <div>
+              {mappedVideos}    
+            </div>;
   }
 }
 
