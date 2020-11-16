@@ -34,6 +34,7 @@ module.exports = {
   },
   newTag: (req, res) => {
     const { id } = req.params,
+      { tag } = req.body,
       db = req.app.get('db')
 
     db.tags.new_tag({ id })
