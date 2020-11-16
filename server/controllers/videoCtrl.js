@@ -38,5 +38,13 @@ module.exports = {
                 res.status(200).send(videos);
         }).catch(err => console.log(err));
         }   
+    },
+    addView: (req, res) => {
+        const videoId = +req.params.id,
+              db = req.app.get('db');
+
+        db.video.add_view(videoId).then(() => {
+            res.sendStatus(200);
+        }).catch(err => console.log(err));
     }
 }
