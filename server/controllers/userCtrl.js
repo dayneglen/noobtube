@@ -48,5 +48,13 @@ module.exports = {
     db.users.add_profile_pic([img_url, id]).then(() => {
       res.sendStatus(200);
     }).catch(err => console.log(err));
+  },
+  getUser: (req, res) => {
+    const { id } = req.params,
+          db = req.app.get('db');
+
+    db.users.get_user([id]).then(user => {
+      res.status(200).send(user[0]);
+    }).catch(err => console.log(err));
   }
 };

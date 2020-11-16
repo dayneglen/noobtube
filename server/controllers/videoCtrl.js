@@ -2,7 +2,6 @@ module.exports = {
     addVideo: (req, res) => {
         const {userId, title, description, video_url} = req.body,
               db = req.app.get('db');
-        console.log(userId)
         db.video.upload_video({userId, title, description, video_url}).then(_ => {
             res.sendStatus(200)
         }).catch(err => console.log(err));
@@ -26,17 +25,17 @@ module.exports = {
     },
     getAllVideos: (req, res) => {
         const db = req.app.get('db');
-        // console.log(req.session.user)
-        if (req.session.user.is_admin) {
             db.video.get_all_videos()
             .then(videos =>
                 res.status(200).send(videos))
-            .catch((err) => res.status(500).send(err));
-          } else 
-          {
-            db.video.get_all_videos().then(videos => {
-                res.status(200).send(videos);
+            .catch((err) => res.status(500).send(err));   
+    },
+    addView: (req, res) => {
+        const videoId = +req.params.id,
+              db = req.app.get('db');
+
+        db.video.add_view(videoId).then(() => {
+            res.sendStatus(200);
         }).catch(err => console.log(err));
-        }   
     }
 }
