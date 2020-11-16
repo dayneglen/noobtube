@@ -16,7 +16,7 @@ const Dash = props => {
       props.history.push('/')
     } else if (activeVideo.video_url) {
       props.history.push('/video')
-    }
+    } 
   }, [user, activeVideo, props.history])
 
   useEffect(() => {
