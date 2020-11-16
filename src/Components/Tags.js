@@ -34,7 +34,9 @@ const Tags = props => {
 
   // if there isn't a suitable tag for a video, we want the ability to create a new tag.
   const newTag = () => {
-    axios.post(`/api/tags/new`, {tag: tagInput})
+    let tag = tagInput
+    console.log(tag)
+    axios.post(`/api/new/tags`, {tag})
     .then(res => handleTagList(res.data))
     .catch(err => console.log(err))
   }

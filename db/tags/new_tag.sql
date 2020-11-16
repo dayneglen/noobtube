@@ -1,4 +1,4 @@
 insert into tag (name)
-value (${tag});
+values (${tag});
 
 select * from tag;

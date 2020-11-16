@@ -1,10 +1,10 @@
 module.exports = {
   getTagList: (req, res) => {
-    // const db = req.app.get('db')
+    const db = req.app.get('db')
 
-    // db.tags.get_tag_list()
-    // .then(tagList => res.status(200).send(tagList))
-    // .catch(err => res.status(500).send(err))
+    db.tags.get_tag_list()
+    .then(tagList => res.status(200).send(tagList))
+    .catch(err => res.status(500).send(err))
   },
   getVideoTags: (req, res) => {
     // const { id } = req.params,
