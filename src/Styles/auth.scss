@@ -3,12 +3,14 @@
 * {
     box-sizing: border-box;
 };
+$text-color: rgb(0, 0, 0);
 
 .auth-page{
     @include flex (center, center, column, wrap);
     width: 100vw;
     height: 100vh;
     @extend %gradient-background;
+    color: $text-color;
     .login-box{
         @include flex (space-around, center, column, wrap);
         width: 60vw;
@@ -18,7 +20,7 @@
             background-color: transparent;
             width: 67%;
             height: 80%;
-            border: 2px solid black;
+            border: 2px solid $text-color;
             border-radius: 15px;
             .input-section {
                 @include flex (center, center, column , wrap);
@@ -27,9 +29,9 @@
                     height: 30px;
                     width: 70%;
                     background-color: transparent;
-                    color: black;
+                    color: $text-color;
                     border: none;
-                    border: 2px solid black;
+                    border: 2px solid $text-color;
                     border-radius: 5px;
                     margin-bottom: 20px;
                     font-size: 20px;
@@ -45,7 +47,7 @@
         }
     }
     button{
-        border: 2px solid black;
+        border: 2px solid $text-color;
         background-color: transparent;
         height: 22px;
         border-radius: 15px;

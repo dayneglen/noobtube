@@ -1,7 +1,12 @@
-$first-color: #C5FAFF;
-$second-color: #0B4ACB;
+$video-width: 20vw;
+// change videoListItem.js line 16/17 to match above value
+
+$first-color: #000000;
+$second-color: #3c4996;
+$third-color: #1d108b;
+
 %gradient-background {
-  background-image: linear-gradient(to bottom right, $first-color, $second-color)
+  background-image: linear-gradient(to bottom right, $first-color, $second-color, $third-color)
 };
 
 @mixin flex ($justify, $align, $direction, $wrap) {
