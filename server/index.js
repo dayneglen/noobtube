@@ -59,6 +59,7 @@ app.get('/api/user/videos/:id', userCtrl.getUserVideos);
 // s3 endpoints
 app.get('/sign-s3', s3Ctrl.videoUpload); 
 app.post('/api/s3/deleteVideo/:id', s3Ctrl.deleteVideo);
+app.post('/api/s3/deletePic/:id', s3Ctrl.deleteProfilePic);
 
 
 // video endpoints
@@ -66,6 +67,7 @@ app.get('/api/video/:id', videoCtrl.getVideo);
 app.get('/api/videos', videoCtrl.getAllVideos);
 app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
+app.put('/api/video/views/:id', videoCtrl.addView);
 
 //like/dislike endpoints
 app.post('/api/likes', likeCtrl.toggleLikedVideo);

@@ -1,5 +1,6 @@
 import React, {createRef} from 'react';
 import axios from 'axios';
+import { getUser } from "../Redux/Reducers/reducer";
 import { v4 as randomString } from "uuid";
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -37,9 +38,14 @@ const PictureUpload = props => {
         },
       };
 
+      console.log(url)
+
       try {
+        const clearProfilePic = await axios.post(`/api/s3/deletePic/${user.user_id}`, {img_url: user.picture_url})
         const uploadPic = await axios.put(signedRequest, file, options);
         const insertPic = await axios.put(`/api/user/profile-pic/${user.user_id}`, {img_url: url});
+        const newUser = {...user, picture_url: url}
+        dispatch(getUser(newUser));
         console.log('picture uploaded')
       } catch (err) {
         if (err.response.status === 403) {
