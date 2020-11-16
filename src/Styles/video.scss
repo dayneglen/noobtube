@@ -48,6 +48,8 @@
             }
             #like:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
             }
             #dislike{
                 background-color: rgb(255, 255, 255);
@@ -61,6 +63,8 @@
             }
             #dislike:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
             }
             #Subscribe{
                 background-color: rgb(255, 255, 255);
@@ -72,6 +76,8 @@
             }
             #Subscribe:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
             }
         }
         .bio{
@@ -110,6 +116,8 @@
                 }
                 button:hover{
                     @extend %gradient-background;
+                    color: $hover-color;
+                    box-shadow: 0px 0px 5px 0px;
                 }
             }
             .other-comments{
