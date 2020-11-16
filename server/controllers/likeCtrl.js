@@ -55,7 +55,6 @@ module.exports = {
     const videoId = +req.params.id,
             db = req.app.get('db');
     
-    console.log(videoId)
     db.liked.get_likes([videoId]).then(likes => {
         res.status(200).send(likes);
     }).catch(err => console.log(err))
