@@ -54,6 +54,7 @@ app.put('/api/user/username/:id', userCtrl.editUsername);
 app.put("/api/user/profile-pic/:id", userCtrl.addProfilePic);
 app.delete('/api/user/:id', userCtrl.deleteUser);
 app.get('/api/user/videos/:id', userCtrl.getUserVideos);
+app.get('/api/user/:id', userCtrl.getUser);
 
 
 // s3 endpoints
