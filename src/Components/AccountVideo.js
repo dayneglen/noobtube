@@ -46,7 +46,8 @@ const AccountVideo = props => {
         </section>
       ) : (
         <section>
-          <p> {title} </p> <button onClick={() => toggleEditTitle(!editTitle)}> Change Title </button>
+          <p className='title'> {title} </p> 
+          <button onClick={() => toggleEditTitle(!editTitle)}> Change Title </button>
         </section>
       )}
       <ReactPlayer url={video.video_url} onClick={() => selectVideo(video)} />
@@ -58,7 +59,8 @@ const AccountVideo = props => {
         </section>
       ) : (
         <section>
-          <p> {description} </p> <button onClick={() => toggleEditDescription(!editDescription)}> Change Description </button>
+          <p> {description} </p> 
+          <button onClick={() => toggleEditDescription(!editDescription)}> Change Description </button>
         </section>
       )}
       {deleting ? (

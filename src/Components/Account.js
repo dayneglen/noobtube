@@ -132,7 +132,14 @@ const Account = props => {
             </section>
           )}
       </div>
-      <div className='my-videos'>{mappedVideos}</div>
+      <div className='my-videos'>
+      <p>If you have uploaded videos, you can edit them below</p>
+        <div className='my' 
+        width='25vw'
+        height='25vh'>
+          {mappedVideos}         
+          </div>
+        </div>
     </div>
   )
 }

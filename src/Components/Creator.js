@@ -92,6 +92,7 @@ const Creator = props => {
           <button className='Set'>Set</button>
           <input id='description' placeholder='Video Description' value={description} onChange={e => setDescription(e.target.value)} />
           <button id='description2' className='Set'>Set</button>
+          <div className='warning'>You must add a title and description before uploading a video</div>
           <Dropzone
             onDropAccepted={getSignedRequest}
             accept="video/*"
@@ -103,9 +104,9 @@ const Creator = props => {
                 style={{
                   position: "relative",
                   alignItems: "center",
-                  width: 150,
-                  height: 100,
-                  borderWidth: 4,
+                  width: 125,
+                  height: 125,
+                  borderWidth: 3.5,
                   marginTop: 0,
                   borderColor: "black",
                   borderStyle: "dashed",
@@ -133,5 +134,4 @@ const Creator = props => {
     </div>
   );
 }
-
 export default (Creator);
