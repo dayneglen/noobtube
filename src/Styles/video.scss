@@ -26,16 +26,17 @@
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
             border: .1vw solid white;
+            padding: 20px;
         }
         .video-bar{
             width: 635px;
-            height: 4.075vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
             border: .1vw solid white;
+            padding: 10px;
             #like{
                 background-color: rgb(255, 255, 255);
                 width: 4vw;
@@ -78,8 +79,20 @@
             color: white;
             margin-left: -100px;
             width: 635px;
-            height: 5vh;
             border: .1vw solid white;
+            padding: 20px;
+            .video-creator-info-section {
+                @include flex(flex-start, center, row, wrap);
+                .creator-username {
+                    margin-left: 10px;
+                }
+            }
+            .profile-pic-holder {
+                height: 30px;
+                width: 30px;
+                background-color: #fff;
+                border-radius: 50%;
+            }
         }
         .comments{
             // margin-top: 5vh;

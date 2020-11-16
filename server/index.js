@@ -10,6 +10,7 @@ const express = require('express'),
       subscriberCtrl = require('./controllers/subscriberCtrl'),
       userCtrl = require('./controllers/userCtrl'),
       likeCtrl = require('./controllers/likeCtrl'),
+      tagsCtrl = require('./controllers/tagsCtrl'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       port = SERVER_PORT,
       app = express();
@@ -54,6 +55,7 @@ app.put('/api/user/username/:id', userCtrl.editUsername);
 app.put("/api/user/profile-pic/:id", userCtrl.addProfilePic);
 app.delete('/api/user/:id', userCtrl.deleteUser);
 app.get('/api/user/videos/:id', userCtrl.getUserVideos);
+app.get('/api/user/:id', userCtrl.getUser);
 
 
 // s3 endpoints
@@ -74,6 +76,13 @@ app.post('/api/likes', likeCtrl.toggleLikedVideo);
 app.post('/api/dislikes', likeCtrl.toggleDislikedVideo);
 app.get('/api/like/:id', likeCtrl.getLikes);
 app.get('/api/dislike/:id', likeCtrl.getDislikes);
+
+// tag endpoints
+app.get('/api/tags', tagsCtrl.getTagList);
+app.get('/api/tags/:id', tagsCtrl.getVideoTags);
+app.post('/api/tags/:id', tagsCtrl.tagVideo);
+app.delete('/api/tags/:id', tagsCtrl.untagVideo);
+app.post('/api/tags/new/:id', tagsCtrl.newTag);
 
 // app.use(express.static(__dirname + '/../build'))
 

@@ -59,7 +59,7 @@ const PictureUpload = props => {
     };
 
     return (
-        <section>
+        <section className='picture'>
             <input type='file' accept='image/*0' multiple={false} ref={fileInput} />
             <button onClick={getSignedRequest}>Upload Profile Picture</button>
         </section>

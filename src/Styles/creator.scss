@@ -35,7 +35,7 @@
                 height: 17px;
             }
             button:hover{
-                background-color: rgb(75, 153, 75);
+                @extend %gradient-background;
             }
             #description{
                 height: 50px;
