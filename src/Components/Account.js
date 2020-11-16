@@ -131,8 +131,8 @@ const Account = props => {
               <button className='delete-button' onClick={() => toggleDeletingAccount(!deletingAccount)}> delete Account </button>
             </section>
           )}
-        {mappedVideos}
       </div>
+      <div className='my-videos'>{mappedVideos}</div>
     </div>
   )
 }
