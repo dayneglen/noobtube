@@ -1,6 +1,6 @@
 @import './base.scss';
 .creator-page{
-    background-color: rgb(1, 1, 5);
+    background-color: rgb(0, 0, 0);
     // width: 120vw;
     .dropzone{
         width: 100vw;
@@ -58,6 +58,108 @@
         }
     }
     @media(max-width:1525px){
-        
+        .dropzone{
+            .creator-box{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                input{
+                    width: 150px;
+                    height: 30px;
+                    font-size: small;
+                }
+                button{
+                    color: black;
+                    height: 30px;
+                    width: 150px;
+                    margin-left: 9px;
+                }
+                button:hover{
+                    color: white;
+                }
+                #description{
+                    color: black;
+                    height: 30px;
+                    width: 200px;
+                }
+                #description2{
+                    color: black;
+                    height: 30px;
+                    width: 200px;
+                }
+                .box{
+                    margin-left: 0px;
+                    #info{
+                        width: 200px;
+                        color: black;
+                        margin-left: -10px;
+                    }
+                }
+                #tags{
+                    display: flex;
+                    align-items: center;
+                    margin-top: 175px;
+                    width: 50px;
+                    input{
+                        width: 50px;
+                        font-size: smaller;
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width:700px){
+        .dropzone{
+            .creator-box{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 50vw;
+                input{
+                    width: 100px;
+                    height: 30px;
+                    font-size: small;
+                }
+                button{
+                    color: black;
+                    height: 30px;
+                    width: 100px;
+                    margin-top: 1px;
+                    margin-left: 3px;
+                }
+                button:hover{
+                    color: white;
+                }
+                #description{
+                    color: black;
+                    height: 30px;
+                    width: 130px;
+                }
+                #description2{
+                    color: black;
+                    height: 30px;
+                    width: 130px;
+                }
+                .box{
+                    margin-left: 0px;
+                    #info{
+                        width: 150px;
+                        color: black;
+                        margin-left: 0px;
+                        font-size: smaller;
+                    }
+                }
+                #tags{
+                    display: flex;
+                    align-items: center;
+                    margin-top: 175px;
+                    width: 50px;
+                    input{
+                        width: 50px;
+                        font-size: smaller;
+                    }
+                }
+            }
+        }
     }
 }

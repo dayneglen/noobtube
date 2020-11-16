@@ -5,9 +5,9 @@
     justify-content: center;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    min-width: 100vw;
     background-color: rgb(0, 0, 0);
-    color: white;
+    color: black;
     button{
         border: none;
         border-radius: 5%;
@@ -108,4 +108,65 @@
             @extend %gradient-background;
         }
     }
+}
+@media(max-width:850px){
+    .account-page{
+        min-width: 100vw;
+        .my-videos{
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+        .account-box{
+            width: 60vw;
+            button{
+                width: 175px;
+            }
+            .username{
+                color: black;
+                section{
+                    button{
+                        width: 75px;
+                    }
+                }
+            }
+            .picture{
+                color: black;
+                input{
+                    width: 175px;
+                    font-size: x-small;
+                    margin-left: -10px;
+                }
+                button{
+                    width: 150px;
+                    margin-left: -10px;
+                }
+            }
+            .email{
+                color: black;
+                section{
+                    button{
+                        width: 75px;
+                    }
+                }
+            }
+            .delete{
+                .desc{
+                    width: 175px;
+                    font-size: small;
+                }
+                .db{
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    height: 105px;
+                    margin-right: 25px;
+                }
+            }
+            .delete-button{
+                width: 75px;
+                margin-left: 75px;
+            }
+        }
+    }   
 }

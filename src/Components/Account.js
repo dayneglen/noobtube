@@ -122,13 +122,13 @@ const Account = props => {
         </div>
         {deletingAccount ? (
           <section className='delete'>
-            <p> Are you sure you want to delete your account? </p>
+            <div className='desc'> Are you sure you want to delete your account? </div>
             <button className='db' onClick={() => toggleDeletingAccount(!deletingAccount)}> On second thought... </button>
             <button className='db' onClick={() => deleteAccount()}> Yes </button>
           </section>
         ) : (
-            <section>
-              <button className='delete-button' onClick={() => toggleDeletingAccount(!deletingAccount)}> delete Account </button>
+            <section className='delete'>
+              <button className='delete-button' onClick={() => toggleDeletingAccount(!deletingAccount)}> Delete Account </button>
             </section>
           )}
       </div>
