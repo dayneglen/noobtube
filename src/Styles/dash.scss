@@ -27,11 +27,11 @@
             border: 1px solid rgb(22, 22, 22);
             cursor: pointer;
             .video-title{
+                margin-top: 0px;
                 display: flex ;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                border: 1px solid rgb(22, 22, 22);
                 height:3vh;
             }
             button{
@@ -39,6 +39,9 @@
                 border: none;
                 cursor: default;
             }
+        }
+        .video-listen:hover{
+            box-shadow: $second-color 0px 0px 10px 0px; 
         }
     }
 }

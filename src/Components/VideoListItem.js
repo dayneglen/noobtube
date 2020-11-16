@@ -19,7 +19,7 @@ const VideoListItem = props => {
           loop={true}
           volume="0"
           width="20vw"
-          height="30vh"
+          height="29.8vh"
           onClick={() => selectVideo()}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
