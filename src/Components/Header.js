@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { clearVideo } from "../Redux/Reducers/reducer";
 import Video from "./Video";
 import "../Styles/header.scss";
+import { FaSearch } from "react-icons/fa";
+
 
 const Header = (props) => {
   const [search, handleSearch] = useState(""),
@@ -30,8 +32,9 @@ const Header = (props) => {
         value={search}
         onChange={e => handleSearch(e.target.value)}
         placeholder='Search'
-      />
-      <button id='search-button'>Search</button>
+      /> 
+      {/* <button id='search-button'>Search</button> */}
+      <FaSearch id='search-button' />
       <p id='p'>Tags</p>
       </div>
       <ul id='search-ul'>

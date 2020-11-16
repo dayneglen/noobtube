@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+<<<<<<< HEAD
+import LikeBar from './LikeBar';
+import '../Styles/video.scss'
+=======
 import '../Styles/video.scss';
 import LikeBar from './LikeBar';
 
+>>>>>>> main
 
 const Video = props => {
   const user = useSelector(state => state.user)

@@ -4,7 +4,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getUser, getVideo } from "../Redux/Reducers/reducer";
 import ReactPlayer from "react-player";
-import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 
 class Admin extends Component {
   constructor(props) {
@@ -19,13 +19,15 @@ class Admin extends Component {
       dislikeCounter: 0,
     };
   }
+
+  
   componentDidMount() {
     this.getVideos();
-
     if (!this.props.user.email) {
       this.props.history.push("/");
     }
   }
+
 
   getVideos = () => {
     axios
@@ -64,10 +66,13 @@ class Admin extends Component {
 
   render() {
     const commentsMapped = this.state.comments.map((commentInfo, i) => (
-      <div key={i}>
+      <div  key={i}>
         <p>Username: {commentInfo.username}</p>
-        <p>Comments: {commentInfo.comment}</p>
-        <FaTrash onClick={() => this.deleteComment()} />
+        <p className="admin-comments-box">
+          {commentInfo.comment}
+        <FaTrashAlt onClick={() => this.deleteComment()} />
+        </p>
+        
       </div>
     ));
     console.log(commentsMapped);
@@ -97,7 +102,7 @@ class Admin extends Component {
               <td>{video.title}</td>
               <td>{video.description} </td>
               <td>
-                <FaTrash onClick={() => this.deleteVideo(video.video_id)} />
+                <FaTrashAlt onClick={() => this.deleteVideo(video.video_id)} />
                 <ReactPlayer className="preview" url={video.video_url} />
               </td>
               <td> {this.state.viewsCounter}</td>
