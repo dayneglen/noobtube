@@ -15,6 +15,7 @@
         width: 90vw;
         min-height: 100vh;
         padding-top: 150px;
+        
         .video-listen{
             background-color: black;
             flex-direction: row;
@@ -23,6 +24,7 @@
             width: 30vw;
             height: 30vh;
             border: 1px solid rgb(22, 22, 22);
+            cursor: pointer;
             .video-title{
                 display: flex ;
                 align-items: center;
@@ -30,10 +32,7 @@
                 color: white;
                 border: 1px solid rgb(22, 22, 22);
                 height:3vh;
-            }
-            button{
-                width: 30vw;
-                border: none;
+                cursor: default;
             }
         }
     }
