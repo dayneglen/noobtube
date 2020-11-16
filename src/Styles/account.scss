@@ -58,9 +58,12 @@
             align-items: center;
             flex-direction: column;
             color: black;
+            // font-size: small;
             input{
-                margin-left: 110px;
+                margin-left: 60px;
                 margin-bottom: 20px;
+                width: 250px;
+                font-size: medium;;
             }
             button{
                 width: 200px;
