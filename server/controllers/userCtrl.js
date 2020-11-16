@@ -39,5 +39,14 @@ module.exports = {
     db.users.get_user_videos({id})
     .then(videos => res.status(200).send(videos))
     .catch(err => console.log(err))
+  },
+  addProfilePic: (req, res) => {
+    const { id } = req.params,
+          {img_url} = req.body,
+          db = req.app.get('db');
+
+    db.users.add_profile_pic([img_url, id]).then(() => {
+      res.sendStatus(200);
+    }).catch(err => console.log(err));
   }
 };
