@@ -38,7 +38,7 @@
             border: .1vw solid white;
             padding: 10px;
             #like{
-                background-color: rgb(255, 255, 255);
+                color: #fff;
                 width: 4vw;
                 height: 3.5vh;
                 font-weight: bold;
@@ -51,6 +51,7 @@
             }
             #dislike{
                 background-color: rgb(255, 255, 255);
+                color: #fff;
                 width: 4vw;
                 margin-right:417px;
                 height: 3.5vh;
@@ -72,6 +73,9 @@
             }
             #Subscribe:hover{
                 @extend %gradient-background;
+            }
+            i {
+                margin-right: 10px;
             }
         }
         .bio{
@@ -149,6 +153,3 @@
     }
 }
 
-.toggle {
-    background-color: aqua;
-}
