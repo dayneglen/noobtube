@@ -11,7 +11,7 @@ module.exports = {
         const commentId = +req.params.id,
               {comment} = req.body,
               db = req.app.get('db');
-        console.log(comment)
+
 
         db.comment.edit_comment({commentId, comment}).then(() => {
             res.sendStatus(200);
