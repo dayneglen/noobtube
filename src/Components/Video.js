@@ -66,7 +66,7 @@ const Video = props => {
     <div className="video-page">
       <section className="left-side">
         <div className="video">
-          <ReactPlayer url={activeVideo.video_url} controls={true} />
+          <ReactPlayer url={activeVideo.video_url} playing={true} controls={true}/>
         </div>
         <div className="title-bar">
           <p>{activeVideo.title}</p>

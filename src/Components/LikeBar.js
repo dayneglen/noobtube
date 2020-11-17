@@ -100,26 +100,32 @@ const LikeBar = (props) => {
     }).catch(err => console.log(err));
   }
 
-  console.log(liked, disliked, subscribed)
+  const likedStyle = {
+    backgroundColor: "rgb(17, 45, 200)",
+  };
+
 
   return (
     <div className="video-bar">
       <button
         id="like"
         onClick={handleLikeToggle}
+        style={liked ? likedStyle : null}
       >
-        Like {likes}
+        <i className="fa fa-thumbs-up" aria-hidden="true">
+          <p>{likes}</p>
+        </i>
       </button>
       <button
         id="dislike"
         onClick={handleDislikeToggle}
+        style={disliked ? likedStyle : null}
       >
-        Dislike {dislikes}
+        <i className="fa fa-thumbs-down" aria-hidden="true">
+          <p>{dislikes}</p>
+        </i>
       </button>
-      <button
-        id="Subscribe"
-        onClick={handleSubscriptionToggle}
-      >
+      <button id="Subscribe" onClick={handleSubscriptionToggle}>
         Subscribe {subscribers}
       </button>
     </div>
