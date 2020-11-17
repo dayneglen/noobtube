@@ -25,7 +25,7 @@
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 20px;
         }
         .video-bar{
@@ -35,7 +35,7 @@
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 10px;
             #like{
                 color: rgb(0, 0, 0);
@@ -89,7 +89,7 @@
             color: white;
             margin-left: -100px;
             width: 635px;
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 20px;
             .video-creator-info-section {
                 @include flex(flex-start, center, row, wrap);
@@ -109,14 +109,15 @@
             .my-comment{
                 margin-left: -100px;
                 width: 635px;
-                background-color: white;
+                background-color: black;
+                border: .1vw solid rgb(22, 22, 22);
                 input{
-                    width: 558px;
+                    width: 555px;
                     height: 4.5vh;
                 }
                 button{
                     height: 4.5vh;
-                    width: 74.5px;
+                    width: 75px;
                     padding-top: 6px;
                     // margin-right: 2px;
                 }
@@ -134,7 +135,7 @@
                 margin-left: -100px;
                 justify-content: space-around;
                 align-items: center;
-                border: .15vw solid white;
+                border: .15vw solid rgb(22, 22, 22);
                 padding-bottom: 100px;
                 #other{
                     display: flex;

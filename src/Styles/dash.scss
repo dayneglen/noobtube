@@ -39,7 +39,8 @@
                 cursor: default;
             }
             .video-info-section {
-                border: 1px solid rgb(22, 22, 22);
+                // @extend %gradient-background;
+                // border: 1px solid rgb(22, 22, 22);
                 padding: 10px;
                 color: #fff;
                 @include flex(space-between, flex-start, row, wrap);
@@ -49,17 +50,27 @@
                         width: 40px;
                         border-radius: 50%;
                     }
+                    p {
+                        margin-top: 1px;
+                        margin-bottom: 0px;
+                        margin-left: 5px;
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                    }
                 }
                 .dashboard-video-info {
                     @include flex(flex-start, flex-start, column, wrap);
                     p {
-                        margin-top: 1px;
+                        margin-top: 0px;
                         margin-bottom: 1px;
                         font-size: 0.8rem;
+                        font-weight: bold;
                     }
                     h2 {
                         margin-top: 0;
                         margin-bottom: 5px;
+                        text-decoration: underline;
+                        color: $hover-color;
                     }
                 }
             }
