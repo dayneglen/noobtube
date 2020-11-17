@@ -25,27 +25,27 @@
                 }
             }
             margin-top: 10ch;
-            // background-color: white;
             padding-top: 0vh;
             width: 40vw;
             height: 50vh;
-            // box-shadow: $hover-color 0px 0px 75px 0px;
             input{
-                width: 34vw;
+                width: 30vw;
                 margin-top: 2vh;
                 margin-left: .75vw;
                 border: none;
+                border-radius: 5px;
                 box-shadow: black 0px 0px 7.5px 1px;
             }
             button{
                 width: 80px;
-                border: none;
-                box-shadow: black 0px 0px 7.5px 1px;
-                height: 29px;
-                padding-top: 5px;
+                border: 2px solid black;
+                height: 32px;
+                padding-top: 6px;
+                border-radius: 5px;
             }
             button:hover{
                 @extend %gradient-background;
+                box-shadow: $hover-color 0px 0px 5px 1px;
                 color: $hover-color;
             }
             #description{
