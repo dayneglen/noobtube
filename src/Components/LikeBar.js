@@ -101,7 +101,38 @@ const LikeBar = (props) => {
   }
 
   const likedStyle = {
-    backgroundColor: "rgb(17, 45, 200)",
+    backgroundColor: "rgb(255, 255, 255)",
+    color: 'rgb(0, 150, 0)',
+    marginLeft: '0px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
+  };
+  const disLikedStyle = {
+    backgroundColor: "rgb(255, 255, 255)",
+    color: 'rgb(255, 50, 0)',
+    marginLeft: '0px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
+  };
+  const Style = {
+    backgroundColor: "rgb(255, 255, 255)",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
   };
 
 
@@ -110,7 +141,7 @@ const LikeBar = (props) => {
       <button
         id="like"
         onClick={handleLikeToggle}
-        style={liked ? likedStyle : null}
+        style={liked ? likedStyle : Style}
       >
         <i className="fa fa-thumbs-up" aria-hidden="true">
           <p>{likes}</p>
@@ -119,7 +150,7 @@ const LikeBar = (props) => {
       <button
         id="dislike"
         onClick={handleDislikeToggle}
-        style={disliked ? likedStyle : null}
+        style={disliked ? disLikedStyle : Style}
       >
         <i className="fa fa-thumbs-down" aria-hidden="true">
           <p>{dislikes}</p>

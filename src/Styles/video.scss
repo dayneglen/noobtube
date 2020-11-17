@@ -38,9 +38,9 @@
             border: .1vw solid white;
             padding: 10px;
             #like{
-                color: #fff;
+                color: rgb(0, 0, 0);
                 width: 4vw;
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
@@ -53,14 +53,14 @@
             }
             #dislike{
                 background-color: rgb(255, 255, 255);
-                color: #fff;
+                color: rgb(0, 0, 0);
                 width: 4vw;
                 margin-right:417px;
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
-                margin-left: 2.5px;
+                margin-left: 3px;
             }
             #dislike:hover{
                 @extend %gradient-background;
@@ -69,7 +69,7 @@
             }
             #Subscribe{
                 background-color: rgb(255, 255, 255);
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
@@ -112,11 +112,13 @@
                 background-color: white;
                 input{
                     width: 558px;
-                    height: 4vh;
+                    height: 4.5vh;
                 }
                 button{
                     height: 4.5vh;
-                    width: 76px;
+                    width: 74.5px;
+                    padding-top: 6px;
+                    // margin-right: 2px;
                 }
                 button:hover{
                     @extend %gradient-background;
@@ -158,6 +160,9 @@
             width: 300px;
             margin-left: 100px;
         }
+    }
+    @media(max-width:700px){
+        margin-left: 50px;
     }
 }
 
