@@ -5,6 +5,8 @@ import '../Styles/tags.scss';
 
 const Tags = props => {
   const [tagList, handleTagList] = useState([]),
+      [videoTags, handleVideoTags] = useState([]),
+      [unusedTags, handleUnusedTags] = useState([]),
       [searchInput, handleSearchInput] = useState(''),
       [tagInput, handleTagInput] = useState(''),
       activeVideo = useSelector(state => state.video)
@@ -14,9 +16,11 @@ const Tags = props => {
     axios.get(`/api/tags`)
     .then(res => handleTagList(res.data))
     .catch(err => console.log(err))
+    axios.get(`/api/tags/${activeVideo.video_id}`)
+    .then(res => handleVideoTags(res.data))
+    .catch(err => console.log(err))
   }
 
-  // this function will handle adding and removing tags from videos.  It will be invoked onClick of a tag in the tagList
   const toggleTag = (tag) => {
     const tagCheck = tagList.filter(item => item === tag)
     if (tagCheck) {
@@ -32,6 +36,18 @@ const Tags = props => {
     }
   }
 
+  const addTag = (tag_id) => {
+    axios.post(`/api/tags/${activeVideo.video_id}`, { tag_id })
+    .then(res => handleVideoTags(res.data))
+    .catch(err => console.log(err))
+  }
+
+  const removeTag = (tag_id) => {
+    axios.delete(`/api/tags/${activeVideo.video_id}`, { tag_id })
+    .then(res => handleVideoTags(res.data))
+    .catch(err => console.log(err))
+  }
+
   // if there isn't a suitable tag for a video, we want the ability to create a new tag.
   const newTag = () => {
     let tag = tagInput
@@ -41,15 +57,30 @@ const Tags = props => {
     .catch(err => console.log(err))
   }
 
-  // useEffect(() => {
-  //   grabTags()
-  // }, [])
+  useEffect(() => {
+    grabTags()
+  }, [activeVideo])
+
+  useEffect(() => {
+    handleUnusedTags(tagList.filter(el => videoTags.includes(el)))
+  }, [tagList, videoTags])
+
+  useEffect(() => {
+    console.log(videoTags)
+    console.log(tagList)
+  }, [videoTags])
   
-  const mappedTags = tagList.map((tag, i) => {
+  const mappedTags = videoTags.map((t, i) => (
     <div key={i}>
-      { tag.name }
+      { t.name } <button onClick={() => {removeTag(t.tag_id)}}> x </button>
     </div>
-  })
+  ))
+
+  const mappedUnused = unusedTags.map((t, i) => (
+    <div key={i}>
+      { t.name } <button onClick={() => addTag(t.tag_id)}> x </button>
+    </div>
+  ))
 
   return (
     <div className='tag-page'>
@@ -60,7 +91,10 @@ const Tags = props => {
         <button onClick={() => handleSearchInput('')}> Clear </button>
       </section>
       <section>
-        {mappedTags}
+        <p> Tags on this video: </p>
+        { mappedTags }
+        <p> Other Tags: </p>
+        { mappedUnused }
       </section>
       <section>
         <p> Can't find the tag you're looking for?  Make a new one!</p>
