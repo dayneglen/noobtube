@@ -11,8 +11,12 @@ const PictureUpload = props => {
     const fileInput = createRef();
 
     const getSignedRequest = () => {
-        const file = fileInput.current.files[0];
 
+      
+      const file = fileInput.current.files[0];
+      if (!file) {
+        return alert('Please insert a file before uploading!')
+      }
       const fileName = `${randomString()}-${file.name.replace(/\s/g, "-")}`;
 
       axios
