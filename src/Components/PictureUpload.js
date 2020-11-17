@@ -42,8 +42,6 @@ const PictureUpload = props => {
         },
       };
 
-      console.log(url)
-
       try {
         const clearProfilePic = await axios.post(`/api/s3/deletePic/${user.user_id}`, {img_url: user.picture_url})
         const uploadPic = await axios.put(signedRequest, file, options);

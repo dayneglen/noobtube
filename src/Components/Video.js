@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
+import VideoListItem from './VideoListItem';
 import axios from 'axios';
 import '../Styles/video.scss';
 import LikeBar from './LikeBar';
@@ -11,7 +12,8 @@ const Video = props => {
   const activeVideo = useSelector(state => state.video)
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState([]),
-    [creator, setCreator] = useState({});
+    [creator, setCreator] = useState({}),
+    [videoList, setVideoList] = useState([]);
 
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const Video = props => {
     getComments();
     getViews();
     getCreator();
+    getVideos();
   }, []);
 
   const commentsMapped = comments.map((commentInfo, i) => {
@@ -34,6 +37,22 @@ const Video = props => {
       </section>
     )
   })
+
+  const getVideos = () => {
+    axios
+      .get("/api/videos")
+      .then((res) => {
+        setVideoList(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const videos = videoList.map((video, i) => {
+    return <VideoListItem key={i} video={video} />;
+  });
+
+
+  
 
   const getComments = () => {
     axios
@@ -99,7 +118,7 @@ const Video = props => {
         </div>
       </section>
       <section className="right-side">
-        <div className="other-videos">{/* {props.videos} */}</div>
+        <div className="other-videos">{videos}</div>
       </section>
     </div>
   );
