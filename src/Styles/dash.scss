@@ -21,23 +21,46 @@
             background-color: black;
             flex-direction: row;
             margin-left: 100px;
-            margin-bottom: 100px;
+            margin-bottom: 20px;
             width: $video-width;
-            height: 30vh;
+            // height: 30vh;
             border: 1px solid rgb(22, 22, 22);
-            cursor: pointer;
             .video-title{
                 display: flex ;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                border: 1px solid rgb(22, 22, 22);
                 height:3vh;
             }
             button{
                 width: $video-width;
                 border: none;
                 cursor: default;
+            }
+            .video-info-section {
+                border: 1px solid rgb(22, 22, 22);
+                padding: 10px;
+                color: #fff;
+                @include flex(space-between, flex-start, row, wrap);
+                .profile-img-container {
+                    img {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                    }
+                }
+                .dashboard-video-info {
+                    @include flex(flex-start, flex-start, column, wrap);
+                    p {
+                        margin-top: 1px;
+                        margin-bottom: 1px;
+                        font-size: 0.8rem;
+                    }
+                    h2 {
+                        margin-top: 0;
+                        margin-bottom: 5px;
+                    }
+                }
             }
         }
     }

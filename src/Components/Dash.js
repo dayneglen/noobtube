@@ -36,6 +36,8 @@ const Dash = props => {
     )
   })
 
+  console.log(videoList)
+
   return (
     <div className='Dash-page'>
       <div className='dash-videos'>
