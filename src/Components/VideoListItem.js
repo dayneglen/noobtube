@@ -25,7 +25,7 @@ const VideoListItem = props => {
           playing={hover ? true : false}
           loop={true}
           volume="0"
-          width="20vw"
+          width="19.95vw"
           height="29.8vh"
           onClick={() => selectVideo()}
           onMouseEnter={() => setHover(true)}
@@ -34,11 +34,12 @@ const VideoListItem = props => {
         <section className="video-info-section">
           <div className="profile-img-container">
             <img src={props.video.picture_url} alt='profile'/>
+            <p>{props.video.username}</p>
           </div>
           <div className='dashboard-video-info'>
             <h2 className="video-title">{props.video.title}</h2>
-            <p>{props.video.username}</p>
-            <p>Views {props.video.views}</p>
+            
+            <p>Views: {props.video.views}</p>
           </div>
         </section>
       </section>
