@@ -25,10 +25,18 @@ module.exports = {
     },
     getAllVideos: (req, res) => {
         const db = req.app.get('db');
+<<<<<<< HEAD
+        // console.log(req.session.user)
+      db.video.get_all_videos().then(videos => {
+                res.status(200).send(videos);
+        }).catch(err => console.log(err));
+          
+=======
             db.video.get_all_videos()
             .then(videos =>
                 res.status(200).send(videos))
             .catch((err) => res.status(500).send(err));   
+>>>>>>> 402e3af05c9cf2e93f989fba01926476d0a4008d
     },
     addView: (req, res) => {
         const videoId = +req.params.id,
