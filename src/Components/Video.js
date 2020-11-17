@@ -27,15 +27,20 @@ const Video = props => {
     getViews();
     getCreator();
     getVideos();
-  }, []);
+  }, [activeVideo]);
 
   const commentsMapped = comments.map((commentInfo, i) => {
     return (
-      <section key={i}>
-        <p>{commentInfo.username}</p>
-        <p>{commentInfo.comment}</p>
+      <section className="comment-individual-section" key={i}>
+        <div className='comment-img-container'>
+          <img src={commentInfo.picture_url} alt="profile" />
+        </div>
+        <div className='comment-info'>
+          <p className='username-comment'>{commentInfo.username}</p>
+          <p>{commentInfo.comment}</p>
+        </div>
       </section>
-    )
+    );
   })
 
   const getVideos = () => {
@@ -95,7 +100,9 @@ const Video = props => {
         <div className="bio">
           <div>
             <div className="video-creator-info-section">
-              <div className="profile-pic-holder"></div>
+              <div className="video-img-container">
+                <img src={creator.picture_url} alt='creator' />
+              </div>
               <p className="creator-username">{creator.username}</p>
             </div>
             <p className="creator-subscribers">{activeVideo.description}</p>

@@ -96,6 +96,15 @@
                 .creator-username {
                     margin-left: 10px;
                 }
+                img {
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                }
+                .creator-username {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
             }
             .profile-pic-holder {
                 height: 30px;
@@ -196,4 +205,23 @@
             margin-bottom: 5px;
         }
     }
+}
+
+.comment-individual-section {
+    @include flex(flex-start, center, row, wrap);
+    border-bottom: 1px solid rgb(92, 91, 91);
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    .comment-info {
+        margin-left: 20px;
+        .username-comment {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        p {}
+    }
+
 }
