@@ -42,7 +42,7 @@ const Auth = (props) => {
         <div className='log'>
           <section id='email' className='input-section'>
             <p> Email: </p>
-            <input value={email} onChange={e => setEmail(e.target.value)} />
+            <input value={email} type='email'onChange={e => setEmail(e.target.value)} />
           </section>
           {registerView ? (
             <section id='username' className='input-section'>
@@ -52,7 +52,7 @@ const Auth = (props) => {
           ) : null}
           <section id='password' className='input-section'>
             <p> Password: </p>
-            <input value={password} onChange={e => setPassword(e.target.value)} />
+            <input value={password} type='password' onChange={e => setPassword(e.target.value)} />
           </section>
         </div>
         {registerView ? (
