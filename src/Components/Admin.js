@@ -63,21 +63,13 @@ class Admin extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-    console.log(this.state.comments)
-=======
-
->>>>>>> main
     const commentsMapped = this.state.comments.map((commentInfo, i) => (
       <div  key={i}>
         <p>Username: {commentInfo.username}</p>
         <p className="admin-comments-box">
           {commentInfo.comment}
-<<<<<<< HEAD
         <FaTrashAlt onClick={() => this.deleteComment(commentInfo.comment_id)} />
-=======
-        <FaTrashAlt onClick={() => this.deleteComment(this.state.comments.comment_id)} />
->>>>>>> main
+        {/* <FaTrashAlt onClick={() => this.deleteComment(this.state.comments.comment_id)} /> */}
         </p>
       </div>
     ));
