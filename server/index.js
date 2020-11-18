@@ -81,7 +81,7 @@ app.get('/api/dislike/:id', likeCtrl.getDislikes);
 app.get('/api/tags', tagsCtrl.getTagList);
 app.get('/api/tags/:id', tagsCtrl.getVideoTags);
 app.post('/api/tags/:id', tagsCtrl.tagVideo);
-app.delete('/api/tags/:id', tagsCtrl.untagVideo);
+app.delete('/api/tags/:id/:tag_id', tagsCtrl.untagVideo);
 app.post('/api/new/tags', tagsCtrl.newTag);
 
 // app.use(express.static(__dirname + '/../build'))
