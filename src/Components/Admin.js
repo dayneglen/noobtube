@@ -21,9 +21,9 @@ class Admin extends Component {
   }
   componentDidMount() {
     this.getVideos();
-    // if (!this.props.user.email) {
-    //   this.props.history.push("/");
-    // }
+    if (!this.props.user.email) {
+      this.props.history.push("/");
+    }
   }
   
   getVideos = () => {
@@ -69,7 +69,6 @@ class Admin extends Component {
         <p className="admin-comments-box">
           {commentInfo.comment}
         <FaTrashAlt onClick={() => this.deleteComment(commentInfo.comment_id)} />
-        {/* <FaTrashAlt onClick={() => this.deleteComment(this.state.comments.comment_id)} /> */}
         </p>
       </div>
     ));
