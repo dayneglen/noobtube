@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { clearUser, clearVideo } from '../Redux/Reducers/reducer';
 import '../Styles/sideBar.scss'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 class SideBar extends Component {
     handleLogout = () => {
@@ -28,9 +30,11 @@ class SideBar extends Component {
     render(){
         return (
             <div className='sideBar-page'>
-                <button id='create-button' onClick={() => this.toCreate()}> Create </button>
-                <button id='account-button' onClick={() => this.toAccount()}> Account </button>
-                <button id='logout-button' onClick={() => this.handleLogout()}> Logout </button>
+                {/* <button id='create-button' onClick={() => this.toCreate()}> Create </button> */}
+                <CreateNewFolderIcon id='create-button' onClick={() => this.toCreate()} />
+                {/* <button id='account-button' onClick={() => this.toAccount()}> Account </button> */}
+                <ExitToAppIcon id='logout-button' onClick={() => this.handleLogout()}/>
+                {/* <button id='logout-button' onClick={() => this.handleLogout()}> Logout </button> */}
             </div>
         )
     }

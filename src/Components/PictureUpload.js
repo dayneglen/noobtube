@@ -60,12 +60,17 @@ const PictureUpload = props => {
       }
     };
 
+    const profilePic = {
+      backgroundImage: `url(${user.picture_url})`,
+    }
+
     return (
-        <section className='picture'>
-            <input type='file' accept='image/*0' multiple={false} ref={fileInput} />
-            <button onClick={getSignedRequest}>Upload Profile Picture</button>
-        </section>
-    )
+      <section className="picture">
+        <div className="profile-img-container" style={profilePic}></div>
+        <input type="file" accept="image/*0" multiple={false} ref={fileInput} />
+        <button onClick={getSignedRequest}>Upload Profile Picture</button>
+      </section>
+    );
 }
 
 export default PictureUpload

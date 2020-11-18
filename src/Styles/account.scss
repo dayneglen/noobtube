@@ -42,6 +42,12 @@
         margin-top: 50px;
         color: white;
     }
+    .account-container {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+    }
     .account-box{
         display: flex;
         align-items: center;
@@ -79,7 +85,15 @@
             align-items: center;
             flex-direction: column;
             color: $hover-color;
-            // font-size: small;
+            width: 100%;
+            .profile-img-container {
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                background-position: center;
+                background-size: cover;
+            }
             input{
                 margin-left: 60px;
                 margin-bottom: 20px;
@@ -95,6 +109,8 @@
         .email{
             display: flex;
             align-items: center;
+            justify-content: center;
+            width: 100%;
             section{
                 display: flex;
                 align-items: center;
