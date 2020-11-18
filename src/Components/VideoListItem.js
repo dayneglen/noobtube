@@ -26,7 +26,7 @@ const VideoListItem = props => {
           url={props.video.video_url}
           playing={hover ? true : false}
           loop={true}
-          volume="0"
+          volume={0}
           width="19.95vw"
           height="29.8vh"
           onClick={() => selectVideo()}

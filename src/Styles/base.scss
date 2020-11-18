@@ -18,3 +18,12 @@ $third-color: #000000;
   flex-direction: $direction;
   flex-wrap: $wrap;
 }
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
