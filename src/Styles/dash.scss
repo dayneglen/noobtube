@@ -21,17 +21,16 @@
             background-color: black;
             flex-direction: row;
             margin-left: 100px;
-            margin-bottom: 100px;
+            margin-bottom: 20px;
             width: $video-width;
-            height: 30vh;
+            // height: 30vh;
             border: 1px solid rgb(22, 22, 22);
-            cursor: pointer;
             .video-title{
+                margin-top: 0px;
                 display: flex ;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                border: 1px solid rgb(22, 22, 22);
                 height:3vh;
             }
             button{
@@ -39,6 +38,45 @@
                 border: none;
                 cursor: default;
             }
+            .video-info-section {
+                // @extend %gradient-background;
+                // border: 1px solid rgb(22, 22, 22);
+                padding: 10px;
+                color: #fff;
+                @include flex(space-between, flex-start, row, wrap);
+                .profile-img-container {
+                    img {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                    }
+                    p {
+                        margin-top: 1px;
+                        margin-bottom: 0px;
+                        margin-left: 5px;
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                    }
+                }
+                .dashboard-video-info {
+                    @include flex(flex-start, flex-start, column, wrap);
+                    p {
+                        margin-top: 0px;
+                        margin-bottom: 1px;
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                    }
+                    h2 {
+                        margin-top: 0;
+                        margin-bottom: 5px;
+                        text-decoration: underline;
+                        color: $hover-color;
+                    }
+                }
+            }
+        }
+        .video-listen:hover{
+            box-shadow: $second-color 0px 0px 10px 0px; 
         }
     }
 }
