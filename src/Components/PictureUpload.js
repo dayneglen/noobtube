@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getUser } from "../Redux/Reducers/reducer";
 import { v4 as randomString } from "uuid";
 import { useSelector, useDispatch } from 'react-redux';
+import EditIcon from '@material-ui/icons/Edit';
 
 const PictureUpload = props => {
     const user = useSelector(state => state.user),
@@ -67,8 +68,12 @@ const PictureUpload = props => {
     return (
       <section className="picture">
         <div className="profile-img-container" style={profilePic}></div>
-        <input type="file" accept="image/*0" multiple={false} ref={fileInput} />
-        <button onClick={getSignedRequest}>Upload Profile Picture</button>
+
+       <div className="edit-picture">
+         <p>Change Profile Picture </p>  
+         <input type="file" accept="image/*0" multiple={false} ref={fileInput} />
+        <button onClick={getSignedRequest}>Upload</button>
+        </div>
       </section>
     );
 }
