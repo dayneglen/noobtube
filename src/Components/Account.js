@@ -80,61 +80,110 @@ const Account = props => {
   ))
 
   return (
-    <div className='account-page'>
+    <div className="account-page">
       <div></div>
-      <div className='account-box'>
-        <div className='img-upload'>
+      <div className="account-box">
+        <div className='account-container'>
+          <div className="img-upload">
             <PictureUpload />
-        </div>
-        <div className='username'>
-          <p> Username: </p>
-          {editUsername
-            ? (<section>
-              <input value={username} onChange={e => handleUsername(e.target.value)} />
-              <button onClick={() => {
-                toggleEditUsername(!editUsername)
-                handleUsername(user.username)
-              }}> Cancel </button>
-              <button onClick={() => changeUsername()}> Submit </button>
-            </section>)
-            : (<section>
-              <p> {username} </p>
-              <button onClick={() => toggleEditUsername(!editUsername)}> Change Username </button>
-            </section>)
-          }
-        </div>
-        <div className='email'>
-          <p> Email: </p>
-          {editEmail
-            ? (<section>
-              <input value={email} onChange={e => handleEmail(e.target.value)} />
-              <button onClick={() => {
-                toggleEditEmail(!editEmail)
-                handleEmail(user.email)
-              }}> Cancel </button>
-              <button onClick={() => changeEmail()}> Submit </button>
-            </section>)
-            : (<section>
-              <p> {email} </p>
-              <button onClick={() => toggleEditEmail(!editEmail)}> Change Email Address </button>
-            </section>)
-          }
-        </div>
-        {deletingAccount ? (
-          <section className='delete'>
-            <p> Are you sure you want to delete your account? </p>
-            <button className='db' onClick={() => toggleDeletingAccount(!deletingAccount)}> On second thought... </button>
-            <button className='db' onClick={() => deleteAccount()}> Yes </button>
-          </section>
-        ) : (
-            <section>
-              <button className='delete-button' onClick={() => toggleDeletingAccount(!deletingAccount)}> delete Account </button>
+          </div>
+          <div className="username">
+            <p> Username: </p>
+            {editUsername ? (
+              <section>
+                <input
+                  value={username}
+                  onChange={(e) => handleUsername(e.target.value)}
+                />
+                <button
+                  onClick={() => {
+                    toggleEditUsername(!editUsername);
+                    handleUsername(user.username);
+                  }}
+                >
+                  {" "}
+                  Cancel{" "}
+                </button>
+                <button onClick={() => changeUsername()}> Submit </button>
+              </section>
+            ) : (
+              <section>
+                <p> {username} </p>
+                <button onClick={() => toggleEditUsername(!editUsername)}>
+                  {" "}
+                  Change Username{" "}
+                </button>
+              </section>
+            )}
+          </div>
+          <div className="email">
+            <p> Email: </p>
+            {editEmail ? (
+              <section>
+                <input
+                  value={email}
+                  onChange={(e) => handleEmail(e.target.value)}
+                />
+                <button
+                  onClick={() => {
+                    toggleEditEmail(!editEmail);
+                    handleEmail(user.email);
+                  }}
+                >
+                  {" "}
+                  Cancel{" "}
+                </button>
+                <button onClick={() => changeEmail()}> Submit </button>
+              </section>
+            ) : (
+              <section>
+                <p> {email} </p>
+                <button onClick={() => toggleEditEmail(!editEmail)}>
+                  {" "}
+                  Change Email Address{" "}
+                </button>
+              </section>
+            )}
+          </div>
+          {deletingAccount ? (
+            <section className="delete">
+              <div className="desc">
+                {" "}
+                Are you sure you want to delete your account?{" "}
+              </div>
+              <button
+                className="db"
+                onClick={() => toggleDeletingAccount(!deletingAccount)}
+              >
+                {" "}
+                On second thought...{" "}
+              </button>
+              <button className="db" onClick={() => deleteAccount()}>
+                {" "}
+                Yes{" "}
+              </button>
+            </section>
+          ) : (
+            <section className="delete">
+              <button
+                className="delete-button"
+                onClick={() => toggleDeletingAccount(!deletingAccount)}
+              >
+                {" "}
+                Delete Account{" "}
+              </button>
             </section>
           )}
+        </div>
       </div>
-      <div className='my-videos'>{mappedVideos}</div>
+      <div className="my-videos">
+        <p>If you have uploaded videos, you can edit them below</p>
+        <div className="my" width="25vw" height="25vh">
+          {mappedVideos}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default (Account);

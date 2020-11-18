@@ -25,7 +25,7 @@
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 20px;
         }
         .video-bar{
@@ -35,12 +35,12 @@
             justify-content: space-between;
             margin-left: -100px;
             background-color: rgb(7, 7, 7);
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 10px;
             #like{
-                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
                 width: 4vw;
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
@@ -48,23 +48,28 @@
             }
             #like:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
             }
             #dislike{
                 background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
                 width: 4vw;
                 margin-right:417px;
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
-                margin-left: 2.5px;
+                margin-left: 3px;
             }
             #dislike:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
             }
             #Subscribe{
                 background-color: rgb(255, 255, 255);
-                height: 3.5vh;
+                height: 6.5vh;
                 font-weight: bold;
                 border: none;
                 border-radius: 5%;
@@ -72,6 +77,11 @@
             }
             #Subscribe:hover{
                 @extend %gradient-background;
+                color: $hover-color;
+                box-shadow: 0px 0px 15px 0px;
+            }
+            i {
+                margin-right: 10px;
             }
         }
         .bio{
@@ -79,12 +89,21 @@
             color: white;
             margin-left: -100px;
             width: 635px;
-            border: .1vw solid white;
+            border: .1vw solid rgb(22, 22, 22);
             padding: 20px;
             .video-creator-info-section {
                 @include flex(flex-start, center, row, wrap);
                 .creator-username {
                     margin-left: 10px;
+                }
+                img {
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                }
+                .creator-username {
+                    font-weight: bold;
+                    font-size: 1.2rem;
                 }
             }
             .profile-pic-holder {
@@ -99,17 +118,22 @@
             .my-comment{
                 margin-left: -100px;
                 width: 635px;
-                background-color: white;
+                background-color: black;
+                border: .1vw solid rgb(22, 22, 22);
                 input{
-                    width: 558px;
-                    height: 4vh;
+                    width: 555px;
+                    height: 4.5vh;
                 }
                 button{
                     height: 4.5vh;
-                    width: 76px;
+                    width: 75px;
+                    padding-top: 6px;
+                    // margin-right: 2px;
                 }
                 button:hover{
                     @extend %gradient-background;
+                    color: $hover-color;
+                    box-shadow: 0px 0px 5px 0px;
                 }
             }
             .other-comments{
@@ -120,7 +144,7 @@
                 margin-left: -100px;
                 justify-content: space-around;
                 align-items: center;
-                border: .15vw solid white;
+                border: .15vw solid rgb(22, 22, 22);
                 padding-bottom: 100px;
                 #other{
                     display: flex;
@@ -141,14 +165,80 @@
         margin-left: 120px;
         .other-videos{
             display: flex;
+            flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
             width: 300px;
             margin-left: 100px;
         }
     }
+    @media(max-width:700px){
+        margin-left: 50px;
+    }
 }
 
-.toggle {
-    background-color: aqua;
+.video-info-section {
+    border: 1px solid rgb(22, 22, 22);
+    padding: 10px;
+    color: #fff;
+    @include flex(space-between, flex-start, row, wrap);
+
+    .profile-img-container {
+        img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+
+    .dashboard-video-info {
+        @include flex(flex-start, flex-start, column, wrap);
+
+        p {
+            margin-top: 1px;
+            margin-bottom: 1px;
+            font-size: 0.8rem;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.comment-individual-section {
+    @include flex(space-between, center, row, wrap);
+    border-bottom: 1px solid rgb(92, 91, 91);
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    .left-comment-info {
+        @include flex(flex-start, center, row, wrap);
+    }
+    .comment-info {
+        margin-left: 20px;
+        .username-comment {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        input {
+            background-color: #000;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #fff;
+            color: #fff;
+        }
+    }
+    .comment-btn {
+        margin-right: 10px;
+        p {
+            cursor: pointer;
+            &:hover {
+                color: rgb(160, 160, 160);
+            }
+        }
+    }
 }

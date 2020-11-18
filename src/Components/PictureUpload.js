@@ -11,8 +11,12 @@ const PictureUpload = props => {
     const fileInput = createRef();
 
     const getSignedRequest = () => {
-        const file = fileInput.current.files[0];
 
+      
+      const file = fileInput.current.files[0];
+      if (!file) {
+        return alert('Please insert a file before uploading!')
+      }
       const fileName = `${randomString()}-${file.name.replace(/\s/g, "-")}`;
 
       axios
@@ -38,8 +42,6 @@ const PictureUpload = props => {
         },
       };
 
-      console.log(url)
-
       try {
         const clearProfilePic = await axios.post(`/api/s3/deletePic/${user.user_id}`, {img_url: user.picture_url})
         const uploadPic = await axios.put(signedRequest, file, options);
@@ -58,12 +60,17 @@ const PictureUpload = props => {
       }
     };
 
+    const profilePic = {
+      backgroundImage: `url(${user.picture_url})`,
+    }
+
     return (
-        <section className='picture'>
-            <input type='file' accept='image/*0' multiple={false} ref={fileInput} />
-            <button onClick={getSignedRequest}>Upload Profile Picture</button>
-        </section>
-    )
+      <section className="picture">
+        <div className="profile-img-container" style={profilePic}></div>
+        <input type="file" accept="image/*0" multiple={false} ref={fileInput} />
+        <button onClick={getSignedRequest}>Upload Profile Picture</button>
+      </section>
+    );
 }
 
 export default PictureUpload

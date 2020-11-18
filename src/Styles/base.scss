@@ -1,6 +1,12 @@
-$first-color: #000000;
-$second-color: #3c4996;
-$third-color: #1d108b;
+$video-width: 20.1vw;
+// change videoListItem.js line 16/17 to match above value
+
+$hover-color: rgb(255, 50, 0);
+
+$first-color: #505050;
+$second-color: #252525;
+$third-color: #000000;
+
 %gradient-background {
   background-image: linear-gradient(to bottom right, $first-color, $second-color, $third-color)
 };
@@ -11,4 +17,13 @@ $third-color: #1d108b;
   align-items: $align;
   flex-direction: $direction;
   flex-wrap: $wrap;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
 }

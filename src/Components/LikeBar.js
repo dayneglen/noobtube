@@ -100,26 +100,63 @@ const LikeBar = (props) => {
     }).catch(err => console.log(err));
   }
 
-  console.log(liked, disliked, subscribed)
+  const likedStyle = {
+    backgroundColor: "rgb(255, 255, 255)",
+    color: 'rgb(0, 150, 0)',
+    marginLeft: '0px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
+  };
+  const disLikedStyle = {
+    backgroundColor: "rgb(255, 255, 255)",
+    color: 'rgb(255, 50, 0)',
+    marginLeft: '0px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
+  };
+  const Style = {
+    backgroundColor: "rgb(255, 255, 255)",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '12px',
+    paddingLeft: '12px',
+    marginLeft: '2px',
+  };
+
 
   return (
     <div className="video-bar">
       <button
         id="like"
         onClick={handleLikeToggle}
+        style={liked ? likedStyle : Style}
       >
-        Like {likes}
+        <i className="fa fa-thumbs-up" aria-hidden="true">
+          <p>{likes}</p>
+        </i>
       </button>
       <button
         id="dislike"
         onClick={handleDislikeToggle}
+        style={disliked ? disLikedStyle : Style}
       >
-        Dislike {dislikes}
+        <i className="fa fa-thumbs-down" aria-hidden="true">
+          <p>{dislikes}</p>
+        </i>
       </button>
-      <button
-        id="Subscribe"
-        onClick={handleSubscriptionToggle}
-      >
+      <button id="Subscribe" onClick={handleSubscriptionToggle}>
         Subscribe {subscribers}
       </button>
     </div>

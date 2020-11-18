@@ -5,24 +5,48 @@
     justify-content: center;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    min-width: 100vw;
     background-color: rgb(0, 0, 0);
-    color: white;
+    color: black;
     button{
         border: none;
         border-radius: 5%;
         box-shadow: black 0px 0px 10px 2px;
+        
     }
     button:hover{
         @extend %gradient-background;
+        color: $hover-color;
+        box-shadow: $hover-color 0px 0px 10px 0px;
     }
     .my-videos{
-        border: 2px solid rgb(41, 41, 41);
+        .account-video{
+            border: 2px solid rgb(41, 41, 41);
+            .title{
+                text-decoration: underline;
+                font-weight: bold;
+            }
+            input{
+                width: 375px;
+                font-size: small;
+            }
+            button{
+                width: 130px;
+                margin-top: 25px;
+            }
+        }
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
         margin-top: 50px;
+        color: white;
+    }
+    .account-container {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
     }
     .account-box{
         display: flex;
@@ -32,8 +56,11 @@
         min-height: 50vh;
         width: 40vw ;
         margin-top: 150px;
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgb(120, 163, 255) 0px 0px 50px 0px;
+        @extend %gradient-background;
+        border: 5px solid $hover-color;
+        border-radius: 15px;
+        color: $hover-color;
+        // box-shadow: $hover-color 0px 0px 50px 0px;
         .username{
             display: flex;
             align-items: center;
@@ -44,7 +71,7 @@
                 align-items: center;
                 justify-content: center; 
                 button{
-                    width: 200px;
+                    width: 100px;
                     margin-left: 15px;
                     margin-right: 30px;
                 }
@@ -57,13 +84,24 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            color: black;
+            color: $hover-color;
+            width: 100%;
+            .profile-img-container {
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                background-position: center;
+                background-size: cover;
+            }
             input{
-                margin-left: 110px;
+                margin-left: 60px;
                 margin-bottom: 20px;
+                width: 250px;
+                font-size: medium;;
             }
             button{
-                width: 200px;
+                width: 100px;
                 margin-left: 60px;
                 margin-bottom: 20px;
             }
@@ -71,12 +109,14 @@
         .email{
             display: flex;
             align-items: center;
+            justify-content: center;
+            width: 100%;
             section{
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
                 button{
-                    width: 200px;
+                    width: 100px;
                     margin-left: 15px;
                 }
                 button:hover{
@@ -99,10 +139,93 @@
         }
         .delete-button{
             margin-top: 15px;
-            margin-left: 160px;
+            margin-left: 65px;
         }
         .delete-button:hover{
             @extend %gradient-background;
         }
     }
+}
+@media(max-width:850px){
+    .account-page{
+        min-width: 100vw;
+        .my-videos{
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 125px;
+        }
+        .account-box{
+            width: 60vw;
+            button{
+                width: 175px;
+            }
+            .username{
+                color: black;
+                section{
+                    button{
+                        width: 75px;
+                    }
+                }
+            }
+            .picture{
+                color: black;
+                input{
+                    width: 175px;
+                    font-size: x-small;
+                    margin-left: -10px;
+                }
+                button{
+                    width: 150px;
+                    margin-left: -10px;
+                }
+            }
+            .email{
+                color: black;
+                section{
+                    button{
+                        width: 75px;
+                    }
+                }
+            }
+            .delete{
+                .desc{
+                    width: 175px;
+                    font-size: small;
+                }
+                .db{
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    height: 105px;
+                    margin-right: 25px;
+                }
+            }
+            .delete-button{
+                width: 75px;
+                margin-left: 75px;
+            }
+        }
+    }   
+}
+@media(max-width:625px){
+    .account-page{
+        min-width: 100vw;
+        .my-videos{
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 275px;
+        }
+    }   
+}
+@media(max-width:400px){
+    .account-page{
+        min-width: 100vw;
+        .my-videos{
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 375px;
+        }
+    }   
 }
