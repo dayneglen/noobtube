@@ -24,10 +24,10 @@ module.exports = {
     .catch(err => res.status(500).send(err))
   },
   untagVideo: (req, res) => {
-    const { id } = req.params,
-      { tag_id } = req.body,
+    const { id, tag_id } = req.params,
       db = req.app.get('db')
 
+      console.log(id, tag_id)
     db.tags.untag_video({ id, tag_id })
     .then(tags => res.status(200).send(tags))
     .catch(err => res.status(500).send(err))

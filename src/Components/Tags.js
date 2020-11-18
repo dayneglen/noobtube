@@ -43,7 +43,8 @@ const Tags = props => {
   }
 
   const removeTag = (tag_id) => {
-    axios.delete(`/api/tags/${activeVideo.video_id}`, { tag_id })
+    console.log(tag_id)
+    axios.delete(`/api/tags/${activeVideo.video_id}/${tag_id}`)
     .then(res => handleVideoTags(res.data))
     .catch(err => console.log(err))
   }
@@ -62,25 +63,37 @@ const Tags = props => {
   }, [activeVideo])
 
   useEffect(() => {
-    handleUnusedTags(tagList.filter(el => videoTags.includes(el)))
+    handleUnusedTags(tagList.filter(el => {
+      // console.log(el)
+      return !videoTags.includes(el)
+    }))
   }, [tagList, videoTags])
 
   useEffect(() => {
-    console.log(videoTags)
-    console.log(tagList)
-  }, [videoTags])
-  
-  const mappedTags = videoTags.map((t, i) => (
-    <div key={i}>
-      { t.name } <button onClick={() => {removeTag(t.tag_id)}}> x </button>
-    </div>
-  ))
+    // console.log(videoTags)
+    // console.log(tagList)
+  }, [videoTags, tagList])
 
-  const mappedUnused = unusedTags.map((t, i) => (
+  const mappedTagList = tagList.map((t, i) => {
+    let tagged = false
+    videoTags.forEach((val, index) => {
+      if (videoTags[index].tag_id === t.tag_id) {
+        tagged = true
+      }
+    })
+    return(
     <div key={i}>
-      { t.name } <button onClick={() => addTag(t.tag_id)}> x </button>
+      { t.name }
+      {tagged ? (
+        <button onClick={() => {
+          // console.log(t.tag_id)
+          removeTag(t.tag_id)
+        }}> Remove Tag </button>
+      ) : (
+        <button onClick={() => addTag(t.tag_id)}> Add Tag </button>
+      )}
     </div>
-  ))
+  )})
 
   return (
     <div className='tag-page'>
@@ -91,10 +104,8 @@ const Tags = props => {
         <button onClick={() => handleSearchInput('')}> Clear </button>
       </section>
       <section>
-        <p> Tags on this video: </p>
-        { mappedTags }
-        <p> Other Tags: </p>
-        { mappedUnused }
+        <p> Tags: </p>
+        { mappedTagList }
       </section>
       <section>
         <p> Can't find the tag you're looking for?  Make a new one!</p>
