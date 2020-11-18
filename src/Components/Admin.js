@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getUser, getVideo } from "../Redux/Reducers/reducer";
 import ReactPlayer from "react-player";
 import { FaTrashAlt } from "react-icons/fa";
+import Dash from "./Dash";
 
 class Admin extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Admin extends Component {
       this.props.history.push("/");
     }
   }
-  
+
   getVideos = () => {
     axios
       .get(`/api/videos`)
@@ -37,23 +38,23 @@ class Admin extends Component {
       .catch((err) => console.log(err));
   };
   deleteVideo = (id) => {
-    axios.post(`/api/s3/deleteVideo/${id}`)
-      .then(res => this.setState({videos: res.data}))
-      .catch(err => console.log(err))
+    axios
+      .post(`/api/s3/deleteVideo/${id}`)
+      .then((res) => this.setState({ videos: res.data }))
+      .catch((err) => console.log(err));
   };
 
   getComments = () => {
-    
     axios
       .get(`/api/comments/${this.state.videos[0].video_id}`)
       .then((res) => {
-        this.setState({ comments: res.data })
-      console.log(res.data)
+        this.setState({ comments: res.data });
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
   deleteComment = (id) => {
-    console.log(id)
+    console.log(id);
     axios
       .delete(`/api/comment/${id}`)
       .then(() => {
@@ -64,11 +65,13 @@ class Admin extends Component {
 
   render() {
     const commentsMapped = this.state.comments.map((commentInfo, i) => (
-      <div  key={i}>
+      <div key={i}>
         <p>Username: {commentInfo.username}</p>
         <p className="admin-comments-box">
           {commentInfo.comment}
-        <FaTrashAlt onClick={() => this.deleteComment(commentInfo.comment_id)} />
+          <FaTrashAlt
+            onClick={() => this.deleteComment(commentInfo.comment_id)}
+          />
         </p>
       </div>
     ));
@@ -104,9 +107,7 @@ class Admin extends Component {
               <td> {this.state.views}</td>
               <td> {this.state.likes}</td>
               <td> {this.state.dislikes}</td>
-              <td>
-                {commentsMapped}
-              </td>
+              <td>{commentsMapped}</td>
               <td> {this.state.videoReportedCounter}</td>
             </tr>
           </tbody>
@@ -114,9 +115,7 @@ class Admin extends Component {
       </div>
     ));
 
-    return <div>
-              {mappedVideos}    
-            </div>;
+    return <div>{mappedVideos}</div>;
   }
 }
 
