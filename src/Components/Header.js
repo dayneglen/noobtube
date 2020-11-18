@@ -33,7 +33,7 @@ const Header = (props) => {
         onChange={e => handleSearch(e.target.value)}
         placeholder='Search'
       /> 
-      {/* <button id='search-button'>Search</button> */}
+      
       <FaSearch id='search-button' />
       <p id='p'>Tags</p>
       </div>
