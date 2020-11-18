@@ -28,15 +28,8 @@ module.exports = {
             db.video.get_all_videos()
             .then(videos =>
                 res.status(200).send(videos))
-<<<<<<< HEAD
             .catch((err) => res.status(500).send(err));   
-<<<<<<< HEAD
-=======
->>>>>>> 402e3af05c9cf2e93f989fba01926476d0a4008d
-=======
-            .catch((err) => console.log(err));   
->>>>>>> 736c845deee4ecac810a39d963855f8686f7f7fd
->>>>>>> main
+
     },
     addView: (req, res) => {
         const videoId = +req.params.id,
