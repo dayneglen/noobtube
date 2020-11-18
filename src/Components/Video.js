@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import ReactPlayer from 'react-player';
-import VideoListItem from './VideoListItem';
-import axios from 'axios';
-import '../Styles/video.scss';
-import LikeBar from './LikeBar';
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import ReactPlayer from "react-player";
+import VideoListItem from "./VideoListItem";
+import Comment from "./Comment";
+import axios from "axios";
+import "../Styles/video.scss";
+import LikeBar from "./LikeBar";
 
-
-const Video = props => {
-  const user = useSelector(state => state.user)
-  const activeVideo = useSelector(state => state.video)
+const Video = (props) => {
+  const user = useSelector((state) => state.user);
+  const activeVideo = useSelector((state) => state.video);
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState([]),
     [creator, setCreator] = useState({}),
     [videoList, setVideoList] = useState([]);
 
-
   useEffect(() => {
     if (!user.email) {
-      props.history.push('/')
+      props.history.push("/");
     }
-  }, [user, props.history])
+  }, [user, props.history]);
 
   useEffect(() => {
     getComments();
@@ -28,20 +27,6 @@ const Video = props => {
     getCreator();
     getVideos();
   }, [activeVideo]);
-
-  const commentsMapped = comments.map((commentInfo, i) => {
-    return (
-      <section className="comment-individual-section" key={i}>
-        <div className='comment-img-container'>
-          <img src={commentInfo.picture_url} alt="profile" />
-        </div>
-        <div className='comment-info'>
-          <p className='username-comment'>{commentInfo.username}</p>
-          <p>{commentInfo.comment}</p>
-        </div>
-      </section>
-    );
-  })
 
   const getVideos = () => {
     axios
@@ -56,9 +41,6 @@ const Video = props => {
     return <VideoListItem key={i} video={video} />;
   });
 
-
-  
-
   const getComments = () => {
     axios
       .get(`/api/comments/${activeVideo.video_id}`)
@@ -66,31 +48,75 @@ const Video = props => {
         setComments(res.data);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const getViews = () => {
-    axios.put(`/api/video/views/${activeVideo.video_id}`).then().catch(err => console.log(err));
-  }
+    axios
+      .put(`/api/video/views/${activeVideo.video_id}`)
+      .then()
+      .catch((err) => console.log(err));
+  };
 
   const getCreator = () => {
-    axios.get(`/api/user/${activeVideo.user_id}`).then(res => {
-      setCreator(res.data)
-    }).catch(err => console.log(err))
-  }
+    axios
+      .get(`/api/user/${activeVideo.user_id}`)
+      .then((res) => {
+        setCreator(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
+  const handleCommentEdit = (id, comment) => {
+    axios
+      .put(`/api/comment/${id}`, { comment })
+      .then(() => {
+        getComments();
+      })
+      .catch(err => console.log(err));
+  };
+
+  const handleCommentDelete = (id) => {
+    axios
+      .delete(`/api/comment/${id}`)
+      .then(() => {
+        getComments()})
+      .catch((err) => console.log(err));
+  };
+
+  const commentsMapped = comments.map((commentInfo, i) => {
+    return (
+      <Comment
+        key={i}
+        commentInfo={commentInfo}
+        deleteComment={handleCommentDelete}
+        editComment={handleCommentEdit}
+      />
+    );
+  });
 
   const handleAddComment = () => {
-    axios.post('/api/comment', { video_id: activeVideo.video_id, user_id: user.user_id, comment: comment }).then(() => {
-      getComments();
-      setComment('');
-    }).catch(err => console.log(err))
-  }
+    axios
+      .post("/api/comment", {
+        video_id: activeVideo.video_id,
+        user_id: user.user_id,
+        comment: comment,
+      })
+      .then(() => {
+        getComments();
+        setComment("");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="video-page">
       <section className="left-side">
         <div className="video">
-          <ReactPlayer url={activeVideo.video_url} playing={true} controls={true}/>
+          <ReactPlayer
+            url={activeVideo.video_url}
+            playing={true}
+            controls={true}
+          />
         </div>
         <div className="title-bar">
           <p>{activeVideo.title}</p>
@@ -101,7 +127,7 @@ const Video = props => {
           <div>
             <div className="video-creator-info-section">
               <div className="video-img-container">
-                <img src={creator.picture_url} alt='creator' />
+                <img src={creator.picture_url} alt="creator" />
               </div>
               <p className="creator-username">{creator.username}</p>
             </div>
@@ -129,6 +155,6 @@ const Video = props => {
       </section>
     </div>
   );
-}
+};
 
-export default (Video);
+export default Video;
