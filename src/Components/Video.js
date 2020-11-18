@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
+import VideoListItem from './VideoListItem';
 import axios from 'axios';
 import '../Styles/video.scss';
 import LikeBar from './LikeBar';
@@ -11,7 +12,8 @@ const Video = props => {
   const activeVideo = useSelector(state => state.video)
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState([]),
-    [creator, setCreator] = useState({});
+    [creator, setCreator] = useState({}),
+    [videoList, setVideoList] = useState([]);
 
 
   useEffect(() => {
@@ -24,16 +26,38 @@ const Video = props => {
     getComments();
     getViews();
     getCreator();
-  }, []);
+    getVideos();
+  }, [activeVideo]);
 
   const commentsMapped = comments.map((commentInfo, i) => {
     return (
-      <section key={i}>
-        <p>{commentInfo.username}</p>
-        <p>{commentInfo.comment}</p>
+      <section className="comment-individual-section" key={i}>
+        <div className='comment-img-container'>
+          <img src={commentInfo.picture_url} alt="profile" />
+        </div>
+        <div className='comment-info'>
+          <p className='username-comment'>{commentInfo.username}</p>
+          <p>{commentInfo.comment}</p>
+        </div>
       </section>
-    )
+    );
   })
+
+  const getVideos = () => {
+    axios
+      .get("/api/videos")
+      .then((res) => {
+        setVideoList(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const videos = videoList.map((video, i) => {
+    return <VideoListItem key={i} video={video} />;
+  });
+
+
+  
 
   const getComments = () => {
     axios
@@ -76,7 +100,9 @@ const Video = props => {
         <div className="bio">
           <div>
             <div className="video-creator-info-section">
-              <div className="profile-pic-holder"></div>
+              <div className="video-img-container">
+                <img src={creator.picture_url} alt='creator' />
+              </div>
               <p className="creator-username">{creator.username}</p>
             </div>
             <p className="creator-subscribers">{activeVideo.description}</p>
@@ -99,7 +125,7 @@ const Video = props => {
         </div>
       </section>
       <section className="right-side">
-        <div className="other-videos">{/* {props.videos} */}</div>
+        <div className="other-videos">{videos}</div>
       </section>
     </div>
   );

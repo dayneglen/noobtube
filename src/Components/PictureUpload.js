@@ -11,8 +11,12 @@ const PictureUpload = props => {
     const fileInput = createRef();
 
     const getSignedRequest = () => {
-        const file = fileInput.current.files[0];
 
+      
+      const file = fileInput.current.files[0];
+      if (!file) {
+        return alert('Please insert a file before uploading!')
+      }
       const fileName = `${randomString()}-${file.name.replace(/\s/g, "-")}`;
 
       axios
@@ -37,8 +41,6 @@ const PictureUpload = props => {
           "Content-Type": file.type,
         },
       };
-
-      console.log(url)
 
       try {
         const clearProfilePic = await axios.post(`/api/s3/deletePic/${user.user_id}`, {img_url: user.picture_url})
