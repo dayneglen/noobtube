@@ -78,7 +78,8 @@ const Video = (props) => {
   const handleCommentDelete = (id) => {
     axios
       .delete(`/api/comment/${id}`)
-      .then(getComments())
+      .then(() => {
+        getComments()})
       .catch((err) => console.log(err));
   };
 
