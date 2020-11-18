@@ -15,6 +15,8 @@ const Video = (props) => {
     [creator, setCreator] = useState({}),
     [videoList, setVideoList] = useState([]);
 
+  console.log(comments)
+
   useEffect(() => {
     if (!user.email) {
       props.history.push("/");

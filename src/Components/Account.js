@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { getUser, clearUser } from '../Redux/Reducers/reducer';
-import AccountVideo from './AccountVideo';
-import PictureUpload from './PictureUpload';
-import '../Styles/account.scss'
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { getUser, clearUser } from "../Redux/Reducers/reducer";
+import AccountVideo from "./AccountVideo";
+import PictureUpload from "./PictureUpload";
+import "../Styles/account.scss";
 
-const Account = props => {
-  const user = useSelector(state => state.user),
-    activeVideo = useSelector(state => state.video),
+const Account = (props) => {
+  const user = useSelector((state) => state.user),
+    activeVideo = useSelector((state) => state.video),
     [username, handleUsername] = useState(user.username),
     [email, handleEmail] = useState(user.email),
     [editUsername, toggleEditUsername] = useState(false),
@@ -19,76 +19,97 @@ const Account = props => {
 
   useEffect(() => {
     if (!user.email) {
-      props.history.push('/')
+      props.history.push("/");
     } else if (activeVideo.video_url) {
-      props.history.push('/video')
+      props.history.push("/video");
     } else {
-      axios.get(`/api/user/videos/${user.user_id}`)
-        .then(res => handleVideos(res.data))
-        .catch(err => console.log(err))
+      axios
+        .get(`/api/user/videos/${user.user_id}`)
+        .then((res) => handleVideos(res.data))
+        .catch((err) => console.log(err));
     }
-  }, [user, activeVideo, props.history])
+  }, [user, activeVideo, props.history]);
 
   useEffect(() => {
     // console.log(user)
     // console.log(videos)
-    console.log(activeVideo)
-  }, [user, videos, activeVideo])
+    console.log(activeVideo);
+  }, [user, videos, activeVideo]);
 
   const changeUsername = () => {
-    axios.put(`/api/user/username/${user.user_id}`, { username })
-      .then(res => {
-        const newUserObj = { ...user, username: res.data }
-        dispatch(getUser(newUserObj))
+    axios
+      .put(`/api/user/username/${user.user_id}`, { username })
+      .then((res) => {
+        const newUserObj = { ...user, username: res.data };
+        dispatch(getUser(newUserObj));
       })
-      .catch(err => console.log(err))
-    toggleEditUsername(!editUsername)
-  }
+      .catch((err) => console.log(err));
+    toggleEditUsername(!editUsername);
+  };
 
   const changeEmail = () => {
-    axios.put(`/api/user/email/${user.user_id}`, { email })
-      .then(res => {
-        const newUserObj = { ...user, email: res.data }
-        dispatch(getUser(newUserObj))
+    axios
+      .put(`/api/user/email/${user.user_id}`, { email })
+      .then((res) => {
+        const newUserObj = { ...user, email: res.data };
+        dispatch(getUser(newUserObj));
       })
-      .catch()
-    toggleEditEmail(!editEmail)
-  }
+      .catch();
+    toggleEditEmail(!editEmail);
+  };
 
   const deleteAccount = () => {
-    axios.delete(`/api/user/${user.user_id}`)
+    axios
+      .delete(`/api/user/${user.user_id}`)
       .then(() => {
-        dispatch(clearUser())
+        dispatch(clearUser());
       })
-      .catch(err => {
-        console.log(err)
-        alert('Unable to delete account.  Please try again later.')
-        toggleDeletingAccount(!deletingAccount)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+        alert("Unable to delete account.  Please try again later.");
+        toggleDeletingAccount(!deletingAccount);
+      });
+  };
 
   const deleteVideo = (video) => {
-    axios.post(`/api/s3/deleteVideo/${video.video_id}`, { user_id: user.user_id, video_url: video.video_url })
-      .then(res => handleVideos(res.data))
-      .catch(err => console.log(err))
-  }
+    axios
+      .post(`/api/s3/deleteVideo/${video.video_id}`, {
+        user_id: user.user_id,
+        video_url: video.video_url,
+      })
+      .then((res) => handleVideos(res.data))
+      .catch((err) => console.log(err));
+  };
 
   const mappedVideos = videos.map((video, i) => (
-    <div className='account-video-display' key={i}>
+    <div className="account-video-display" key={i}>
       <AccountVideo video={video} user={user} deleteVideo={deleteVideo} />
     </div>
-  ))
+  ));
 
   return (
     <div className="account-page">
-      <div></div>
       <div className="account-box">
-        <div className='account-container'>
-          <div className="img-upload">
+        <div className="account-container">
+          {/* <div className="img-upload"> */}
+          <div className="profile">
             <PictureUpload />
+            <div className="user-info">
+              <p>
+                {" "}
+                <span>Username </span>
+                {username}
+              </p>
+              <p>
+                {" "}
+                <span>Email Address </span>
+                {email}{" "}
+              </p>
+            </div>
           </div>
+          {/* </div> */}
           <div className="username">
-            <p> Username: </p>
+            {/* <div className="user-name"> Username </div> */}
             {editUsername ? (
               <section>
                 <input
@@ -108,8 +129,11 @@ const Account = props => {
               </section>
             ) : (
               <section>
-                <p> {username} </p>
-                <button onClick={() => toggleEditUsername(!editUsername)}>
+                {/* <div> {username} </div> */}
+                <button
+                  className="btn-change"
+                  onClick={() => toggleEditUsername(!editUsername)}
+                >
                   {" "}
                   Change Username{" "}
                 </button>
@@ -117,7 +141,6 @@ const Account = props => {
             )}
           </div>
           <div className="email">
-            <p> Email: </p>
             {editEmail ? (
               <section>
                 <input
@@ -137,8 +160,11 @@ const Account = props => {
               </section>
             ) : (
               <section>
-                <p> {email} </p>
-                <button onClick={() => toggleEditEmail(!editEmail)}>
+                {/* <div> {email} </div> */}
+                <button
+                  className="btn-change"
+                  onClick={() => toggleEditEmail(!editEmail)}
+                >
                   {" "}
                   Change Email Address{" "}
                 </button>
@@ -184,6 +210,6 @@ const Account = props => {
       </div>
     </div>
   );
-}
+};
 
-export default (Account);
+export default Account;

@@ -28,7 +28,8 @@ module.exports = {
     getComments: (req, res) => {
         const videoId = +req.params.id,
               db = req.app.get('db');
-              db.comment
+        console.log(videoId)
+        db.comment
                 .get_comments(videoId)
                   .then((response) => res.status(200).send(response))
                   .catch((err) => res.status(500).send(err));
