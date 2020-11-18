@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearVideo } from "../Redux/Reducers/reducer";
-import Video from "./Video";
 import "../Styles/header.scss";
 import { FaSearch } from "react-icons/fa";
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Avatar } from "@material-ui/core";
+import logo from "./logo.png";
+
+
+
 
 
 const Header = (props) => {
@@ -15,6 +20,10 @@ const Header = (props) => {
     dispatch(clearVideo());
     props.history.push("/dash");
   };
+  const toAccount = () => {
+    dispatch(clearVideo());
+    props.history.push("/account");
+  };
 
   // let filteredVideo =this.props.Video.filter(
   //     (Video) =>{
@@ -24,7 +33,7 @@ const Header = (props) => {
   // );
   return (
     <div className='Header-page'>
-      <button id='logo' onClick={() => toDash()}> <img src={`https://cdn.discordapp.com/attachments/775427056258777138/776118643510476810/noob_tube_2_by_xavgo2_d2ipfmw-pre.png`} alt="Noobtube" /> </button>
+      <img src={logo} alt="Noobtube" onClick={() => toDash()} />
       <div className='search-bar'>
       <input
         id='search'
@@ -35,7 +44,11 @@ const Header = (props) => {
       /> 
       {/* <button id='search-button'>Search</button> */}
       <FaSearch id='search-button' />
-      <p id='p'>Tags</p>
+      {/* <p id='p'>Tags</p> */}
+      </div>
+      <div className='header-icons'>
+        <NotificationsIcon className='alert-icon'/>
+        <Avatar onClick={() => toAccount()} className='avatar-icon'/>
       </div>
       <ul id='search-ul'>
         {/* {filteredVideo.map((video) => {
