@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { getUser, clearUser } from "../Redux/Reducers/reducer";
-import AccountVideo from "./AccountVideo";
-import PictureUpload from "./PictureUpload";
-import "../Styles/account.scss";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { getUser, clearUser, getVideo } from '../Redux/Reducers/reducer';
+import AccountVideo from './AccountVideo';
+import PictureUpload from './PictureUpload';
+import '../Styles/account.scss'
 
 const Account = (props) => {
   const user = useSelector((state) => state.user),
@@ -19,9 +19,9 @@ const Account = (props) => {
 
   useEffect(() => {
     if (!user.email) {
-      props.history.push("/");
-    } else if (activeVideo.video_url) {
-      props.history.push("/video");
+      props.history.push('/')
+    // } else if (activeVideo.video_url) {
+      // props.history.push('/video')
     } else {
       axios
         .get(`/api/user/videos/${user.user_id}`)
@@ -33,8 +33,8 @@ const Account = (props) => {
   useEffect(() => {
     // console.log(user)
     // console.log(videos)
-    console.log(activeVideo);
-  }, [user, videos, activeVideo]);
+    // console.log(activeVideo)
+  }, [user, videos, activeVideo])
 
   const changeUsername = () => {
     axios
@@ -81,9 +81,19 @@ const Account = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const watchVideo = (videoObj) => {
+    dispatch(getVideo(videoObj))
+    props.history.push('/video')
+  }
+
+  const tagVideo = (videoObj) => {
+    dispatch(getVideo(videoObj))
+    props.history.push('/tags')
+  }
+
   const mappedVideos = videos.map((video, i) => (
-    <div className="account-video-display" key={i}>
-      <AccountVideo video={video} user={user} deleteVideo={deleteVideo} />
+    <div className='account-video-display' key={i}>
+      <AccountVideo video={video} user={user} deleteVideo={deleteVideo} watchVideo={watchVideo} tagVideo={tagVideo} />
     </div>
   ));
 

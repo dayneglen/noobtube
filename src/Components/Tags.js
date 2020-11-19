@@ -111,7 +111,9 @@ const Tags = props => {
         <p> Can't find the tag you're looking for?  Make a new one!</p>
         <input value={tagInput} onChange={e => handleTagInput(e.target.value)} />
         <button onClick={() => handleTagInput('')}> Cancel </button>
-        <button onClick={() => newTag()}> Submit </button>
+        <button onClick={() => {
+          newTag() 
+          handleTagInput('')}}> Submit </button>
       </section>
     </div>
   )
