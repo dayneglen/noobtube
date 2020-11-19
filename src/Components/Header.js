@@ -42,7 +42,7 @@ const Header = (props) => {
         onChange={e => handleSearch(e.target.value)}
         placeholder='Search'
       /> 
-      {/* <button id='search-button'>Search</button> */}
+      
       <FaSearch id='search-button' />
       {/* <p id='p'>Tags</p> */}
       </div>
@@ -50,12 +50,12 @@ const Header = (props) => {
         <NotificationsIcon className='alert-icon'/>
         <Avatar onClick={() => toAccount()} className='avatar-icon'/>
       </div>
-      <ul id='search-ul'>
+      {/* <ul id='search-ul'> */}
         {/* {filteredVideo.map((video) => {
           return <Video video={video}
             key={video.id} />
         })} */}
-      </ul>
+      {/* </ul> */}
     </div>
   );
 };
