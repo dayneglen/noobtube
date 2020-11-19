@@ -242,3 +242,40 @@
         }
     }
 }
+@media(max-width: 1500px){
+    .video-page{
+        .left-side{
+            margin-left: 10vw;
+        }
+        .right-side{
+            margin-left: 5px;
+            width: 300px;
+            .other-videos{
+                margin-left: 0px;
+            }
+        }
+    }
+}
+@media(max-width: 1000px){
+    .video-page{
+        .left-side{
+            margin-left: 10vw;
+            .video{
+                background-color: black;
+            }
+            .title-bar{
+                background-color: black;
+            }
+            .video-bar{
+                background-color: transparent;
+            }
+        }
+        .right-side{
+            margin-left: 5px;
+            width: 300px;
+            .other-videos{
+                margin-left: 0px;
+            }
+        }
+    }
+}

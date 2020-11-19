@@ -84,9 +84,14 @@ input {
     color: white;
     margin: 50px;
 }
+.alert-icon:hover{
+    color: $hover-color;
+}
 .avatar-icon{
     color: white;
     cursor: pointer;
-
-
+}
+.avatar-icon:hover{
+    background-color: $hover-color;
+    color: $second-color;
 }
