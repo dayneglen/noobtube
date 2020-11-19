@@ -58,4 +58,14 @@
         border: 2px solid $second-color;
         font-weight: bolder;
     }
+    @media(max-width: 600px){
+        .login-box{
+            .log{
+                width: 50vw;
+            }
+            .register {
+                width: 200px;
+            }
+        }
+    }
 }
