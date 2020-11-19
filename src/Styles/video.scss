@@ -161,7 +161,7 @@
     }
     .right-side{
         background-color: rgb(0, 0, 0);
-        width: 640px;
+        width: 500px;
         margin-left: 120px;
         .other-videos{
             display: flex;
@@ -260,21 +260,143 @@
     .video-page{
         .left-side{
             margin-left: 10vw;
+            width: 40vw;
             .video{
-                background-color: black;
+                height: 250px;
+                width: 300px;
+                background-color: transparent;
+                .ReactPlayer{
+                    width: 10vw;
+                    height: 10vh;
+                }
+                video{
+                    margin-left: 75px;
+                }
             }
             .title-bar{
-                background-color: black;
+                width: 300px;
+                margin-left: -25px;
             }
             .video-bar{
                 background-color: transparent;
+                width: 300px;
+                margin-left: -25px;
+                #like{
+                    width: 50px;
+                }
+                #dislike{
+                    margin-right: 150px;
+                    width: 50px;
+                }
+                #Subscribe{
+                    margin-left: -15px;
+                    width: 65px;
+                    font-size: x-small;
+                }
+            }
+            .bio{
+                width: 300px;
+                margin-left: -25px;
+            }
+            .comments{
+                .my-comment{
+                    width: 300px;
+                    margin-left: -25px;
+                    input{
+                      width: 223px; 
+                      font-size: medium;
+                    }
+                    button{
+                        padding-top: 0px;
+                        width: 75px;
+                    }
+                   
+                }
+                .other-comments{
+                    width: 300px;
+                    margin-left: -25px;
+                    #other{
+                        width: 300px; 
+                    }
+                } 
             }
         }
         .right-side{
+            // display: none;
             margin-left: 5px;
             width: 300px;
             .other-videos{
                 margin-left: 0px;
+            }
+        }
+        @media(max-width: 700px){
+            .right-side{
+                display: none;
+            }  
+        }
+    }
+}
+@media(max-width: 450px){
+    .video-page{
+        padding-top: 100px;
+        .left-side{
+            margin-left: 6.5vw;
+            width: 40vw;
+            .video{
+                height: 150px;
+                width: 250px;
+                background-color: transparent;
+                video{
+                    margin-left: 75px;
+                }
+            }
+            .title-bar{
+                width: 250px;
+                margin-left: -25px;
+                font-size: x-small;
+            }
+            .video-bar{
+                background-color: transparent;
+                width: 250px;
+                margin-left: -25px;
+                #like{
+                    width: 50px;
+                }
+                #dislike{
+                    margin-right: 150px;
+                    width: 50px;
+                }
+                #Subscribe{
+                    margin-left: -65px;
+                    width: 65px;
+                    font-size: x-small;
+                }
+            }
+            .bio{
+                width: 250px;
+                margin-left: -25px;
+            }
+            .comments{
+                .my-comment{
+                    width: 250px;
+                    margin-left: -25px;
+                    input{
+                      width: 175px; 
+                      font-size: medium;
+                    }
+                    button{
+                        padding-top: 4px;
+                        width: 73px;
+                        font-size: xx-small;
+                    }
+                   
+                }
+                .other-comments{
+                    width: 250px;
+                    #other{
+                        width: 240px; 
+                    }
+                } 
             }
         }
     }
