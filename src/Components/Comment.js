@@ -46,7 +46,7 @@ const Comment = props => {
                 <p onClick={() => setEdit(false)}>Cancel</p>
               </section>
             ) : (
-              <section>
+              <section className='comments-buttons'>
                 <p onClick={() => setEdit(true)}>Edit</p>
                 <p onClick={() => props.deleteComment(commentInfo.comment_id)}>Delete</p>
               </section>
