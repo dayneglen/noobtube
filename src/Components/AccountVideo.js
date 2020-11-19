@@ -50,7 +50,8 @@ const AccountVideo = props => {
           <button onClick={() => toggleEditTitle(!editTitle)}> Change Title </button>
         </section>
       )}
-      <ReactPlayer url={video.video_url} onClick={() => selectVideo(video)} />
+      <ReactPlayer url={video.video_url} onClick={() => props.watchVideo(video)} />
+      <button onClick={() => props.tagVideo(video)}> Change Tags </button>
       {editDescription ? (
         <section>
           <input value={description} onChange={e => handleDescription(e.target.value)}/>
