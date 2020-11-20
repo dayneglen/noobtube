@@ -37,5 +37,13 @@ module.exports = {
         db.video.add_view(videoId).then(() => {
             res.sendStatus(200);
         }).catch(err => console.log(err));
+    },
+    getVideosByTag: (req, res) => {
+        const { id } = req.params,
+            db = req.app.get('db')
+
+        db.video.videos_by_tag({id})
+        .then(videos => res.status(200).send(videos))
+        .catch(err => res.status(500).send(err))
     }
 }
