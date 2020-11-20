@@ -158,6 +158,9 @@ const Video = (props) => {
       <section className="left-side">
         <div className="video">
           <ReactPlayer
+           height= '100%'
+           width= '100%'
+            className='ReactPlayer'
             url={activeVideo.video_url}
             playing={true}
             controls={true}
