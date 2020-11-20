@@ -1,32 +1,53 @@
 table {
   text-align: center;
-  padding-left: 90px;
-  padding-top: 160px;
+  padding-left: 85px;
+  padding-top: 90px;
+  height: 50px;
+  width: 100%;
 }
 .admin-page {
-  margin-bottom: -150px;
+  margin-bottom: -90px;
   thead {
     background-color: antiquewhite;
     th {
-      border-bottom: 5px solid rgb(57, 121, 73);
-      border-radius: 5px;
       padding: 10px;
       margin: 10px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: large;   
+      background-color: rgb(41, 40, 40);
+      color: whitesmoke;
+
     }
   }
 
   tbody {
     background-color: antiquewhite;
     td {
-      border-bottom: 5px solid rgb(57, 121, 73);
       padding: 10px;
       margin: 10px;
+      color: whitesmoke;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: large;   
+      background-color: rgb(41, 40, 40);
     }
   }
 }
 
 .admin-comments-box {
-  background-color: white;
   padding: 10px;
-  border-bottom: 5px solid rgb(57, 121, 73);
+  border-bottom: 4px solid rgb(185, 187, 177);
+}
+.icon-delete{
+  margin: 2px;
+}
+.video-table{
+  width: 400px;
+  height: vh;
+}
+
+.description-table{
+  width: 300px;
+}
+.title-table{
+  width: 150px;
 }
