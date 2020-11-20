@@ -48,7 +48,7 @@ const Header = (props) => {
   const selectVideo = video => {
     dispatch(getVideo(video));
     setSearch('');
-    props.history.push('/video')
+    props.history.push('/video');
   };
 
   const searchResults = filteredVideos.map((video, i) => {
