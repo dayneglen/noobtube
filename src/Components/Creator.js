@@ -89,9 +89,9 @@ const Creator = props => {
       <div className='dropzone'>
         <div className='creator-box'>
           <input className='Set2' placeholder='Video Title' value={title} onChange={e => setTitle(e.target.value)} />
-          <button className='Set'>Set</button>
+          {/* <button className='Set'>Set</button> */}
           <input id='description' placeholder='Video Description' value={description} onChange={e => setDescription(e.target.value)} />
-          <button id='description2' className='Set'>Set</button>
+          {/* <button id='description2' className='Set'>Set</button> */}
           <div className='warning'>You must add a title and description before uploading a video</div>
           <Dropzone
             onDropAccepted={getSignedRequest}
@@ -120,7 +120,7 @@ const Creator = props => {
                 {isUploading ? (
                   <GridLoader />
                 ) : (
-                    <p>Drop files here, or click to select files</p>
+                    <p>Click here to choose a video and upload it.</p>
                   )}
                 <p id='info'>Click in the box above to upload a video</p>
               </div>

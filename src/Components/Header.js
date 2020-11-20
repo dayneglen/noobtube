@@ -10,7 +10,6 @@ import { Avatar } from "@material-ui/core";
 import logo from "./logo.png";
 
 
-
 const Header = (props) => {
   const [search, setSearch] = useState(""),
     [videoList, setVideoList] = useState([]),
