@@ -41,7 +41,6 @@ const Video = (props) => {
       .get(`/api/videos/tag/${activeVideo.video_id}`)
       .then(res => {
         let array = res.data
-        console.log(array)
         let frequency = {}, value;
 
         for (let i = 0; i < array.length; i++) {
@@ -64,10 +63,14 @@ const Video = (props) => {
   
         let returnArray = uniques.sort(compareFrequency)
         returnArray.forEach((val, i) => {
-         let obj = array.find(element => element.description === val)
+          let obj = array.find(element => element.description === val)
           returnArray.splice(i, 1, obj)
         })
-        console.log(returnArray)
+        returnArray.forEach((val, i) => {
+          if (returnArray[i].video_id === activeVideo.video_id) {
+            returnArray.splice(i, 1)
+          }
+        })
         setVideoList(returnArray)
       })
       .catch(err => console.log(err))
