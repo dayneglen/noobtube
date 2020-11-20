@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import { clearVideo, getVideo } from "../Redux/Reducers/reducer";
 import "../Styles/header.scss";
@@ -14,7 +14,8 @@ const Header = (props) => {
   const [search, setSearch] = useState(""),
     [videoList, setVideoList] = useState([]),
     [filteredVideos, setFilteredVideos] = useState([]),
-    dispatch = useDispatch();
+    dispatch = useDispatch(),
+    activeVideo = useSelector((state) => state.video);
 
   useEffect(() => {
     getVideos();
@@ -46,7 +47,8 @@ const Header = (props) => {
 
   const selectVideo = video => {
     dispatch(getVideo(video));
-    setSearch('')
+    setSearch('');
+    props.history.push('/video');
   };
 
   const searchResults = filteredVideos.map((video, i) => {

@@ -59,8 +59,11 @@
     align-items: center;
     justify-content: center;
     .file-btn-container {
+      padding: 20px;
+      padding-left: 50px;
       .file-btn {
         width: 300px;
+        
       }
     }
   }
@@ -223,7 +226,11 @@
 .video-description-btn {
   margin-left: 10px;
 }
+
 @media (max-width: 850px) {
+  .my {
+    min-width: 400px;
+  }
   .account-page {
     min-width: 100vw;
     .my-videos {
