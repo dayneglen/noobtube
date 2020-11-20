@@ -20,9 +20,9 @@ class Admin extends Component {
   }
   componentDidMount() {
     this.getVideos();
-    if (!this.props.user.email) {
-      this.props.history.push("/");
-    }
+    // if (!this.props.user.email) {
+    //   this.props.history.push("/");
+    // }
   }
 
   getVideos = () => {
