@@ -70,6 +70,7 @@ app.get('/api/videos', videoCtrl.getAllVideos);
 app.post('/api/video', videoCtrl.addVideo);
 app.put('/api/video/:id', videoCtrl.editVideo);
 app.put('/api/video/views/:id', videoCtrl.addView);
+app.get('/api/videos/tag/:id', videoCtrl.getVideosByTag)
 
 //like/dislike endpoints
 app.post('/api/likes', likeCtrl.toggleLikedVideo);
