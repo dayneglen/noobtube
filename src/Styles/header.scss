@@ -17,10 +17,6 @@
         width: 190px;
         cursor: pointer;
     }
-    // img:hover{
-        
-    // }
-   
     .search-bar{
         display: flex;
         justify-content: center;
@@ -33,7 +29,6 @@
             height: 50px;
             // border-radius: 20px;
             border-bottom: 3px solid rgb(179, 177, 177);
-
         }
         #search-button{
             display: flex;
@@ -49,7 +44,6 @@
         // #search-button:hover{
             // background-color: rgb(75, 153, 75);
         // }
-        
         #p{
             display: flex;
             justify-content: center;
@@ -68,7 +62,6 @@
         height: 37px;
     }
 }
-
 input {
     font-size: 22px;
     padding-left: 20px;
@@ -91,11 +84,9 @@ input {
     color: white;
     cursor: pointer;
 }
-
 .search-hidden {
     display: none;
 }
-
 .search-results {
     list-style-type: none;
     width: 538px;
@@ -111,14 +102,56 @@ input {
         }
     }
 }
-
 .search-bar-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: fixed;
+    // position: fixed;
     height: 20vh;
     margin-top: 15vh;
     left: 500px;;
-
+}
+@media(max-width: 1000px){
+    .search-bar{
+        width: 150px;
+    }
+    .search-results{
+        width: 250px;
+        margin-right: 0px;
+    }
+}
+@media(max-width: 700px){
+    .Header-page{
+        img{
+            height: 100px;
+            width: 130px;
+            cursor: pointer;
+        }
+        .search-bar-container{
+            width: 75px;
+            .search-bar{
+                width: 75px;
+                #search{
+                    width: 75px;
+                    height: 35px;
+                    font-size: small;
+                }
+                #search-button{
+                    display: none;
+                }
+            }
+            .search-results{
+                width: 114px;
+                font-size: x-small;
+                margin-right: 0px;
+            }
+        }
+        .alert-icon{
+            margin: 10px;
+        }
+        .avatar-icon{
+            
+        }
+    }
+    
 }
