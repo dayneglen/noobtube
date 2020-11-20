@@ -105,16 +105,36 @@ const Account = (props) => {
           <div className="profile">
             <PictureUpload />
             <div className="user-info">
-              <p>
-                {" "}
-                <span>Username </span>
-                {username}
-              </p>
-              <p>
-                {" "}
-                <span>Email Address </span>
-                {email}{" "}
-              </p>
+              {editUsername ? (
+                <section>
+                  <span>Username: </span>
+                  <input
+                    value={username}
+                    onChange={(e) => handleUsername(e.target.value)}
+                  />
+                </section>
+              ) : (
+                <p>
+                  {" "}
+                  <span>Username </span>
+                  {username}
+                </p>
+              )}
+              {editEmail ? (
+                <section>
+                  <span>Email: </span>
+                  <input
+                    value={email}
+                    onChange={(e) => handleEmail(e.target.value)}
+                  />
+                </section>
+              ) : (
+                <p>
+                  {" "}
+                  <span>Email Address </span>
+                  {email}{" "}
+                </p>
+              )}
             </div>
           </div>
           {/* </div> */}
@@ -122,11 +142,8 @@ const Account = (props) => {
             {/* <div className="user-name"> Username </div> */}
             {editUsername ? (
               <section>
-                <input
-                  value={username}
-                  onChange={(e) => handleUsername(e.target.value)}
-                />
                 <button
+                  className="user-edit-btn"
                   onClick={() => {
                     toggleEditUsername(!editUsername);
                     handleUsername(user.username);
@@ -135,7 +152,13 @@ const Account = (props) => {
                   {" "}
                   Cancel{" "}
                 </button>
-                <button onClick={() => changeUsername()}> Submit </button>
+                <button
+                  className="user-edit-btn"
+                  onClick={() => changeUsername()}
+                >
+                  {" "}
+                  Submit{" "}
+                </button>
               </section>
             ) : (
               <section>
@@ -153,11 +176,8 @@ const Account = (props) => {
           <div className="email">
             {editEmail ? (
               <section>
-                <input
-                  value={email}
-                  onChange={(e) => handleEmail(e.target.value)}
-                />
                 <button
+                  className="user-edit-btn"
                   onClick={() => {
                     toggleEditEmail(!editEmail);
                     handleEmail(user.email);
@@ -166,7 +186,10 @@ const Account = (props) => {
                   {" "}
                   Cancel{" "}
                 </button>
-                <button onClick={() => changeEmail()}> Submit </button>
+                <button className="user-edit-btn" onClick={() => changeEmail()}>
+                  {" "}
+                  Submit{" "}
+                </button>
               </section>
             ) : (
               <section>
