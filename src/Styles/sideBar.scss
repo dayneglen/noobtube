@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     #create-button{
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -44,6 +45,7 @@
         color: $hover-color; 
     }
     #logout-button{
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;

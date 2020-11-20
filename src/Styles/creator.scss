@@ -17,6 +17,9 @@
             border: 5px solid $hover-color;
             border-radius: 15px;
             color: $hover-color;
+            .box{
+                cursor: pointer;
+            }
             #tags{
                 margin-top: 10vh;
                 margin-left: 10vw;
