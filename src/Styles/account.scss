@@ -228,6 +228,9 @@
 }
 
 @media (max-width: 850px) {
+  .my {
+    min-width: 400px;
+  }
   .account-page {
     min-width: 100vw;
     .my-videos {
