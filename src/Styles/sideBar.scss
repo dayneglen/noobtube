@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     #create-button{
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,7 +17,7 @@
         border: none;
         width: 70px;
         height: 6vh;
-        margin-top: 160px;
+        margin-top: 100px;
         margin-left: 8px;
         color: rgb(179, 177, 177);
         // border-radius: 25%;
@@ -44,6 +45,7 @@
         color: $hover-color; 
     }
     #logout-button{
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -53,9 +55,8 @@
         width: 70px;
         height: 6vh;
         margin-left: 8px;
-        margin-top: 60vh ;
+        margin-top: 75vh ;
         color: rgb(179, 177, 177);
-
         // border-radius: 25%;
         // box-shadow: 0px 0px 15px 0px;
     }
@@ -84,5 +85,4 @@
             margin-top: 70vh;
         }
     }
-   
 }

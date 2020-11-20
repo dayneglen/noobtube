@@ -5,6 +5,7 @@ import '../Styles/tags.scss';
 
 const Tags = props => {
   const [tagList, handleTagList] = useState([]),
+      [filteredTagList, setFilteredTagList] = useState([]),
       [videoTags, handleVideoTags] = useState([]),
       [unusedTags, handleUnusedTags] = useState([]),
       [searchInput, handleSearchInput] = useState(''),
@@ -14,7 +15,10 @@ const Tags = props => {
   // will grab tags.  It will fire when the component mounts
   const grabTags = () => {
     axios.get(`/api/tags`)
-    .then(res => handleTagList(res.data))
+    .then(res => {
+        handleTagList(res.data);
+        setFilteredTagList(res.data);      
+    }  )
     .catch(err => console.log(err))
     axios.get(`/api/tags/${activeVideo.video_id}`)
     .then(res => handleVideoTags(res.data))
@@ -69,6 +73,13 @@ const Tags = props => {
     }))
   }, [tagList, videoTags])
 
+  useEffect (() => {
+    if (searchInput === ''){
+      return
+    }
+    setFilteredTagList(tagList.filter(tag => tag.name.toLowerCase().includes(searchInput) ))
+  }, [searchInput, tagList])
+
   useEffect(() => {
     // console.log(videoTags)
     // console.log(tagList)
@@ -95,6 +106,34 @@ const Tags = props => {
     </div>
   )})
 
+  const filteredMappedTagList = filteredTagList.map((t, i) => {
+    let tagged = false;
+    videoTags.forEach((val, index) => {
+      if (videoTags[index].tag_id === t.tag_id) {
+        tagged = true;
+      }
+    });
+    return (
+      <div key={i}>
+        {t.name}
+        {tagged ? (
+          <button
+            onClick={() => {
+              // console.log(t.tag_id)
+              removeTag(t.tag_id);
+            }}
+          >
+            {" "}
+            Remove Tag{" "}
+          </button>
+        ) : (
+          <button onClick={() => addTag(t.tag_id)}> Add Tag </button>
+        )}
+      </div>
+    );
+  });
+  console.log(tagList)
+
   return (
     <div className='tag-page'>
       <h2> {activeVideo.title} </h2>
@@ -105,13 +144,15 @@ const Tags = props => {
       </section>
       <section>
         <p> Tags: </p>
-        { mappedTagList }
+        {searchInput.length === 0 ? mappedTagList : filteredMappedTagList }
       </section>
       <section>
         <p> Can't find the tag you're looking for?  Make a new one!</p>
         <input value={tagInput} onChange={e => handleTagInput(e.target.value)} />
         <button onClick={() => handleTagInput('')}> Cancel </button>
-        <button onClick={() => newTag()}> Submit </button>
+        <button onClick={() => {
+          newTag() 
+          handleTagInput('')}}> Submit </button>
       </section>
     </div>
   )

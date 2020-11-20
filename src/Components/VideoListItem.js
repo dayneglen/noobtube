@@ -12,13 +12,9 @@ const VideoListItem = props => {
     const selectVideo = () => {
         dispatch(getVideo(props.video))
     }
-
     const videoStyle = {
       cursor: 'pointer'
     }
-
-  
-
 
     return (
       <section className="video-listen">
@@ -27,8 +23,8 @@ const VideoListItem = props => {
           playing={hover ? true : false}
           loop={true}
           volume={0}
-          width="19.95vw"
-          height="29.8vh"
+          width="300px"
+          height="200px"
           onClick={() => selectVideo()}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}

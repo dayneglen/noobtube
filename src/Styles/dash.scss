@@ -18,6 +18,7 @@
         padding-top: 150px;
         
         .video-listen{
+            cursor: pointer;
             background-color: black;
             flex-direction: row;
             margin-left: 100px;
@@ -74,10 +75,27 @@
                         color: $hover-color;
                     }
                 }
+                @media(max-width: 800px){
+                    .dashboard-video-info {
+                        h2 {
+                            font-size: medium;
+                        }
+                    }
+                }
             }
         }
         .video-listen:hover{
             box-shadow: $second-color 0px 0px 10px 0px; 
+        }
+    }
+}
+@media(max-width:600px){
+    .Dash-page{
+        .dash-videos{
+            .video-listen{
+                width: 300px;
+                margin-left: 50px;
+            }
         }
     }
 }

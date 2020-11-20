@@ -13,9 +13,10 @@ const Video = (props) => {
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState([]),
     [creator, setCreator] = useState({}),
-    [videoList, setVideoList] = useState([]);
+    [videoList, setVideoList] = useState([]),
+    [videoTags, handleVideoTags] = useState([]);
 
-  console.log(comments)
+  // console.log(comments)
 
   useEffect(() => {
     if (!user.email) {
@@ -27,17 +28,59 @@ const Video = (props) => {
     getComments();
     getViews();
     getCreator();
-    getVideos();
+    grabTags()
   }, [activeVideo]);
+
+  useEffect(() => {
+    getVideos()
+    // console.log(videoTags)
+  }, [videoTags])
 
   const getVideos = () => {
     axios
-      .get("/api/videos")
-      .then((res) => {
-        setVideoList(res.data);
+      .get(`/api/videos/tag/${activeVideo.video_id}`)
+      .then(res => {
+        let array = res.data
+        let frequency = {}, value;
+
+        for (let i = 0; i < array.length; i++) {
+          let value = array[i].description
+          if (value in frequency) {
+            frequency[value]++
+          } else {
+            frequency[value] = 1
+          }
+        }
+
+        let uniques = []
+        for (value in frequency) {
+          uniques.push(value)
+        }
+
+        function compareFrequency(a, b) {
+          return frequency[b] - frequency[a];
+        }
+  
+        let returnArray = uniques.sort(compareFrequency)
+        returnArray.forEach((val, i) => {
+          let obj = array.find(element => element.description === val)
+          returnArray.splice(i, 1, obj)
+        })
+        returnArray.forEach((val, i) => {
+          if (returnArray[i].video_id === activeVideo.video_id) {
+            returnArray.splice(i, 1)
+          }
+        })
+        setVideoList(returnArray)
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err))
   };
+
+  const grabTags = () => {
+    axios.get(`/api/tags/${activeVideo.video_id}`)
+    .then(res => handleVideoTags(res.data))
+    .catch(err => console.log(err))
+  }
 
   const videos = videoList.map((video, i) => {
     return <VideoListItem key={i} video={video} />;
@@ -115,6 +158,9 @@ const Video = (props) => {
       <section className="left-side">
         <div className="video">
           <ReactPlayer
+           height= '100%'
+           width= '100%'
+            className='ReactPlayer'
             url={activeVideo.video_url}
             playing={true}
             controls={true}
