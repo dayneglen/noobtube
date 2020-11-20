@@ -69,10 +69,17 @@ const PictureUpload = props => {
       <section className="picture">
         <div className="profile-img-container" style={profilePic}></div>
 
-       <div className="edit-picture">
-         <p>Change Profile Picture </p>  
-         <input type="file" accept="image/*0" multiple={false} ref={fileInput} />
-        <button onClick={getSignedRequest}>Upload</button>
+        <div className="edit-picture">
+          <p>Change Profile Picture </p>
+          <section className='file-btn-container'>
+            <input
+              type="file"
+              accept="image/*0"
+              multiple={false}
+              ref={fileInput}
+            />
+            <button className='file-btn' onClick={getSignedRequest}>Upload</button>
+          </section>
         </div>
       </section>
     );

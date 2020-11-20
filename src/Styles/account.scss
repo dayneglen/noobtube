@@ -26,6 +26,7 @@
     justify-content: center;
     height: 300px;
     width: 400px;
+    
     // border: 5px solid rgb(41, 41, 41);
   }
   //   .btn-change {
@@ -37,8 +38,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    // margin-bottom: 10px;
     p {
-      margin: 25px;
+      margin: 10px;
     }
     span {
       color: white;
@@ -51,12 +54,22 @@
 
   .edit-picture {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    .file-btn-container {
+      .file-btn {
+        width: 300px;
+      }
+    }
   }
 
   .my-videos {
     .account-video {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       border: 2px solid rgb(41, 41, 41);
       .title {
         text-decoration: underline;
@@ -91,18 +104,20 @@
     justify-content: center;
     flex-direction: column;
     min-height: 50vh;
-    width: 40vw;
+    width: 50vw;
     margin-top: 150px;
     @extend %gradient-background;
     border: 5px solid $hover-color;
     border-radius: 15px;
     color: $hover-color;
+    padding: 20px;
     // box-shadow: $hover-color 0px 0px 50px 0px;
     .username {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin-top: 100px;
       section {
         display: flex;
         align-items: center;
@@ -149,6 +164,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
+      margin-top: 10px;
       section {
         display: flex;
         align-items: center;
@@ -184,6 +200,19 @@
       @extend %gradient-background;
     }
   }
+}
+
+.edit-video-sections {
+  margin: 10px;
+  
+}
+
+.video-edit-btn {
+  margin-left: 65px;
+}
+
+.video-description-btn {
+  margin-left: 10px;
 }
 @media (max-width: 850px) {
   .account-page {
@@ -245,6 +274,10 @@
       }
     }
   }
+}
+
+.user-edit-btn {
+  width: 50px;
 }
 @media (max-width: 625px) {
   .account-page {
