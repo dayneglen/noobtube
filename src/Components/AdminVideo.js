@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactPlayer from "react-player";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from 'axios';
+import "../Styles/admin.scss";
 
 const AdminVideo = props => {
     const { video } = props;
@@ -78,19 +79,19 @@ const AdminVideo = props => {
 
           <tbody>
             <tr>
-              <td> {video.username} </td>
-              <td>{video.video_id} </td>
+              <td className="username-table"> {video.username} </td>
+              <td className="id-table">{video.video_id} </td>
               <td className="title-table">{video.title}</td>
               <td className="description-table">{video.description} </td>
               <td className="video-table">
                 <FaTrashAlt onClick={() => this.deleteVideo(video.video)} />
                 <ReactPlayer className="preview" url={video.video_url} />
               </td>
-              <td> {video.views}</td>
-              <td>{likes}</td>
-              <td>{dislikes}</td>
-              <td>{commentsMapped}</td>
-              <td> 0</td>
+              <td className="id-table"> {video.views}</td>
+              <td className="id-table">{likes}</td>
+              <td className="id-table">{dislikes}</td>
+              <td className="comment-table">{commentsMapped}</td>
+              <td className="id-table"> 0</td>
             </tr>
           </tbody>
         </table>
