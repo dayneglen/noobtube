@@ -32,7 +32,10 @@ const Auth = (props) => {
   const handleLogin = () => {
     axios.post('/api/login', { email, password })
       .then(res => dispatch(getUser(res.data)))
-      .catch(err => console.log(err))
+      .catch(err => {
+        alert('Wrong email or password. Please try again.')
+        console.log(err)
+      })
   }
 
   return (
