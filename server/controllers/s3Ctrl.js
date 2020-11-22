@@ -82,8 +82,6 @@ module.exports = {
         ""
       );
 
-      console.log(fileName)
-
       aws.config = {
         region: "us-west-1",
         accessKeyId: AWS_ACCESS_KEY_ID,

@@ -16,6 +16,7 @@ const VideoListItem = props => {
       cursor: 'pointer'
     }
 
+
     return (
       <section className="video-listen">
         <ReactPlayer

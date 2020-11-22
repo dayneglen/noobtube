@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
-import Dropzone from 'react-dropzone';
-import { v4 as randomString } from 'uuid';
-import { GridLoader } from 'react-spinners';
-import '../Styles/creator.scss'
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Dropzone from "react-dropzone";
+import { v4 as randomString } from "uuid";
+import { GridLoader } from "react-spinners";
+import "../Styles/creator.scss";
 
-const Creator = props => {
-
+const Creator = (props) => {
   const [isUploading, setIsLoading] = useState(false),
-    [url, setUrl] = useState(''),
-    [title, setTitle] = useState(''),
-    [description, setDescription] = useState('')
+    [url, setUrl] = useState(""),
+    [title, setTitle] = useState(""),
+    [description, setDescription] = useState(""),
+    [videoUploaded, setVideoUploaded] = useState(false);
 
   const getSignedRequest = ([file]) => {
     setIsLoading(true);
@@ -42,12 +42,18 @@ const Creator = props => {
     };
     try {
       const uploadVideo = await axios.put(signedRequest, file, options);
-      const addingVideo = await axios.post('/api/video', { userId: user.user_id, title, description, video_url: url });
+      const addingVideo = await axios.post("/api/video", {
+        userId: user.user_id,
+        title,
+        description,
+        video_url: url,
+      });
       setIsLoading(false);
-      console.log('video uploaded');
-    }
-    catch (err) {
-      setIsLoading(false)
+      videoUploadedSuccessful();
+      setTitle('');
+      setDescription('');
+    } catch (err) {
+      setIsLoading(false);
       if (err.response.status === 403) {
         alert(
           `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${err.stack}`
@@ -56,43 +62,44 @@ const Creator = props => {
         alert(`ERROR: ${err.status}\n ${err.stack}`);
       }
     }
-
-    // axios
-    //   .put(signedRequest, file, options)
-    //   .then((response) => {
-    //     setIsLoading(false);
-    //     axios.post('/api/video', {})
-    //   })
-    //   .catch((err) => {
-    //     setIsLoading(false)
-    //     if (err.response.status === 403) {
-    //       alert(
-    //         `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${err.stack}`
-    //       );
-    //     } else {
-    //       alert(`ERROR: ${err.status}\n ${err.stack}`);
-    //     }
-    //   });
   };
 
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     if (!user.email) {
-      props.history.push('/')
+      props.history.push("/");
     }
-  }, [user, props.history])
+  }, [user, props.history]);
 
+  const videoUploadedSuccessful = () => {
+    setVideoUploaded(true);
+    setTimeout(() => {
+      setVideoUploaded(false)
+    }, 4000)
+  };
 
   return (
     <div className="creator-page">
-      <div className='dropzone'>
-        <div className='creator-box'>
-          <input className='Set2' placeholder='Video Title' value={title} onChange={e => setTitle(e.target.value)} />
+      <div className="dropzone">
+        <div className="creator-box">
+          <input
+            className="Set2"
+            placeholder="Video Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           {/* <button className='Set'>Set</button> */}
-          <input id='description' placeholder='Video Description' value={description} onChange={e => setDescription(e.target.value)} />
+          <input
+            id="description"
+            placeholder="Video Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
           {/* <button id='description2' className='Set'>Set</button> */}
-          <div className='warning'>You must add a title and description before uploading a video</div>
+          <div className="warning">
+            You must add a title and description before uploading a video
+          </div>
           <Dropzone
             onDropAccepted={getSignedRequest}
             accept="video/*"
@@ -100,7 +107,8 @@ const Creator = props => {
             disabled={description && title ? false : true}
           >
             {({ getRootProps, getInputProps }) => (
-              <div className='box'
+              <div
+                className="box"
                 style={{
                   position: "relative",
                   alignItems: "center",
@@ -116,22 +124,24 @@ const Creator = props => {
                 }}
                 {...getRootProps()}
               >
-                <input id='drop-input' {...getInputProps()} />
+                <input id="drop-input" {...getInputProps()} />
                 {isUploading ? (
                   <GridLoader />
                 ) : (
-                    <p>Click here to choose a video and upload it.</p>
-                  )}
-                <p id='info'>Click in the box above to upload a video</p>
+                  <p>Click here to choose a video and upload it.</p>
+                )}
+                <p id="info">Click in the box above to upload a video</p>
               </div>
             )}
           </Dropzone>
-          <div id='tags'>
-            <input placeholder='tags' />
+          <div>
+            {videoUploaded ? (
+              <p className='upload-successful'>Video Successfully Uploadeded!</p>
+            ) : null}
           </div>
         </div>
       </div>
     </div>
   );
-}
-export default (Creator);
+};
+export default Creator;

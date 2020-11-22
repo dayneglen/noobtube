@@ -156,9 +156,15 @@ const LikeBar = (props) => {
           <p>{dislikes}</p>
         </i>
       </button>
-      <button id="Subscribe" onClick={handleSubscriptionToggle}>
-        Subscribe {subscribers}
-      </button>
+      {subscribed ? (
+        <button id="Subscribe" onClick={handleSubscriptionToggle}>
+          Subscribed {subscribers}
+        </button>
+      ) : (
+        <button id="Subscribe" onClick={handleSubscriptionToggle}>
+          Subscribe {subscribers}
+        </button>
+      )}
     </div>
   );
 };

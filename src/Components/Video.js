@@ -42,6 +42,7 @@ const Video = (props) => {
       .then(res => {
         let array = res.data
         let frequency = {}, value;
+        console.log(res)
 
         for (let i = 0; i < array.length; i++) {
           let value = array[i].description
