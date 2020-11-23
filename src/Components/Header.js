@@ -55,8 +55,6 @@ const Header = (props) => {
     return <li onClick={() => selectVideo(video)} key={i}>{video.title}</li>;
   });
 
-  console.log(search.length)
-
   return (
     <div className="Header-page">
       <img src={logo} alt="Noobtube" onClick={() => toDash()} />
