@@ -71,18 +71,23 @@ input {
     align-items: center;
     justify-content: center;
     margin-right: 40px;
-        }
+}
 
 .alert-icon{
-    color: white;
+    color: rgb(179, 177, 177);
     margin: 50px;
 }
 .alert-icon:hover{
     color: $hover-color;
 }
 .avatar-icon{
-    color: white;
+    @extend %gradient-background;
     cursor: pointer;
+}
+.avatar-icon:hover{
+    color: $hover-color;
+    // background-color: $second-color;
+    @extend %gradient-background;
 }
 .search-hidden {
     display: none;
