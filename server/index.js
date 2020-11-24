@@ -19,6 +19,12 @@ const express = require('express'),
 
 app.use(express.json());
 
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
+
 app.use(session({
     resave: false,
     saveUninitialized: true,
@@ -84,13 +90,6 @@ app.get('/api/tags/:id', tagsCtrl.getVideoTags);
 app.post('/api/tags/:id', tagsCtrl.tagVideo);
 app.delete('/api/tags/:id/:tag_id', tagsCtrl.untagVideo);
 app.post('/api/new/tags', tagsCtrl.newTag);
-
-// app.use(express.static(__dirname + '/../build'))
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../build/index.html'))
-// })
-
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
