@@ -15,7 +15,8 @@ const Header = (props) => {
     [videoList, setVideoList] = useState([]),
     [filteredVideos, setFilteredVideos] = useState([]),
     dispatch = useDispatch(),
-    activeVideo = useSelector((state) => state.video);
+    activeVideo = useSelector((state) => state.video),
+    user = useSelector((state) => state.user);
 
   useEffect(() => {
     getVideos();
@@ -55,6 +56,8 @@ const Header = (props) => {
     return <li onClick={() => selectVideo(video)} key={i}>{video.title}</li>;
   });
 
+  console.log(user)
+
   return (
     <div className="Header-page">
       <img src={logo} alt="Noobtube" onClick={() => toDash()} />
@@ -69,17 +72,22 @@ const Header = (props) => {
           />
           <FaSearch id="search-button" />
         </div>
-          <div
-            className={
-              search.length === 0 ? "search-hidden" : "search-results-container"
-            }
-          >
-            <ul className="search-results">{searchResults}</ul>
-          </div>
+        <div
+          className={
+            search.length === 0 ? "search-hidden" : "search-results-container"
+          }
+        >
+          <ul className="search-results">{searchResults}</ul>
         </div>
+      </div>
       <div className="header-icons">
         <NotificationsIcon className="alert-icon" />
-        <Avatar onClick={() => toAccount()} className="avatar-icon" />
+        <img
+          className="header-account-pic"
+          src={user.picture_url}
+          alt="Account"
+          onClick={toAccount}
+        />
       </div>
     </div>
   );

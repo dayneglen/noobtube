@@ -70,7 +70,12 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 40px;
+    margin-right: 50px;
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
 }
 
 .alert-icon{
@@ -116,6 +121,16 @@ input {
     margin-top: 15vh;
     left: 500px;;
 }
+
+.header-account-pic {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+.header-account-pic:hover {
+    border-radius: 50%;
+    box-shadow: $hover-color 0px 0px 5px 0px;
+}
 @media(max-width: 1000px){
     .search-bar{
         width: 150px;
@@ -132,6 +147,7 @@ input {
             width: 130px;
             cursor: pointer;
         }
+        
         .search-bar-container{
             width: 75px;
             .search-bar{
