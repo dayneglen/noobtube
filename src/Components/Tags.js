@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { FaSearch } from "react-icons/fa";
 import '../Styles/tags.scss';
 
 const Tags = props => {
@@ -93,8 +94,7 @@ const Tags = props => {
       }
     })
     return(
-    <div key={i}>
-      { t.name }
+    <div key={i} className='tag'>
       {tagged ? (
         <button onClick={() => {
           // console.log(t.tag_id)
@@ -103,6 +103,7 @@ const Tags = props => {
       ) : (
         <button onClick={() => addTag(t.tag_id)}> Add Tag </button>
       )}
+      <p>{t.name}</p>
     </div>
   )})
 
@@ -114,8 +115,7 @@ const Tags = props => {
       }
     });
     return (
-      <div key={i}>
-        {t.name}
+      <div key={i} className='tag'>
         {tagged ? (
           <button
             onClick={() => {
@@ -129,6 +129,7 @@ const Tags = props => {
         ) : (
           <button onClick={() => addTag(t.tag_id)}> Add Tag </button>
         )}
+        <p> {t.name} </p>
       </div>
     );
   });
@@ -137,22 +138,27 @@ const Tags = props => {
   return (
     <div className='tag-page'>
       <h2> {activeVideo.title} </h2>
-      <section>
-        <p> Search for a tag: </p>
-        <input value={searchInput} onChange={e => handleSearchInput(e.target.value)} /> 
-        <button onClick={() => handleSearchInput('')}> Clear </button>
+      <section className='tag-search'>
+        <div className='search-bar'>
+          <input placeholder='Search for a tag' value={searchInput} onChange={e => handleSearchInput(e.target.value)} />
+          <button onClick={() => handleSearchInput('')}> Clear </button> 
+        </div> 
       </section>
-      <section>
+      <section className='tag-list'>
         <p> Tags: </p>
         {searchInput.length === 0 ? mappedTagList : filteredMappedTagList }
       </section>
-      <section>
+      <section className='tag-create'>
         <p> Can't find the tag you're looking for?  Make a new one!</p>
-        <input value={tagInput} onChange={e => handleTagInput(e.target.value)} />
-        <button onClick={() => handleTagInput('')}> Cancel </button>
-        <button onClick={() => {
-          newTag() 
-          handleTagInput('')}}> Submit </button>
+        <div className='input-line'>
+          <input value={tagInput} onChange={e => handleTagInput(e.target.value)} />
+          <div>
+            <button onClick={() => handleTagInput('')}> &#10007; </button>
+            <button onClick={() => {
+            newTag() 
+            handleTagInput('')}}> &#10003; </button>
+          </div>
+        </div>
       </section>
     </div>
   )
