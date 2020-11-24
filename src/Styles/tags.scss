@@ -1,5 +1,58 @@
 @import './base.scss';
-.tag-page {
-  @include flex (center, center, column, none);
-  height: 100vh;
+* {
+  box-sizing: border-box;
 }
+
+.tag-page {
+  @include flex (flex-start, center, column, none);
+  height: 100vh;
+  .tag-search {
+    margin-top: 100px;
+    .search-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      input {
+        width: 300px;
+      }
+      button {
+        margin-left: -55px;
+      }
+    }
+  }
+  .tag-list{
+    @include flex (flex-start, center, column, none)
+    .tag {
+      width: 200px;
+      height: 40px;
+      @include flex (flex-start, center, row, none)
+      p {
+        margin-left: 20px;
+      }
+      button {
+        width: 95px;
+      }
+    }
+  }
+  .tag-create {
+    @include flex (flex-start, center, column, none)
+    .input-line {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      input {
+        width: 300px;
+      }
+      div {
+        margin-left: -55px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        button {
+          height:20px;
+        }
+      }
+    }
+  }
+}
+
